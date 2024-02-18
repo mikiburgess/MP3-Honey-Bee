@@ -33,6 +33,15 @@
     <!-- ** FLASH MESSAGES ** -->
     <!-- inspired by Code Institute Tasks Manager walkthrough project, module 3 -->
     <section class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row">
+                        <p class="">{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </section>
 
 
