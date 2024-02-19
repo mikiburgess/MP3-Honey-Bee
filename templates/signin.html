@@ -1,7 +1,6 @@
 {% extends "base.html"%}
 {% block content %}
 
-
 <section id="signin-container">
 
     <div class="parallax parallax-small honeycomb">
@@ -10,6 +9,7 @@
             <h2 class="display-5 fw-bold">Sign In</h2>
         </div>
     </div>
+    
     <!-- ** LOG IN FORM ** -->
     <div class="form-signin w-100 m-auto">
         <form method="POST" action="{{ url_for('signin') }}">
@@ -46,4 +46,5 @@
     </div>
 
 </section>
+
 {% endblock %}
