@@ -42,6 +42,38 @@ def signin():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        print(request.form.get("firstname"))
+        # check if username already exists in db
+        existing_user = mongo.db.siteUsers.find_one(
+            {"username": request.form.get("username").lower()})
+        
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        # check if user is a beekeeper
+        if request.form.get("beekeeper"):
+            beekeeper = True
+        else:
+            beekeeper = False
+
+        # add user registration to database
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "firstname": request.form.get("firstname").lower(),
+            "surname": request.form.get("surname").lower(),
+            "beekeeper": beekeeper,
+            "administrator": False
+        }
+        mongo.db.siteUsers.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash(f"Registration successful. Welcome {session['user']}")
+        return redirect(url_for("home", username=session["user"]))
+
     return render_template("register.html")
 
 

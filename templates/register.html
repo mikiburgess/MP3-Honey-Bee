@@ -10,28 +10,42 @@
             <h2 class="display-5 fw-bold">Register</h2>
         </div>
     </div>
-    <!-- ** LOG IN FORM ** -->
+    <!-- ** REGISTRATION FORM ** -->
     <div class="form-register w-100 m-auto">
         <form method="POST" action="{{ url_for('register') }}">
             
             <!-- enter firstname -->
             <div class="form-floating">
                 <input type="text" class="form-control validate" 
-                    id="firstname" placeholder="Firstname" required>
+                    id="firstname" name="firstname" 
+                    placeholder="Firstname" required>
                 <label for="firstname">Firstname</label>
             </div>
 
             <!-- enter surname -->
             <div class="form-floating">
                 <input type="text" class="form-control validate" 
-                    id="surname" placeholder="Surname" required>
+                    id="surname" name="surname" 
+                    placeholder="Surname" required>
                 <label for="surname">Surname</label>
             </div>
 
             <!-- account type -->
             <div class="d-grid gap-2 gap-md-5 d-flex justify-content-center">
-                <label for="form-check form-check-inline">Are you a beekeeper?</label>
-                <div class="form-check form-check-inline">
+
+                <div class="form-check form-switch form-check-inline">
+                    
+                    <input class="form-check-input" type="checkbox" role="switch" id="beekeeper" name="beekeeper">
+                    <label for="form-check form-check-inline">I'm a beekeeper</label>
+                </div>
+
+                <!-- <label for="form-check form-check-inline">Are you a beekeeper?</label>
+                <div class="form-checkform-check-inline">
+                    <input class="form-check-input" type="checkbox" role="switch" name="beekeeper" id="beekeeper">
+                    <label class="form-check-label" for="beekeeper">(select for yes)</label>
+                  </div> -->
+
+                <!-- <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="beekeeper" id="beekeeper-yes">
                     <label class="form-check-label" for="beekeeper-yes">
                     Yes
@@ -42,13 +56,13 @@
                     <label class="form-check-label" for="beekeeper-no">
                     No
                     </label>
-                </div>
+                </div> -->
             </div>
 
             <!-- create username -->
             <div class="form-floating">
                 <input type="text" class="form-control validate" 
-                    id="floatingInput" placeholder="username" 
+                    id="floatingInput" name="username" placeholder="username" 
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="floatingInput">Enter a username</label>
@@ -57,7 +71,7 @@
             <!-- create password -->
             <div class="form-floating">
                 <input type="password" class="form-control validate" 
-                    id="floatingPassword" placeholder="Password"
+                    id="floatingPassword" name="password" placeholder="Password"
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="floatingPassword">Choose your password</label>
@@ -66,7 +80,7 @@
             <!-- reenter password -->
             <div class="form-floating">
                 <input type="password" class="form-control validate" 
-                    id="password-repeat" placeholder="Password"
+                    id="password-repeat" name="password-repeat" placeholder="Repeat Password"
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="password-repeat">Retype your password</label>
