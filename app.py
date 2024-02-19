@@ -113,6 +113,11 @@ def register():
     return render_template("register.html")
 
 
+@app.route("/hive_management", methods=["GET", "POST"])
+def hive_management():
+    return render_template("hive_management.html")
+
+
 # MAIN - RUNNING IN DEBUG MODE
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

@@ -84,3 +84,17 @@
 .form-register input{
     margin-bottom: 0.5rem;
 }
+
+/* NEW HIVE FORM */
+.form-new-hive {
+    max-width: 500px;
+    padding: 1rem;
+}
+
+.form-new-hive .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-new-hive input{
+    margin-bottom: 0.5rem;
+}
