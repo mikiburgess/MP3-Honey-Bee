@@ -16,31 +16,31 @@
             
             <!-- enter username -->
             <div class="form-floating">
-                <input type="username" class="form-control validate" 
-                    id="floatingInput" placeholder="username" 
+                <input type="text" class="form-control validate" 
+                    id="username" placeholder="username" 
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
-                <label for="floatingInput">Username</label>
+                <label for="username">Username</label>
             </div>
                 
             <!-- enter password -->
             <div class="form-floating">
                 <input type="password" class="form-control validate" 
-                    id="floatingPassword" placeholder="Password"
+                    id="password" placeholder="Password"
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
-                <label for="floatingPassword">Password</label>
+                <label for="password">Password</label>
             </div>
 
             <!-- sign in button -->
             <button class="btn btn-primary w-100 py-2" type="submit">
-                Sign in
+                Register Account
             </button>
             
             <!-- New user? Go to Register -->
             <p class="mt-5 mb-3 text-body-secondary text-center">
                     New Here?
-                    <a href="#" class="">Register Account</a>
+                    <a href="{{ url_for('register') }}" class="">Register Account</a>
             </p>
         </form>
     </div>
