@@ -46,18 +46,31 @@ def signin():
             # ensure hashed password matches user input
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username").lower()))
+                session["beekeeper"] = existing_user["beekeeper"]
+                if session["beekeeper"]:
+                    flash(f"Welcome back, Beekeeper {session['user']}")
+                else:
+                    flash(f"Welcome back, {session['user']}")
                 return redirect(url_for("home", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("signin"))
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
     
     return render_template("signin.html")
+
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    session.pop("beekeeper")
+    return redirect(url_for("home"))
 
 
 @app.route("/register", methods=["GET", "POST"])

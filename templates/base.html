@@ -45,20 +45,24 @@
                             <li class="navitem"><a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a></li>
                             <li class="navitem"><a class="nav-link" href="#" aria-disabled="true">Learn About Bees</a></li>
                             <li class="navitem"><a class="nav-link" href="#" aria-disabled="true">Gallery</a></li>
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a>
-                            </li>
+                            {% if session.user %}
+                            <li class="navitem"><a class="nav-link" href="">Profile</a></li>
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('signout') }}">Sign out</a></li>
+                            {% else %}
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a></li>
+                            {% endif %}
+                            {% if session.beekeeper %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Beekeepers
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">My Profile</a></li>
                                     <li><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
                                     <li><a class="dropdown-item" href="#">View Hive Inspections</a></li>
                                 </ul>
                             </li>
-    
+                            {% endif %}
                             <li class="navitem"><a class="nav-link" href="#">About Us</a></li>
                         </ul>
     
