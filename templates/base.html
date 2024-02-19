@@ -29,7 +29,7 @@
     <header class="site-header">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="material-icons d-inline-block align-text-top">hive</i></a>
+                <a class="navbar-brand" href="{{ url_for('home') }}"><i class="material-icons d-inline-block align-text-top">hive</i></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,10 +42,10 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="navitem"><a class="nav-link active" aria-current="page" href="">Home</a></li>
+                            <li class="navitem"><a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a></li>
                             <li class="navitem"><a class="nav-link" href="#" aria-disabled="true">Learn About Bees</a></li>
                             <li class="navitem"><a class="nav-link" href="#" aria-disabled="true">Gallery</a></li>
-                            <li class="navitem"><a class="nav-link" href="#">Register/Sign In</a>
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Register/Sign In</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
@@ -93,7 +93,7 @@
 
     <!-- ** SITE FOOTER ** -->
     <footer class="site-footer">
-        <p>INSERT COPYRIGHT AND SITE INFORMATION HERE</p>
+        <p class="text-body-secondary">INSERT COPYRIGHT AND SITE INFORMATION HERE</p>
         
     </footer>
 

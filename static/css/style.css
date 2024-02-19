@@ -16,18 +16,27 @@
     background-image: url("../img/newbee.jpg");
 }
 
-.parallax {
-    /* Set a specific height */
-    width: 100%;
-    height: auto;
-    min-height: 350px;
-    max-height: 400px;
+.honeycomb {
+    background-image: url("../img/honeycomb.jpg");
+}
 
+.parallax {
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-y: bottom;
+    background-position-x: center;
+}
+
+.parallax-large {
+    min-height: 350px;
+    max-height: 400px;
+}
+
+.parallax-small {
+    min-height: 200px;
+    max-height: 300px;
 }
 
 /* Still to be styled */
@@ -37,4 +46,27 @@
     width: 4rem;
     height: 4rem;
     border-radius: .75rem; */
+}
+
+
+/* SIGN IN FORM (inspired by Bootstrap Sign In Example)*/
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="username"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+  
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }

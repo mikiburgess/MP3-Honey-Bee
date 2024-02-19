@@ -30,8 +30,14 @@ mongo = PyMongo(app)
 
 # APPLICATION ENDPOINTS
 @app.route("/")
+@app.route("/home")
 def home():
     return render_template("home.html")
+
+
+@app.route("/signin", methods=["GET", "POST"])
+def signin():
+    return render_template("signin.html")
 
 
 # MAIN - RUNNING IN DEBUG MODE
