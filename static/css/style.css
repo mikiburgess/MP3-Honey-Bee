@@ -1,0 +1,40 @@
+/*  MILESTONE PROJECT 3 by MIKHAILA BURGESS
+    "HONEY BEE"
+    - - - - - - - - - - - - - - - - - - - - 
+    Site-specific styles.
+*/
+
+.sunflower {
+    background-image: url("../img/sunflower.jpg");
+}
+
+.apiary {
+    background-image: url("../img/apiary.jpg");
+}
+
+.newbee {
+    background-image: url("../img/newbee.jpg");
+}
+
+.parallax {
+    /* Set a specific height */
+    width: 100%;
+    height: auto;
+    min-height: 350px;
+    max-height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Still to be styled */
+.feature-icon {
+    /* font-size: x-large;
+    color: darkorange;
+    width: 4rem;
+    height: 4rem;
+    border-radius: .75rem; */
+}

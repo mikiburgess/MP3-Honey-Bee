@@ -1,6 +1,79 @@
 {% extends "base.html"%}
 {% block content %}
 
-<h1>Hello, World!</h1>
+<!-- <div class="px-4 py-5 my-5 text-center parallax sunflower">
+    <img class="d-block mx-auto mb-4" src="../static/img/sunflower.jpg" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      </div>
+    </div>
+  </div> -->
+
+<!-- ** PAGE BANNER ** --> 
+<!-- inspired by Bootstrap 5.4 example 'Hero: Centered hero' -->
+<section id="page-banner" >
+    <div class="parallax sunflower">
+    <div class="container text-center text-white">
+        <br><br>
+        <h1 class="display-5 fw-bold ">Honey Bee</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a class="btn btn-primary btn-sm px-4 gap-3" href="#" role="button">Learn About Bees</a>
+                <a class="btn btn-secondary btn-sm px-4 gap-3" href="#" role="button">Registered Users</a>
+            </div>
+          </div>
+        <br><br>    
+    </div>
+  </div>
+</section>
+
+<!-- ** FEATURES ** -->
+<!-- inspired by Bootstrap 5.4 example 'Features: Columns with icons' -->
+<section id="feature-section">
+
+    <div class="container ">
+        
+          <div class="row g-4 py-5 row-cols-1 row-cols-md-3">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="feature-icon"><i class="material-icons">hive</i></h2>
+                <h3 class="">Learn About Bees</h3>
+    
+                <p class="light">If you're interested in honey bees and beekeeping, then you've come to the right place. Explore the site to learn more about honey bees, their lifecycle and roles. Learn about hives and honey production. And find out which plants are best to grow if you wnt to attract honey bees to your garden.</p>
+              </div>
+            </div>
+    
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="feature-icon"><i class="material-icons amber-dark">emoji_nature</i></h2>
+                <h3 class="">Bee Gallery</h3>
+    
+                <p class="light">Find out more about the bees in your area by exploring the GALLERY. See photos and read stories from amateur and professional Beekeepers to learn more about their work and what it takes to be a beekeeper (and a honey bee!).</p>
+              </div>
+            </div>
+    
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="feature-icon"><i class="material-icons amber-dark">local_florist</i></h2>
+                <h3 class="">The Beekeepers</h3>
+    
+                <p class="light">Are you a beekeeper? If so, you can register here to access our Online Apiary Toolbox (OAT)! Keep track of your hives and apiaries, share photos and stories about your work, and use our online BBKA Hive Record System to record your hive checks, as required for the Certificate in Beekeeping Husbandry.</p>
+              </div>
+            </div>
+          </div>
+    
+        
+      </div>
+    
+
+
+</section>
+
+<section>
+    <div class="parallax apiary"></div>
+</section>
 
 {% endblock %}
