@@ -47,6 +47,8 @@ def signin():
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 session["beekeeper"] = existing_user["beekeeper"]
+                session["admin"] = existing_user["administrator"]
+
                 if session["beekeeper"]:
                     flash(f"Welcome back, Beekeeper {session['user']}")
                 else:
@@ -70,6 +72,7 @@ def signout():
     flash("You have been logged out")
     session.pop("user")
     session.pop("beekeeper")
+    session.pop("admin")
     return redirect(url_for("home"))
 
 
