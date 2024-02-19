@@ -80,3 +80,7 @@
 .form-register .form-floating:focus-within {
     z-index: 2;
 }
+
+.form-register input{
+    margin-bottom: 0.5rem;
+}

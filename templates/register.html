@@ -29,7 +29,7 @@
             </div>
 
             <!-- account type -->
-            <div>
+            <div class="d-grid gap-2 gap-md-5 d-flex justify-content-center">
                 <label for="form-check form-check-inline">Are you a beekeeper?</label>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="beekeeper" id="beekeeper-yes">
@@ -51,7 +51,7 @@
                     id="floatingInput" placeholder="username" 
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
-                <label for="floatingInput">Username</label>
+                <label for="floatingInput">Enter a username</label>
             </div>
                 
             <!-- create password -->
@@ -60,7 +60,16 @@
                     id="floatingPassword" placeholder="Password"
                     minlength="5" maxlength="15"
                     pattern="^[a-zA-Z0-9{5,15}]$" required>
-                <label for="floatingPassword">Password</label>
+                <label for="floatingPassword">Choose your password</label>
+            </div>
+
+            <!-- reenter password -->
+            <div class="form-floating">
+                <input type="password" class="form-control validate" 
+                    id="password-repeat" placeholder="Password"
+                    minlength="5" maxlength="15"
+                    pattern="^[a-zA-Z0-9{5,15}]$" required>
+                <label for="password-repeat">Retype your password</label>
             </div>
             
             <!-- form buttons -->
