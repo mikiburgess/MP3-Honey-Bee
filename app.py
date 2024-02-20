@@ -71,8 +71,8 @@ def signout():
     # remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
-    session.pop("beekeeper")
-    session.pop("admin")
+    session["beekeeper"] = False
+    session["admin"] = False
     return redirect(url_for("home"))
 
 
@@ -142,14 +142,7 @@ def hive_management():
     hives = mongo.db.hives.find(
         {"beekeeper": session["user"]}
     )
-    
-    # print("****")
-    # print(list(hives))
-    # print("----")
-    # for item in hives:
-    #     print(item)
-            
-    
+
     return render_template("hive_management.html", hives=list(hives))
 
 
