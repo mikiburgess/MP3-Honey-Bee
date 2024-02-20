@@ -21,13 +21,6 @@
     <div class="form-new-hive w-100 m-auto">
         <form method="POST" action="">
             
-            <!-- enter hive reference -->
-            <div class="form-floating">
-                <input type="text" class="form-control" 
-                    id="reference" name="reference" placeholder="reference">
-                <label for="reference">Reference</label>
-            </div>
-                
             <!-- enter hive location -->
             <div class="form-floating">
                 <input type="text" class="form-control" 
@@ -35,27 +28,36 @@
                 <label for="apiary">Apiary</label>
             </div>
 
+            <!-- enter hive reference -->
+            <div class="form-floating">
+                <input type="text" class="form-control" 
+                    id="reference" name="reference" placeholder="reference">
+                <label for="reference">Reference</label>
+            </div>
+            
             <!-- enter hive type -->
             <div class="form-floating">
-                <select class="form-select" id="apiary" name="apiary" aria-label="Select type of beehive">
-                    <option value="1">BS National</option>
-                    <option value="2">Flow Hive</option>
-                    <option value="3">Langstroth</option>
-                    <option value="4">Skep</option>
-                    <option value="5">WBC</option>
-                    <option value="6">Other</option>
+                <select class="form-select" id="hiveType" name="hiveType" aria-label="Select type of beehive">
+                    <option value="unspecified" selected>Select type of hive</option>
+                    <option value="BS National">BS National</option>
+                    <option value="Flow Hive">Flow Hive</option>
+                    <option value="Langstroth">Langstroth</option>
+                    <option value="Skep">Skep</option>
+                    <option value="WBC">WBC</option>
+                    <option value="Other">Other</option>
                 </select>
-                <label for="apiary">Apiary</label>
+                <label for="hiveType">Type of Hive</label>
             </div>
 
             <!-- enter bee type -->
             <div class="form-floating">
                 <select class="form-select" id="bees" name="bees" aria-label="Select type of honey bee">
-                    <option value="1">Buckfast</option>
-                    <option value="2">Welsh Black</option>
-                    <option value="3">Buzzy</option>
-                    <option value="4">Scary</option>
-                    <option value="5">Other</option>
+                    <option value="unspecified" selected>Select bee species</option>
+                    <option value="Buckfast">Buckfast</option>
+                    <option value="Welsh Black">Welsh Black</option>
+                    <option value="Buzzy">Buzzy</option>
+                    <option value="Scary">Scary</option>
+                    <option value="Other">Other</option>
                 </select>
                 <label for="bees">Bees</label>
             </div>

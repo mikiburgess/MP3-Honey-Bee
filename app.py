@@ -115,7 +115,30 @@ def register():
 
 @app.route("/hive_management", methods=["GET", "POST"])
 def hive_management():
+    if request.method == "POST":
+        print("DATA: \n")
+        print("\tReference: " + request.form.get("reference"))
+        print("\tApiary: " + request.form.get("apiary"))
+        print("\tHive Type: " + request.form.get("hiveType"))
+        print("\tBees: " + request.form.get("bees"))
+        print("\tBeekeeper: " + session["user"])
+
+        try:
+            # add user registration to database
+            newHive = {
+                "apiary": request.form.get("apiary").lower(),
+                "reference": request.form.get("reference").lower(),
+                "hiveType": request.form.get("hiveType").lower(),
+                "bees": request.form.get("bees").lower(),
+                "beekeeper": session["user"]
+            }
+            mongo.db.hives.insert_one(newHive)
+        except Exception as e:
+            print(e)
+        
     return render_template("hive_management.html")
+
+
 
 
 # MAIN - RUNNING IN DEBUG MODE
