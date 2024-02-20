@@ -115,6 +115,8 @@ def register():
 
 @app.route("/hive_management", methods=["GET", "POST"])
 def hive_management():
+    
+    # POST = New hive record entered
     if request.method == "POST":
         print("DATA: \n")
         print("\tReference: " + request.form.get("reference"))
@@ -135,8 +137,20 @@ def hive_management():
             mongo.db.hives.insert_one(newHive)
         except Exception as e:
             print(e)
-        
-    return render_template("hive_management.html")
+
+    # GET = show record of hives for current beekeeper
+    hives = mongo.db.hives.find(
+        {"beekeeper": session["user"]}
+    )
+    
+    # print("****")
+    # print(list(hives))
+    # print("----")
+    # for item in hives:
+    #     print(item)
+            
+    
+    return render_template("hive_management.html", hives=list(hives))
 
 
 

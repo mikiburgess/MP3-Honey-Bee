@@ -3,21 +3,49 @@
 
 <section id="signin-container">
 
-    <div class="parallax parallax-small honeycomb">
+    <div class="parallax parallax-large sunflower">
         <div class="container text-center text-white">
             <br><br>
             <h2 class="display-5 fw-bold">Hive Management</h2>
         </div>
     </div>
 
-    <div>
-        <h2>Table of hives to go here</h2>
+    <div class="container">
+        <h2><i class="material-icons">hive</i> Hives for Beekeeper {{ session["user"] }}</h2>
+        
+
+        <div class="table-responsive">
+            <table class="table table-sm table-hover table-bordered hives-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Apiary</th>
+                        <th scope="col">Reference</th>
+                        <th scope="col">Hive Type</th>
+                        <th scope="col">Bees</th>
+                    </tr>
+                </thead>
+                
+                <tbody class="table-group-divider">
+                    {% for hive in hives %}
+                    <tr>
+                        <td>{{ hive.apiary }}</td>
+                        <td>{{ hive.reference }}</td>
+                        <td>{{ hive.hiveType }}</td>
+                        <td>{{ hive.bees }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
     </div>
 
-    <div class="parallax parallax-small apiary">
-    </div>
-
+   
+    <div class="parallax parallax-small apiary"></div>
     <!-- ** ADD HIVE FORM ** -->
+    <div class="container">
+        <h2><i class="material-icons">emoji_nature</i> Add a New Hive</h2>
+    </div>
     <div class="form-new-hive w-100 m-auto">
         <form method="POST" action="">
             
@@ -34,7 +62,7 @@
                     id="reference" name="reference" placeholder="reference">
                 <label for="reference">Reference</label>
             </div>
-            
+
             <!-- enter hive type -->
             <div class="form-floating">
                 <select class="form-select" id="hiveType" name="hiveType" aria-label="Select type of beehive">
