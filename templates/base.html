@@ -58,7 +58,8 @@
                                     Beekeepers
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{{ url_for('hive_management') }}#">Manage My Hives</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('hive_management', apiary='all') }}">Manage My Hives</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('add_apiary') }}">Add an Apiary</a></li>
                                     <li><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
                                     <li><a class="dropdown-item" href="#">View Hive Inspections</a></li>
                                 </ul>
