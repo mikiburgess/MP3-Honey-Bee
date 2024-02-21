@@ -16,8 +16,16 @@
     background-image: url("../img/newbee.jpg");
 }
 
+.hive-frame {
+    background-image: url("../img/frame.jpg");
+}
+
 .honeycomb {
-    background-image: url("../img/honeycomb.jpg");
+    background-image: url("../img/honeycomb-background.jpg");
+}
+
+.dripping-honey {
+    background-image: url("../img/dripping-honey.jpg");
 }
 
 .parallax {
@@ -91,10 +99,30 @@
     padding: 1rem;
 }
 
+.form-new-hive {
+    margin-bottom: 0.5rem;
+}
+
+/* .form-new-hive input, 
+.form-new-hive select{
+    margin-bottom: 0.5rem;
+} */
+
 .form-new-hive .form-floating:focus-within {
     z-index: 2;
 }
 
-.form-new-hive input{
-    margin-bottom: 0.5rem;
+.hives-table {
+    vertical-align: middle;
+    text-align: center;
+}
+
+th, td {
+    padding: 5px;
+}
+
+.placeholder-img {
+    max-width: 70vh;
+    max-height: 50vh;
+    height: auto;
 }
