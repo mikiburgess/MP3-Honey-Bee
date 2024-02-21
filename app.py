@@ -39,8 +39,8 @@ def handle_exception(e):
 
 @app.route("/placeholder")
 def placeholder():
-    # return render_template("placeholder.html")
-    return render_template("dnd.html")
+    return render_template("placeholder.html")
+    # return render_template("dnd.html")
 
 
 @app.route("/")
@@ -127,17 +127,26 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/hive_management", methods=["GET", "POST"])
+@app.route("/hive_management")
 def hive_management():
-    
+    # GET = show record of hives for current beekeeper
+    hives = mongo.db.hives.find(
+        {"beekeeper": session["user"]}
+    )
+
+    return render_template("hive_management.html", hives=list(hives))
+
+
+@app.route("/add_hive", methods=["GET", "POST"])
+def add_hive():
     # POST = New hive record entered
     if request.method == "POST":
-        print("DATA: \n")
-        print("\tReference: " + request.form.get("reference"))
-        print("\tApiary: " + request.form.get("apiary"))
-        print("\tHive Type: " + request.form.get("hiveType"))
-        print("\tBees: " + request.form.get("bees"))
-        print("\tBeekeeper: " + session["user"])
+        # print("DATA: \n")
+        # print("\tReference: " + request.form.get("reference"))
+        # print("\tApiary: " + request.form.get("apiary"))
+        # print("\tHive Type: " + request.form.get("hiveType"))
+        # print("\tBees: " + request.form.get("bees"))
+        # print("\tBeekeeper: " + session["user"])
 
         try:
             # add user registration to database
@@ -149,15 +158,15 @@ def hive_management():
                 "beekeeper": session["user"]
             }
             mongo.db.hives.insert_one(newHive)
+            flash("Success. New hive added.")
         except Exception as e:
+            flash("Error ocurred. New hive not added. Please try again")
             print(e)
 
-    # GET = show record of hives for current beekeeper
-    hives = mongo.db.hives.find(
-        {"beekeeper": session["user"]}
-    )
+        return redirect(url_for('hive_management'))
+    
+    return render_template("hm_add_hive.html")
 
-    return render_template("hive_management.html", hives=list(hives))
 
 
 # MAIN - RUNNING IN DEBUG MODE

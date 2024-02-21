@@ -1,0 +1,76 @@
+{% extends "base.html"%}
+{% block content %}
+
+<section id="signin-container">
+
+    <div class="parallax parallax-small sunflower">
+        <div class="container text-center text-white">
+            <br><br>
+            <h2 class="display-5 fw-bold">Hive Management</h2>
+            <p class="lead">Add New Hive</p>
+        </div>
+    </div>
+
+    <!-- ** ADD HIVE FORM ** -->
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon"><i class="material-icons">hive</i> Add New Hive</h2>
+        </div>
+   
+        <div class="form-new-hive w-100 m-auto">
+            <form method="POST" action="">
+                
+                <!-- enter hive location -->
+                <div class="form-floating">
+                    <input type="text" class="form-control" 
+                        id="apiary" name="apiary" placeholder="apiary">
+                    <label for="apiary">Apiary</label>
+                </div>
+
+                <!-- enter hive reference -->
+                <div class="form-floating">
+                    <input type="text" class="form-control" 
+                        id="reference" name="reference" placeholder="reference">
+                    <label for="reference">Reference</label>
+                </div>
+
+                <!-- enter hive type -->
+                <div class="form-floating">
+                    <select class="form-select" id="hiveType" name="hiveType" aria-label="Select type of beehive">
+                        <option value="unspecified" selected>Select type of hive</option>
+                        <option value="BS National">BS National</option>
+                        <option value="Flow Hive">Flow Hive</option>
+                        <option value="Langstroth">Langstroth</option>
+                        <option value="Skep">Skep</option>
+                        <option value="WBC">WBC</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="hiveType">Type of Hive</label>
+                </div>
+
+                <!-- enter bee type -->
+                <div class="form-floating">
+                    <select class="form-select" id="bees" name="bees" aria-label="Select type of honey bee">
+                        <option value="unspecified" selected>Select bee species</option>
+                        <option value="Buckfast">Buckfast</option>
+                        <option value="Welsh Black">Welsh Black</option>
+                        <option value="Buzzy">Buzzy</option>
+                        <option value="Scary">Scary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="bees">Bees</label>
+                </div>
+
+                <!-- form buttons -->
+                <div class="d-grid gap-2 gap-md-5 d-md-flex justify-content-center">
+                    <button class="btn btn-secondary px-5" type="reset">Clear Form</button>
+                    <button class="btn btn-primary px-5" type="submit">Save Report</button>
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

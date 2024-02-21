@@ -64,9 +64,9 @@
                                 </ul>
                             </li>
                             {% endif %}
-                            <li class="navitem"><a class="nav-link" href="#">About Us</a></li>
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">About Us</a></li>
                             {% if session.admin %}
-                            <li class="navitem"><a class="nav-link" href="#">User Management</a></li>
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
                             {% endif %}
                         </ul>
     
