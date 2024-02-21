@@ -1,16 +1,6 @@
 {% extends "base.html"%}
 {% block content %}
 
-<!-- <div class="px-4 py-5 my-5 text-center parallax sunflower">
-    <img class="d-block mx-auto mb-4" src="../static/img/sunflower.jpg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      </div>
-    </div>
-  </div> -->
-
 <!-- ** PAGE BANNER ** --> 
 <!-- inspired by Bootstrap 5.4 example 'Hero: Centered hero' -->
 <section id="page-banner" >
@@ -21,7 +11,7 @@
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a class="btn btn-primary btn-sm px-4 gap-3" href="#" role="button">Learn About Bees</a>
+                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('placeholder') }}" role="button">Learn About Bees</a>
                 <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Registered Users</a>
             </div>
           </div>
