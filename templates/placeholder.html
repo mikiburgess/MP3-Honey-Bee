@@ -1,0 +1,26 @@
+<!-- Placeholder page to be displayed when final page not yet developed -->
+
+{% extends "base.html"%}
+{% block content %}
+
+<section id="placeholder-container">
+
+    <div class="parallax parallax-small sunflower">
+        <div class="container text-center text-white">
+            <br><br>
+            <h2 class="display-5 fw-bold">Sorry! We're not ready yet.</h2>
+        </div>
+    </div>
+    
+    <!-- ** PLACEHOLDER NOTICE ** -->
+    <div class="">
+        <br>
+        <img class="rounded mx-auto d-block placeholder-img" 
+            src="{{ url_for('static', filename='img/beekeeper-scared.jpg') }}" 
+            alt="">
+        <br>
+    </div>
+
+</section>
+
+{% endblock %}
