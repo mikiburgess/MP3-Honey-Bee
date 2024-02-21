@@ -1,0 +1,26 @@
+<!-- Generic page to be displayed in case of error -->
+
+{% extends "base.html"%}
+{% block content %}
+
+<section id="error-page-container">
+
+    <div class="parallax parallax-small sunflower">
+        <div class="container text-center text-white">
+            <br><br>
+            <h2 class="display-5 fw-bold">Oops!</h2>
+        </div>
+    </div>
+    
+    <!-- ** ERROR ** -->
+    <div class="container text-center">
+        <br>
+        <h3>We're sorry. Something has gone wrong.</h3>
+        <a href="{{ url_for('home') }}">Return home</a>
+        <hr>
+        <br>
+    </div>
+
+</section>
+
+{% endblock %}
