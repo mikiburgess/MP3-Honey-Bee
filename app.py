@@ -13,6 +13,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.exceptions import HTTPException
 from bson.objectid import ObjectId  # Enables us to work with MongoDB Object IDs
 
 if os.path.exists("env.py"):
@@ -28,7 +29,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# NON-SPECIFIC ERROR HANDLER
+@app.errorhandler(Exception)
+def handle_exception(e):
+    return render_template("error.html", e=e)
+
+
 # APPLICATION ENDPOINTS
+
+@app.route("/placeholder")
+def placeholder():
+    # return render_template("placeholder.html")
+    return render_template("dnd.html")
+
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -144,8 +158,6 @@ def hive_management():
     )
 
     return render_template("hive_management.html", hives=list(hives))
-
-
 
 
 # MAIN - RUNNING IN DEBUG MODE
