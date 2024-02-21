@@ -127,27 +127,49 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/hive_management")
-def hive_management():
-    # GET = show record of hives for current beekeeper
-    hives = mongo.db.hives.find(
-        {"beekeeper": session["user"]}
-    )
+@app.route("/add_apiary", methods=["GET", "POST"])
+def add_apiary():
+    if request.method == "POST":
+        try:
+            # add new apiary to database
+            newApiary = {
+                "beekeeper": session["user"],
+                "apiary": request.form.get("apiary").lower(),
+                "description": request.form.get("apiary-description")
+            }
+            mongo.db.apiaries.insert_one(newApiary)
+            flash("Success. New apiary added.")
+        except Exception as e:
+            flash("Error ocurred. New apiary not added. Please try again")
+            print(e)
 
-    return render_template("hive_management.html", hives=list(hives))
+        return redirect(url_for('hive_management', apiary="all"))
+
+    return render_template("hm_add_apiary.html")
+
+
+@app.route("/hive_management/<apiary>")
+def hive_management(apiary):
+    
+    # show record of hives for current beekeeper
+    if apiary == "all":
+        # no apiary selected, so return all
+        hives = list(mongo.db.hives.find(
+            {"beekeeper": session["user"]}
+        ).sort("apiary", 1))
+    else:
+        # specific apiary selected, so return hives in that beekeepers apiary
+        hives = list(mongo.db.hives.find(
+            {"beekeeper": session["user"], "apiary": apiary}
+        ).sort("reference", 1))
+        
+    return render_template("hive_management.html", hives=hives)
 
 
 @app.route("/add_hive", methods=["GET", "POST"])
 def add_hive():
     # POST = New hive record entered
     if request.method == "POST":
-        # print("DATA: \n")
-        # print("\tReference: " + request.form.get("reference"))
-        # print("\tApiary: " + request.form.get("apiary"))
-        # print("\tHive Type: " + request.form.get("hiveType"))
-        # print("\tBees: " + request.form.get("bees"))
-        # print("\tBeekeeper: " + session["user"])
-
         try:
             # add user registration to database
             newHive = {
@@ -163,10 +185,9 @@ def add_hive():
             flash("Error ocurred. New hive not added. Please try again")
             print(e)
 
-        return redirect(url_for('hive_management'))
+        return redirect(url_for('hive_management', apiary="all"))
     
     return render_template("hm_add_hive.html")
-
 
 
 # MAIN - RUNNING IN DEBUG MODE

@@ -6,7 +6,7 @@ This repository and the accompanying interactive website is presented for Code I
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee/main?style=plastic&logo=github)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
 ![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![GitHub top language](https://img.shields.io/github/languages/top/mikiburgess/MP3-Honey-Bee?style=plastic&logo=javascript)
+![GitHub top language](https://img.shields.io/github/languages/top/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
 ![Website]()
 
 - - -

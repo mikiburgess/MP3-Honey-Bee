@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+{% block content %}
+
+<section id="signin-container">
+
+    <div class="parallax parallax-small sunflower">
+        <div class="container text-center text-white">
+            <br><br>
+            <h2 class="display-5 fw-bold">Hive Management</h2>
+            <p class="lead">Add New Apiary</p>
+        </div>
+    </div>
+
+    <!-- ** ADD APIARY FORM ** -->
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon"><i class="material-icons">hive</i> Add New Apiary</h2>
+        </div>
+   
+        <div class="form-new-apiary w-100 m-auto">
+            <form method="POST" action="{{ url_for('add_apiary') }}">
+                
+                <!-- enter apiary name location -->
+                <div class="form-floating">
+                    <input type="text" class="form-control" 
+                        id="apiary" name="apiary" placeholder="apiary" required>
+                    <label for="apiary">Apiary</label>
+                </div>
+
+                <!-- enter description (optional) -->
+                <div>
+                    <textarea class="form-control" id="apiary-description" 
+                        name="apiary-description" placeholder="Description (optional)" 
+                        rows="5"></textarea>
+                </div>
+
+                <!-- form buttons -->
+                <div class="d-grid gap-2 gap-md-5 d-md-flex justify-content-center">
+                    <button class="btn btn-secondary px-5" type="reset">Clear Form</button>
+                    <button class="btn btn-primary px-5" type="submit">Add Apiary</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
