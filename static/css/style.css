@@ -4,6 +4,14 @@
     Site-specific styles.
 */
 
+/* - COLOR PALETTE ------------------------------------ */
+:root {
+    --honey: #EBC000; /* #EBC000 */
+    --primary: #A18F65;
+    --secondary: #DFE0DF;
+    --pale: #FFF9EC;
+}
+
 .sunflower {
     background-image: url("../img/sunflower.jpg");
 }
@@ -26,7 +34,23 @@
 
 .dripping-honey {
     background-image: url("../img/dripping-honey.jpg");
+    max-width: 100%;
+    height: auto;
+    opacity: 0.5;
 }
+
+
+.navbar-custom,
+.dropdown-menu,
+.offcanvas-header, 
+.offcanvas-body {
+    /* background-color: #EBC000; */
+    background-color: var(--honey);
+ }
+
+ .flash-messages {
+    background-color: var(--secondary);
+ }
 
 .parallax {
     /* Create the parallax scrolling effect */
@@ -139,4 +163,8 @@ th, td {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.site-footer {
+
 }
