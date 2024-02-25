@@ -12,11 +12,12 @@
             <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 {% if session.user %}
-                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('hive_management', apiary='all') }}" role="button">Manage Hives</a>
-                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a>
+                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('apiary_management') }}" role="button">Manage Apiaries</a>
+                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('hive_management', apiary='all') }}" role="button">Manage Hives</a>
+                <!-- <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a> -->
                 {% else %}
-                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('placeholder') }}" role="button">Learn About Bees</a>
-                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Registered Users</a>
+                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Sign In</a>
+                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('register') }}" role="button">Register</a>
                 {% endif %}
             </div>
           </div>

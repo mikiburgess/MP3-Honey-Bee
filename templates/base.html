@@ -27,14 +27,14 @@
 <body>
     <!-- ** SITE HEADER/NAVIGATION ** -->
     <header class="site-header">
-        <nav class="navbar bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg navbar-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('home') }}"><i class="material-icons d-inline-block align-text-top">hive</i></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                <div class="offcanvas offcanvas-end offcanvas-custom" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><i class="material-icons d-inline-block align-text-top">hive</i> Honey Bee</h5>
@@ -42,32 +42,55 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-                            <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Learn About Bees</a></li>
-                            <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Gallery</a></li>
-                            {% if session.user %}
-                            <li class="navitem"><a class="nav-link" href="">Profile</a></li>
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('signout') }}">Sign out</a></li>
-                            {% else %}
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a></li>
-                            {% endif %}
+                        
                             {% if session.beekeeper %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Beekeepers
+                                    Apiaries
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{{ url_for('apiary_management') }}">Manage My Apiaries</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('add_apiary') }}">Add an Apiary</a></li>
+                                    <li><a class="dropdown-item" href="#">Edit Apiary</a></li>
+                                    <li><a class="dropdown-item" href="#">Delete Apiary</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hives
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="{{ url_for('hive_management', apiary='all') }}">Manage My Hives</a></li>
-                                    <li><a class="dropdown-item" href="{{ url_for('add_apiary') }}">Add an Apiary</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('add_hive') }}">Add a new Hive</a></li>
                                     <li><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
                                     <li><a class="dropdown-item" href="#">View Hive Inspections</a></li>
                                 </ul>
                             </li>
                             {% endif %}
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">About Us</a></li>
                             {% if session.admin %}
                             <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
+                            {% endif %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Explore
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li class="navitem"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                                    <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Learn About Bees</a></li>
+                                    <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Gallery</a></li>
+                                    {% if session.user %}
+                                    <li class="navitem"><a class="nav-link disabled" href="#">My Profile</a></li>
+                                    {% endif %}
+                                    <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
+                                </ul>
+                            </li>
+                            {% if session.user %}
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('signout') }}">Sign out</a></li>
+                            {% else %}
+                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a></li>
                             {% endif %}
                         </ul>
     
@@ -101,7 +124,7 @@
 
 
     <!-- ** SITE FOOTER ** -->
-    <footer class="site-footer">
+    <footer class="site-footer container-fluid">
         <p class="text-body-secondary">INSERT COPYRIGHT AND SITE INFORMATION HERE</p>
         
     </footer>

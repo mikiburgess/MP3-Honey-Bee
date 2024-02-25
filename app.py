@@ -148,6 +148,11 @@ def register():
     return render_template("register.html")
 
 
+@app.route("/apiary_management")
+def apiary_management():
+    return redirect(url_for("placeholder"))
+
+
 @app.route("/add_apiary", methods=["GET", "POST"])
 def add_apiary():
     if request.method == "POST":
