@@ -29,10 +29,31 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+"""
+ APPLICATION FUNCTIONS
+ ---------------------
+"""
+
+# LOAD BEEKEEPER APIARIES UPON LOGIN
+def load_apiaries():
+    if session["beekeeper"]:
+        # Get list of apiary names from database and store in session variable
+        session["apiaries"] = []
+        apiaries = mongo.db.apiaries.find({"beekeeper": session['user']})
+        for apiary in apiaries:
+            session["apiaries"].append(apiary["apiary_name"])
+    print(session['apiaries'])
+
+
+"""
+ APPLICATION ENDPOINTS 
+ ---------------------
+"""
+
 # NON-SPECIFIC ERROR HANDLER
-@app.errorhandler(Exception)
-def handle_exception(e):
-    return render_template("error.html", e=e)
+# @app.errorhandler(Exception)
+# def handle_exception(e):
+#     return render_template("error.html", e=e)
 
 
 # APPLICATION ENDPOINTS
@@ -65,6 +86,7 @@ def signin():
 
                 if session["beekeeper"]:
                     flash(f"Welcome back, Beekeeper {session['user']}")
+                    load_apiaries()
                 else:
                     flash(f"Welcome back, {session['user']}")
                 return redirect(url_for("home", username=session["user"]))
