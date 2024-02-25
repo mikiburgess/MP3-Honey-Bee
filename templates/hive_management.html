@@ -16,16 +16,6 @@
                 <h2 class="feature-icon"><i class="material-icons">hive</i> Hives for Beekeeper <em>{{ session["user"]|capitalize() }}</em></h2>
         </div>
 
-        <!-- ** APIARY SELECTION (optional) ** -->
-        <div class="form-floating">
-            <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary">
-                <option value="all" selected>All apiaries</option>
-                
-            </select>
-            <label for="apiary">Apiary</label>
-        </div>
-
-
         <!-- ** VIEW ALL HIVES ** -->
         {% if hives|length > 0 %}
         <div class="table-responsive">
@@ -65,8 +55,10 @@
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Edit Hive</a>
             <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('add_hive') }}" role="button">Add New Hive</a>
+            <!-- 
             <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">View Inspection Report</a>
-            <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Record Inspection</a>
+            <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Record Inspection</a> 
+        -->
             
         </div>  
     </div>
