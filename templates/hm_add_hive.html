@@ -22,9 +22,15 @@
                 
                 <!-- enter hive location -->
                 <div class="form-floating">
-                    <input type="text" class="form-control" 
+                    <!-- <input type="text" class="form-control" 
                         id="apiary" name="apiary" placeholder="apiary">
-                    <label for="apiary">Apiary</label>
+                    <label for="apiary">Apiary</label> -->
+                    <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary">
+                        <!-- <option value="all" selected>All apiaries</option> -->
+                        {% for apiary in session.apiaries %}
+                        <option value="{{ apiary }}">{{ apiary }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <!-- enter hive reference -->

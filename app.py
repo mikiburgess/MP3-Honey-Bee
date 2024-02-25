@@ -34,19 +34,19 @@ mongo = PyMongo(app)
  ---------------------
 """
 
-# LOAD BEEKEEPER APIARIES UPON LOGIN
+# LOAD BEEKEEPER APIARIES UPON LOGIN/CHANGE
 def load_apiaries():
     if session["beekeeper"]:
         # Get list of apiary names from database and store in session variable
         session["apiaries"] = []
         apiaries = mongo.db.apiaries.find({"beekeeper": session['user']})
         for apiary in apiaries:
-            session["apiaries"].append(apiary["apiary_name"])
+            session["apiaries"].append(apiary["apiary"])
     print(session['apiaries'])
 
 
 """
- APPLICATION ENDPOINTS 
+ APPLICATION ENDPOINTS
  ---------------------
 """
 
@@ -86,7 +86,6 @@ def signin():
 
                 if session["beekeeper"]:
                     flash(f"Welcome back, Beekeeper {session['user']}")
-                    load_apiaries()
                 else:
                     flash(f"Welcome back, {session['user']}")
                 return redirect(url_for("home", username=session["user"]))
@@ -153,14 +152,26 @@ def register():
 def add_apiary():
     if request.method == "POST":
         try:
+            existing_apiary = mongo.db.apiaries.find_one(
+                {"beekeeper": session["user"], 
+                "apiary": request.form.get("apiary").lower()})
+            print(existing_apiary)
+            if existing_apiary:
+                flash("Error: Apiary already exists")
+                return redirect(url_for("add_apiary"))
+            
+
             # add new apiary to database
             newApiary = {
                 "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
                 "description": request.form.get("apiary-description")
             }
+        
             mongo.db.apiaries.insert_one(newApiary)
             flash("Success. New apiary added.")
+            load_apiaries()
+
         except Exception as e:
             flash("Error ocurred. New apiary not added. Please try again")
             print(e)
@@ -172,7 +183,7 @@ def add_apiary():
 
 @app.route("/hive_management/<apiary>")
 def hive_management(apiary):
-    
+    load_apiaries()
     # show record of hives for current beekeeper
     if apiary == "all":
         # no apiary selected, so return all
@@ -190,11 +201,13 @@ def hive_management(apiary):
 
 @app.route("/add_hive", methods=["GET", "POST"])
 def add_hive():
+    load_apiaries()
     # POST = New hive record entered
     if request.method == "POST":
         try:
             # add user registration to database
             newHive = {
+                # "apiary": request.form.get("apiary").lower(),
                 "apiary": request.form.get("apiary").lower(),
                 "reference": request.form.get("reference").lower(),
                 "hiveType": request.form.get("hiveType").lower(),
