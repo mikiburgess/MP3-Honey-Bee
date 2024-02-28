@@ -30,6 +30,7 @@
                     <label for="apiary">Apiary</label> -->
                     <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary">
                         <!-- <option value="all" selected>All apiaries</option> -->
+                        <option value="unspecified" selected>Unspecified</option>
                         {% for apiary in session.apiaries %}
                         <option value="{{ apiary }}">{{ apiary }}</option>
                         {% endfor %}
