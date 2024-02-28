@@ -150,7 +150,10 @@ def register():
 
 @app.route("/apiary_management")
 def apiary_management():
-    return redirect(url_for("placeholder"))
+    apiaries = list(mongo.db.apiaries.find(
+            {"beekeeper": session["user"]}
+        ).sort("reference", 1))
+    return render_template("apiary_management.html", apiaries=apiaries)
 
 
 @app.route("/add_apiary", methods=["GET", "POST"])
@@ -165,7 +168,6 @@ def add_apiary():
                 flash("Error: Apiary already exists")
                 return redirect(url_for("add_apiary"))
             
-
             # add new apiary to database
             newApiary = {
                 "beekeeper": session["user"],
