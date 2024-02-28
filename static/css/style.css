@@ -4,14 +4,18 @@
     Site-specific styles.
 */
 
-/* - COLOR PALETTE ------------------------------------ */
+/* COLOR PALETTE ------------------------------------------- */
 :root {
-    --honey: #EBC000; /* #EBC000 */
+    --honey: #ffd340; /* #EBC000 */
     --primary: #A18F65;
+    --shadow: #A18F65;
     --secondary: #DFE0DF;
     --pale: #FFF9EC;
+    --site-font: #3D3004;
 }
 
+
+/* SITE IMAGES ---------------------------------------------- */
 .sunflower {
     background-image: url("../img/sunflower.jpg");
 }
@@ -32,26 +36,15 @@
     background-image: url("../img/honeycomb-background.jpg");
 }
 
-.dripping-honey {
+/* .dripping-honey {
     background-image: url("../img/dripping-honey.jpg");
     max-width: 100%;
     height: auto;
     opacity: 0.5;
-}
+} */
 
 
-.navbar-custom,
-.dropdown-menu,
-.offcanvas-header, 
-.offcanvas-body {
-    /* background-color: #EBC000; */
-    background-color: var(--honey);
- }
-
- .flash-messages {
-    background-color: var(--secondary);
- }
-
+/* IMAGE EFFECTS -------------------------------------------- */
 .parallax {
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -59,17 +52,61 @@
     background-size: cover;
     background-position-y: bottom;
     background-position-x: center;
+    filter: drop-shadow(0px 8px 10px var(--shadow));
+    -webkit-filter: drop-shadow(0px 8px 10px var(--shadow));
 }
 
 .parallax-large {
-    min-height: 350px;
-    max-height: 400px;
+    min-height: 250px;
+    max-height: 300px;
 }
 
 .parallax-small {
-    min-height: 200px;
-    max-height: 300px;
+    min-height: 150px;
+    max-height: 200px;
 }
+
+/* HTML ELEMENT STYLES  ------------------------------------- */
+
+h1, h2, h3, p {
+    color: var(--site-font);
+}
+
+
+/* PAGE HEADER  --------------------------------------------- */
+
+.heading-text-block {
+    position: relative;
+    color: black;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 20px;
+    padding: 10px; */
+    /* padding-bottom: 15px; */
+    background: rgb(240, 233, 27); /* Fallback/solid color */
+    background: rgba(255, 211, 64, 0.5); /* Background with 0.5 opacity */
+    filter: drop-shadow(0px 8px 10px var(--shadow));
+    -webkit-filter: drop-shadow(0px 8px 10px var(--shadow));
+}
+
+/* NAVIGATION BAR  ------------------------------------------- */
+
+.navbar-custom,
+.dropdown-menu,
+.offcanvas-header, 
+.offcanvas-body {
+    /* background-color: #EBC000; */
+    background-color: var(--honey);
+    color: var(--site-font);
+ }
+
+ .flash-messages {
+    background-color: var(--secondary);
+ }
+
+
+ /* WORK-IN-PROGRESS  --------------------------------------- */
 
 /* Still to be styled */
 .feature-icon {
@@ -165,6 +202,9 @@ th, td {
     margin-bottom: 20px;
 }
 
-.site-footer {
 
+.site-footer {
+    padding-top: 20px;
+    font-size: small;
 }
+  
