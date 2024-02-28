@@ -1,7 +1,7 @@
 {% extends "base.html"%}
-{% block content %}
 
-<section id="hive-management-container">
+{% block header %}
+<section id="hive-management-header">
 
     <div class="parallax parallax-small honeycomb">
         <div class="container text-center text-white">
@@ -10,7 +10,11 @@
             <p class="lead">View All Hives</p>
         </div>
     </div>
+</section>
+{% endblock %}
 
+{% block content %}
+<section id="hive-management-container">
     <div class="container">
         <div class="sub-heading">
                 <h2 class="feature-icon"><i class="material-icons">hive</i> Hives for Beekeeper <em>{{ session["user"]|capitalize() }}</em></h2>
@@ -64,5 +68,4 @@
     </div>
     
 </section>
-
 {% endblock %}

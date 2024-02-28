@@ -1,8 +1,7 @@
 {% extends "base.html"%}
-{% block content %}
 
-<section id="signin-container">
-
+{% block header %}
+<section id="add-apiary-header">
     <div class="parallax parallax-small sunflower">
         <div class="container text-center text-white">
             <br><br>
@@ -10,7 +9,11 @@
             <p class="lead">Add New Apiary</p>
         </div>
     </div>
+</section>
+{% endblock %}
 
+{% block content %}
+<section id="add-apiary-container">
     <!-- ** ADD APIARY FORM ** -->
     <div class="container">
         <div class="sub-heading">
@@ -44,5 +47,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}

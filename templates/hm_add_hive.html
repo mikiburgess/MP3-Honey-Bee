@@ -1,8 +1,7 @@
 {% extends "base.html"%}
-{% block content %}
 
-<section id="signin-container">
-
+{% block header %}
+<section id="add-hive-header">
     <div class="parallax parallax-small sunflower">
         <div class="container text-center text-white">
             <br><br>
@@ -10,7 +9,10 @@
             <p class="lead">Add New Hive</p>
         </div>
     </div>
+{% endblock %}
 
+{% block content %}
+<section id="add-hive-container">
     <!-- ** ADD HIVE FORM ** -->
     <div class="container">
         <div class="sub-heading">
@@ -77,5 +79,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}

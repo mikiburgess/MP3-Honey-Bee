@@ -1,16 +1,18 @@
 {% extends "base.html"%}
-{% block content %}
 
-
-<section id="register-container">
-
+{% block header %}
+<section id="register-header">
     <div class="parallax parallax-small honeycomb">
         <div class="container text-center text-white">
             <br><br>
             <h2 class="display-5 fw-bold">Register</h2>
         </div>
     </div>
+</section>
+{% endblock %}
 
+{% block content %}
+<section id="register-container">
     <!-- ** REGISTRATION FORM ** -->
     <div class="form-register w-100 m-auto">
         <form method="POST" action="{{ url_for('register') }}">

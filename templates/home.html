@@ -1,9 +1,8 @@
 {% extends "base.html"%}
-{% block content %}
 
+{% block header %}
 <!-- ** PAGE BANNER ** --> 
-<!-- inspired by Bootstrap 5.4 example 'Hero: Centered hero' -->
-<section id="page-banner" >
+<section id="home-page-header">
     <div class="parallax parallax-large sunflower">
     <div class="container text-center text-white">
         <br><br>
@@ -14,7 +13,7 @@
                 {% if session.user %}
                 <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('apiary_management') }}" role="button">Manage Apiaries</a>
                 <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('hive_management', apiary='all') }}" role="button">Manage Hives</a>
-                <!-- <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a> -->
+                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a>
                 {% else %}
                 <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Sign In</a>
                 <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('register') }}" role="button">Register</a>
@@ -24,8 +23,10 @@
         <br><br>    
     </div>
   </div>
-</section>
+</section> 
+{% endblock %}
 
+{% block content %}
 <!-- ** FEATURES ** -->
 <!-- inspired by Bootstrap 5.4 example 'Features: Columns with icons' -->
 <section id="feature-section">
@@ -60,16 +61,10 @@
               </div>
             </div>
           </div>
-    
-        
       </div>
-    
-
-
 </section>
 
 <section>
     <div class="parallax apiary"></div>
 </section>
-
 {% endblock %}
