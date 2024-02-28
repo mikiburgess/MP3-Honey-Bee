@@ -47,30 +47,19 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Apiaries
+                                    Bees
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{{ url_for('apiary_management') }}">Manage My Apiaries</a></li>
-                                    <li><a class="dropdown-item" href="{{ url_for('add_apiary') }}">Add an Apiary</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit Apiary</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete Apiary</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('apiary_management') }}">My Apiaries</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('hive_management', apiary='all') }}">My Hives</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="#">View Hive Inspections</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Hives
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="{{ url_for('hive_management', apiary='all') }}">Manage My Hives</a></li>
-                                    <li><a class="dropdown-item" href="{{ url_for('add_hive') }}">Add a new Hive</a></li>
-                                    <li><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
-                                    <li><a class="dropdown-item" href="#">View Hive Inspections</a></li>
-                                </ul>
                             </li>
                             {% endif %}
                             {% if session.admin %}
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
                             {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
@@ -78,22 +67,21 @@
                                     Explore
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li class="navitem"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-                                    <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Learn About Bees</a></li>
-                                    <li class="navitem"><a class="nav-link disabled" href="#" aria-disabled="true" aria-disabled="true">Gallery</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('home') }}">Home</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true" aria-disabled="true">Learn About Bees</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true" aria-disabled="true">Gallery</a></li>
                                     {% if session.user %}
-                                    <li class="navitem"><a class="nav-link disabled" href="#">My Profile</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#">My Profile</a></li>
                                     {% endif %}
-                                    <li class="navitem"><a class="nav-link" href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
                                 </ul>
                             </li>
                             {% if session.user %}
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('signout') }}">Sign out</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signout') }}">Sign out</a></li>
                             {% else %}
-                            <li class="navitem"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signin') }}">Sign In/Register</a></li>
                             {% endif %}
                         </ul>
-    
                     </div>
                 </div>
             </div>
