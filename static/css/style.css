@@ -196,9 +196,9 @@ p, btn {
     color: var(--site-font);
  }
 
- .flash-messages {
+ /* .flash-messages {
     background-color: var(--secondary);
- }
+ } */
 
 
  /* WORK-IN-PROGRESS  --------------------------------------- */

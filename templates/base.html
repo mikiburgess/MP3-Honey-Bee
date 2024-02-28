@@ -103,15 +103,17 @@
     </header>
     
 
-    <!-- ** FLASH MESSAGES ** -->
-    <!-- inspired by Code Institute Task Manager walkthrough project, module 3 -->
+    <!-- ** FLASH MESSAGES/ALERTS ** -->
     <section class="flash-messages">
+        <!-- Inspired by Code Institute Task Manager walkthrough project, module 3 -->
+        <!-- Using Bootstrap Alerts -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div class="row">
-                        <p class="">{{ message }}</p>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong> {{ message }}</strong>
+                </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
