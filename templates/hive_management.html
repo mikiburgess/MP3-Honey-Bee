@@ -39,11 +39,17 @@
                 <tbody class="table-group-divider">
                     {% for hive in hives %}
                     <tr>
-                        <td hidden>{{ hive._id }}</td>
-                        <td>{{ hive.apiary }}</td>
-                        <td>{{ hive.reference }}</td>
-                        <td>{{ hive.hiveType }}</td>
-                        <td>{{ hive.bees }}</td>
+                        <td class="column0" hidden>{{ hive._id }}</td>
+                        <td class="column1">{{ hive.apiary }}</td>
+                        <td class="column2">{{ hive.reference }}</td>
+                        <td class="column3">{{ hive.hiveType }}</td>
+                        <td class="column4">{{ hive.bees }}</td>
+                        <td class="column5">
+                            {% if session.user|lower == hive.beekeeper|lower %}
+                            <a href="{{ url_for('edit_hive', hive_id=hive._id) }}" class="btn site-button-small selected-apiary">Edit</a>
+                            <a href="{{ url_for('delete_hive', hive_id=hive._id) }}" class="btn site-button-small selected-apiary">Delete</a>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -60,14 +66,12 @@
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a class="btn site-button-secondary btn-sm px-4 gap-3" href="{{ url_for('placeholder') }}" role="button">Edit Hive</a>
-            <a class="btn site-button-primary btn-sm px-4 gap-3" href="{{ url_for('add_hive') }}" role="button">Add New Hive</a>
-            <!-- 
-            <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">View Inspection Report</a>
-            <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Record Inspection</a> 
-        -->
-            
+            <a class="btn site-button-primary btn-sm px-4 gap-3" href="{{ url_for('add_hive') }}" role="button">Add New Hive</a>        
         </div>  
     </div>
     
+    <!-- TEMPORARY SECTION - for displaying selected row -->
+    <div id="selected"> </div>
+
 </section>
 {% endblock %}

@@ -185,7 +185,7 @@ def add_apiary():
 
         return redirect(url_for('apiary_management', apiary="all"))
 
-    return render_template("hm_add_apiary.html")
+    return render_template("add_apiary.html")
 
 
 @app.route("/edit_apiary/<apiary_id>", methods=["GET", "POST"])
@@ -200,7 +200,14 @@ def edit_apiary(apiary_id):
         flash("Apiary Details Successfully Updated")
     apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
     
-    return render_template("hm_edit_apiary.html", apiary=apiary, )
+    return render_template("edit_apiary.html", apiary=apiary)
+
+
+@app.route('/delete_apiary/<apiary_id>')
+def delete_apiary(apiary_id):
+    mongo.db.apiaries.delete_one({"_id": ObjectId(apiary_id)})
+    flash("Apiary Successfully Deleted")
+    return redirect(url_for("apiary_management"))
 
 
 @app.route("/hive_management/<apiary>")
@@ -244,7 +251,30 @@ def add_hive():
 
         return redirect(url_for('hive_management', apiary="all"))
     
-    return render_template("hm_add_hive.html")
+    return render_template("add_hive.html")
+
+
+@app.route("/edit_hive/<hive_id>", methods=["GET", "POST"])
+def edit_hive(hive_id):
+    if request.method == "POST":
+        submit = {
+            "apiary": request.form.get("apiary"),
+            "reference": request.form.get("reference"),
+            "hiveType": request.form.get("hiveType"),
+            "bees": request.form.get("bees"),
+            "beekeeper": session["user"]
+        }
+        mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
+        flash("Hive Details Successfully Updated")
+    hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
+    return render_template("edit_hive.html", hive=hive)
+
+
+@app.route('/delete_hive/<hive_id>')
+def delete_hive(hive_id):
+    mongo.db.hives.delete_one({"_id": ObjectId(hive_id)})
+    flash("Hive Successfully Deleted")
+    return redirect(url_for("hive_management", apiary="all"))
 
 
 # MAIN - RUNNING IN DEBUG MODE
