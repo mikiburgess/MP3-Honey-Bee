@@ -183,9 +183,24 @@ def add_apiary():
             flash("Error ocurred. New apiary not added. Please try again")
             print(e)
 
-        return redirect(url_for('hive_management', apiary="all"))
+        return redirect(url_for('apiary_management', apiary="all"))
 
     return render_template("hm_add_apiary.html")
+
+
+@app.route("/edit_apiary/<apiary_id>", methods=["GET", "POST"])
+def edit_apiary(apiary_id):
+    if request.method == "POST":
+        submit = {
+            "apiary": request.form.get("apiary"),
+            "description": request.form.get("apiary-description"),
+            "beekeeper": session["user"]
+        }
+        mongo.db.apiaries.update_one({"_id": ObjectId(apiary_id)}, {"$set": submit})
+        flash("Apiary Details Successfully Updated")
+    apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
+    
+    return render_template("hm_edit_apiary.html", apiary=apiary, )
 
 
 @app.route("/hive_management/<apiary>")

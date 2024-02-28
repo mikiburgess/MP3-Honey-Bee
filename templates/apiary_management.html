@@ -37,11 +37,17 @@
                 
                 <tbody class="table-group-divider">
                     {% for apiary in apiaries %}
-                    <tr>
-                        <td hidden>{{ apiary._id }}</td>
-                        <td>{{ apiary.apiary }}</td>
-                        <td>{{ apiary.description }}</td>
-                        <td></td>
+                    <tr id="{{ apiary._id }}">
+                        <td class="column0"hidden>{{ apiary._id }}></td>
+                        <td class="column1">{{ apiary.apiary|capitalize }}</td>
+                        <td class="column2">{{ apiary.description }}</td>
+                        <td>
+                            {% if session.user|lower == apiary.beekeeper|lower %}
+                            <a href="{{ url_for('edit_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Edit</a>
+                            <a href="#" class="btn site-button-small selected-apiary">Delete</a>
+                            {% endif %}
+                            <!-- <input type="button" value="Edit" class="selected-apiary" />
+                            <input type="button" value="Delete" class="selected-apiary" /></td> -->
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -57,10 +63,11 @@
     <!-- ** OPTION BUTTONS ** -->
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Edit Apiary</a>
-            <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('add_apiary') }}" role="button">Add New Apiary</a>
+            <!-- <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Edit Apiary</a> -->
+            <a class="btn site-button-primary btn-sm px-4 gap-3" href="{{ url_for('add_apiary') }}" role="button">Add New Apiary</a>
         </div>  
     </div>
-    
+
+    <div id="selected"> </div>
 </section>
 {% endblock %}
