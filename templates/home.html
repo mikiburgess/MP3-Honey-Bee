@@ -7,16 +7,16 @@
     <div class="heading-text-block">
       <br>
       <h1 class="display-5 fw-bold">Honey Bee</h1>
-        <div class="col-lg-6 mx-auto">
+        <div class="container col-lg-6 mx-auto">
             <p class="lead mb-4">Resource for amateur beekeepers, mentors and anyone interested in learning more about beekeeping.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 {% if session.user %}
-                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('apiary_management') }}" role="button">Manage Apiaries</a>
-                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('hive_management', apiary='all') }}" role="button">Manage Hives</a>
-                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a>
+                <a class="btn site-button-small btn-sm px-4 gap-3" href="{{ url_for('apiary_management') }}" role="button">Manage Apiaries</a>
+                <a class="btn site-button-small btn-sm px-4 gap-3" href="{{ url_for('hive_management', apiary='all') }}" role="button">Manage Hives</a>
+                <a class="btn site-button-small btn-sm px-4 gap-3" href="{{ url_for('signout') }}" role="button">Sign Out</a>
                 {% else %}
-                <a class="btn btn-primary btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Sign In</a>
-                <a class="btn btn-secondary btn-sm px-4 gap-3" href="{{ url_for('register') }}" role="button">Register</a>
+                <a class="btn site-button-small btn-sm px-4 gap-3" href="{{ url_for('signin') }}" role="button">Sign In</a>
+                <a class="btn site-button-small btn-sm px-4 gap-3" href="{{ url_for('register') }}" role="button">Register</a>
                 {% endif %}
             </div>
         </div>
