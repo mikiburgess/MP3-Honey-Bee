@@ -162,7 +162,7 @@ def add_apiary():
         try:
             existing_apiary = mongo.db.apiaries.find_one(
                 {"beekeeper": session["user"], 
-                "apiary": request.form.get("apiary").lower()})
+                    "apiary": request.form.get("apiary").lower()})
             print(existing_apiary)
             if existing_apiary:
                 flash("Error: Apiary already exists")
@@ -172,7 +172,8 @@ def add_apiary():
             newApiary = {
                 "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
-                "description": request.form.get("apiary-description")
+                "description": request.form.get("apiary-description"),
+                "date_added": datetime.datetime.now().strftime("%d %B %Y")
             }
         
             mongo.db.apiaries.insert_one(newApiary)
@@ -192,9 +193,10 @@ def add_apiary():
 def edit_apiary(apiary_id):
     if request.method == "POST":
         submit = {
+            "beekeeper": session["user"],
             "apiary": request.form.get("apiary"),
             "description": request.form.get("apiary-description"),
-            "beekeeper": session["user"]
+            "last_updated": datetime.datetime.now().strftime("%d %B %Y")
         }
         mongo.db.apiaries.update_one({"_id": ObjectId(apiary_id)}, {"$set": submit})
         flash("Apiary Details Successfully Updated")
@@ -236,12 +238,12 @@ def add_hive():
         try:
             # add user registration to database
             newHive = {
-                # "apiary": request.form.get("apiary").lower(),
+                "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
                 "reference": request.form.get("reference").lower(),
                 "hiveType": request.form.get("hiveType").lower(),
                 "bees": request.form.get("bees").lower(),
-                "beekeeper": session["user"]
+                "date_added": datetime.datetime.now().strftime("%d %B %Y")
             }
             mongo.db.hives.insert_one(newHive)
             flash("Success. New hive added.")
@@ -258,11 +260,12 @@ def add_hive():
 def edit_hive(hive_id):
     if request.method == "POST":
         submit = {
+            "beekeeper": session["user"],
             "apiary": request.form.get("apiary"),
             "reference": request.form.get("reference"),
             "hiveType": request.form.get("hiveType"),
             "bees": request.form.get("bees"),
-            "beekeeper": session["user"]
+            "last_updated": datetime.datetime.now().strftime("%d %B %Y")
         }
         mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
         flash("Hive Details Successfully Updated")
