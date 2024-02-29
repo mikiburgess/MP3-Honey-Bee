@@ -248,11 +248,10 @@ input, select, textarea {
 
 /* NEW HIVE FORM */
 .form-new-hive {
-    max-width: 500px;
-    padding: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.form-new-hive {
+.form-new-apiary {
     margin-bottom: 0.5rem;
 }
 
