@@ -280,6 +280,12 @@ def delete_hive(hive_id):
     return redirect(url_for("hive_management", apiary="all"))
 
 
+@app.route('/hive_inspection/<hive_id>')
+def hive_inspection(hive_id):
+    hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
+    return render_template("hive_inspection.html", hive=hive)
+
+
 # MAIN - RUNNING IN DEBUG MODE
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

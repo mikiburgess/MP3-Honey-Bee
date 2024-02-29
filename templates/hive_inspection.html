@@ -1,0 +1,286 @@
+{% extends "base.html"%}
+
+{% block header %}
+<section id="hive_inspection-header">
+    <div class="parallax parallax-small sunflower">
+        <div class=" heading-text-block">
+            <br>
+            <h2 class="display-5 fw-bold">Hive Inspection</h2>
+            <p class="lead">Record New Hive Inspection</p>
+            <br>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section id="hive_inspection-container">
+
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon">
+                <i class="material-icons">hive</i> Inspection of hive <strong>{{ hive.reference }}</strong>
+                (in apiary <em>{{ hive.apiary }}</em>)</h2>
+        </div>
+
+        <!-- ** INSPECTION FORM ** -->
+        <div class="form-hive-inspection">
+            <form class="form-horizontal" method="POST" action="">
+
+                <!-- Date of inspection -->
+                <div class="row-10 align-items-center input-group">
+                    <label for="inspectionDate" class="col-3 form-label">INSPECTION DATE</label>
+                    <div class="col-6">
+                        <input id="inspectionDate" class="form-control" type="date" required />
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Queen -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">QUEEN</label>
+                    <div class="col-3 form-check">
+                        <input id="queenPresent" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="queenPresent" class="form-check-label">Present?</label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input id="queenClipped" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label class="form-check-label" for="queenClipped">Clipped?</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3">QUEEN CELLS</label>
+                    <div class="col-1">
+                        <input id="queenCellsSeen" class="form-control" type="number" value="0" />
+                    </div>
+                    <div class="col-3">
+                        <label for="queenCellsSeen" class="form-label"># Seen</label>
+                    </div>
+                    <div class="col-1">
+                        <input id="queenCellsRemoved" class="form-control" type="number" value="0" />
+                    </div>
+                    <div class="col-3">
+                        <label for="queenCellsRemoved" class="form-label"># Removed</label>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Brood -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">BROOD</label>
+                    <div class="col-3 form-check">
+                        <input id="eggsSeen" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="eggsSeen" class="form-check-label">Eggs Seen?</label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input id="broodSeen" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="broodSeen" class="form-check-label">Capped Brood?</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label"></label>
+                    <div class="col-3 form-check">
+                        <input id="broodPattern" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="broodPattern" class="form-check-label">Brood Pattern OK?</label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input id="broodDrones" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="broodDrones" class="form-check-label">Drone Brood Present?</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label"></label>
+                    <div class="col-1">
+                        <input id="broodFrames" class="form-control" type="number" value="0.0" />
+                    </div>
+                    <div class="col-3">
+                        <label for="broodFrames" class="form-label"># Frames of Brood</label>
+                    </div>
+                    <div class="col-3 form-check">
+                        <input id="noBrood" class="form-check-input" type="checkbox" role="checkbox" />
+                        <label for="noBrood" class="form-check-label">No Brood?</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3">ROOM</label>
+                    <div class="col-1">
+                        <input id="eggRoom" class="form-control" type="number" value="0" />
+                    </div>
+                    <div class="col">
+                        <label for="eggRoom" class="form-label">Available space for queen to lay eggs (# frames)</label>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Stores and Feed -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3">STORES</label>
+                    <div class="col-1">
+                        <input id="storesAvailable" class="form-control" type="number" value="0" />
+                    </div>
+                    <div class="col">
+                        <label for="storesAvailable" class="form-label">Super stores available (# frames)</label>
+                    </div>
+                </div>
+                
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3">FEED</label>
+                    <div class="col-1">
+                        <label class="col-2">Syrup</label>
+                    </div>
+                    <div class="col-1">
+                        <input id="syrupAmount" class="form-control" type="number" value="0.0" />
+                    </div>
+                    <div class="col-1">
+                        <label for="syrupAmount" class="form-label">Litres</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" value="LS">
+                        <label class="form-check-label" for="syrupLS">LS</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" value="HS">
+                        <label class="form-check-label" for="syrupHS">HS</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3"></label>
+                    <div class="col-1">
+                        <label class="col-2">Fondant</label>
+                    </div>
+                    <div class="col-1">
+                        <input id="fondantAmount" class="form-control" type="number" value="0.0" />
+                    </div>
+                    <div class="col-1">
+                        <label for="fondantAmount" class="form-label">Kg</label>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Hive Health -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">HIVE HEALTH</label>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" value="OK">
+                        <label class="form-check-label" for="healthOK">OK</label>
+                    </div>
+                    <div class="form-check form-check-inline col-2">
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" value="Concerned">
+                        <label class="form-check-label" for="healthConcern">Concerned</label>
+                    </div>
+
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="checkbox" id="healthCB" value="healthCB">
+                        <label class="form-check-label" for="healthCB">CB</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="checkbox" id="healthFB" value="healthFB">
+                        <label class="form-check-label" for="healthFB">FB</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="checkbox" id="healthCBPV" value="healthCBPV">
+                        <label class="form-check-label" for="healthCBPV">CBPV</label>
+                    </div>
+                </div>
+
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">VARROA</label>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" value="low">
+                        <label class="form-check-label" for="varroaLow">Low</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" value="medium">
+                        <label class="form-check-label" for="varroaMedium">Med.</label>
+                    </div>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" value="high">
+                        <label class="form-check-label" for="varroaHigh">High</label>
+                    </div>
+                    <div class="col-2">
+                        <input id="varroaPop" class="form-control" type="number" value="0000" />
+                    </div>
+                    <div class="col-2">
+                        <label for="varroaPop" class="form-label">approx population</label>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Temper -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">TEMPER</label>
+                    <!-- <div class="col-3">
+                        <label for="colonyTemper" class="form-label">Docility of the colony</label>
+                     </div> -->
+                    <div class="col-5">
+                        <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="colonyTemper">
+                    </div>    
+                    
+                </div>
+                
+                <!-- Weather -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">WEATHER</label>
+                    <div class="col-2">
+                        <input id="temperature" class="form-control" type="text" value="warm" />
+                    </div>
+                    <div class="col-2">
+                        <label for="temperature" class="form-label">temp.</label>
+                    </div> 
+                    <div class="col-2">
+                        <input id="weather" class="form-control" type="text" value="sunny" />
+                    </div>
+                    <div class="col-2">
+                        <label for="weather" class="form-label">weather</label>
+                    </div>    
+                    
+                
+                </div>
+
+                <!-- Supers -->
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label">SUPERS</label>
+                    <div class="form-check form-check-inline col-1">
+                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added">
+                        <label class="form-check-label" for="supersAdded">Added</label>
+                    </div>
+                    <div class="form-check form-check-inline col-2">
+                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed">
+                        <label class="form-check-label" for="supersRemoved">Removed</label>
+                    </div>
+                    <div class="col-1">
+                        <input id="supersChange" class="form-control" type="number" value="0.0" />
+                    </div>
+                    <div class="col-1">
+                        <label for="supersChange" class="form-label">quantity</label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!--Inspection Notes -->
+                <div>
+                    <textarea class="form-control" id="inspectionNotes" name="inspectionNotes"
+                        placeholder="Add additional observations and comments here" rows="5"></textarea>
+                </div>
+
+                <!-- Form Buttons -->
+                <div class="d-grid gap-2 gap-md-5 d-md-flex justify-content-center">
+                    <button class="btn site-button-secondary px-5" type="reset">Clear Form</button>
+                    <button class="btn site-button-primary px-5" type="submit">Record Inspection</button>
+                </div>
+
+            </form>
+            <!-- return home -->
+            <p class="mt-5 mb-3 text-body-secondary text-center">
+                <a href="{{ url_for('hive_management', apiary='all') }}" class="">Return to Hives</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
