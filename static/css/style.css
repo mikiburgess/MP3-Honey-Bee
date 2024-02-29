@@ -94,17 +94,6 @@ p, btn {
     border: 0;
 } */
 
-
-.site-button-small {
-    color: var(--site-font);
-    padding: 8px 16px;
-    background-color: var(--lighthoney);
-    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-    /* font-size:medium; */
-    border: 0;
-}
-
 .btn {
     background-color: var(--honey);
     cursor: pointer;
@@ -112,6 +101,17 @@ p, btn {
 .btn:hover {
     background-color: var(--grey);
 }
+
+.site-button-small {
+    color: var(--site-font);
+    padding: 8px 12px;
+    background-color: var(--lighthoney);
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    /* font-size:medium; */
+    border: 0;
+}
+
 .site-button-small:hover {
     background-color: var(--pale);
 }
@@ -261,8 +261,10 @@ input, select, textarea {
     vertical-align: middle;
 }
 
-.hives-table th, 
-.apiaries-table th {
+.hives-table th,
+.hives-table .table-button, 
+.apiaries-table th,
+.apiaries-table .table-button {
     text-align: center;
 }
 

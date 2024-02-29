@@ -20,11 +20,8 @@ $(".selected-hive").click(function () {
     $('#selected').html(`Selected hive : <br> hive - ${$hive_apiary}, reference - ${$hive_reference}, hiveType - ${$hive_type}, bees - ${$hive_bees}, id - ${$hive_id}`);
 });
 
-// Set Apiary form to editable
-$(".view-apiary").click(function () {
-    $(".form-update-apiary #apiary").attr("readonly", true); 
-});
 
+// Update Manage Apiary page for editing/not-editing
 function apiaryReadOnly() {
     $("#apiary").attr("readonly", true); 
     $("#apiary-description").attr("readonly", true); 
@@ -35,6 +32,29 @@ function apiaryReadOnly() {
 function apiaryRemoveReadOnly() {
     $("#apiary").attr("readonly", false); 
     $("#apiary-description").attr("readonly", false); 
+    $(".form-button").attr("hidden", false); 
+    $(".option-button").attr("hidden", true); 
+}
+
+// Update Manage Hive page for editing/not-editing
+function hiveReadOnly() {
+    $("#apiary").attr("disabled", true); 
+    $("#reference").attr("disabled", true); 
+    $("#hiveType").attr("disabled", true); 
+    $("#bees").attr("disabled", true); 
+    $("#queenColor").attr("disabled", true); 
+    $("#hiveDescription").attr("disabled", true); 
+    $(".form-button").attr("hidden", true); 
+    $(".option-button").attr("hidden", false); 
+}
+
+function hiveRemoveReadOnly() {
+    $("#apiary").attr("disabled", false); 
+    $("#reference").attr("disabled", false); 
+    $("#hiveType").attr("disabled", false); 
+    $("#bees").attr("disabled", false); 
+    $("#queenColor").attr("disabled", false); 
+    $("#hiveDescription").attr("disabled", false); 
     $(".form-button").attr("hidden", false); 
     $(".option-button").attr("hidden", true); 
 }

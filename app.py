@@ -255,8 +255,8 @@ def add_hive():
     return render_template("add_hive.html")
 
 
-@app.route("/edit_hive/<hive_id>", methods=["GET", "POST"])
-def edit_hive(hive_id):
+@app.route("/manage_hive/<hive_id>", methods=["GET", "POST"])
+def manage_hive(hive_id):
     if request.method == "POST":
         submit = {
             "beekeeper": session["user"],
@@ -264,12 +264,14 @@ def edit_hive(hive_id):
             "reference": request.form.get("reference"),
             "hiveType": request.form.get("hiveType"),
             "bees": request.form.get("bees"),
+            "queenColor": request.form.get("queenColor"),
+            "description": request.form.get("hiveDescription"),
             "last_updated": datetime.datetime.now().strftime("%d %B %Y")
         }
         mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
         flash("Hive Details Successfully Updated")
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
-    return render_template("edit_hive.html", hive=hive)
+    return render_template("manage_hive.html", hive=hive)
 
 
 @app.route('/delete_hive/<hive_id>')
