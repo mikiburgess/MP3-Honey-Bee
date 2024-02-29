@@ -23,15 +23,15 @@ $(".selected-hive").click(function () {
 
 // Update Manage Apiary page for editing/not-editing
 function apiaryReadOnly() {
-    $("#apiary").attr("readonly", true); 
-    $("#apiary-description").attr("readonly", true); 
+    $("#apiary").attr("disabled", true); 
+    $("#apiary-description").attr("disabled", true); 
     $(".form-button").attr("hidden", true); 
     $(".option-button").attr("hidden", false); 
 }
 
 function apiaryRemoveReadOnly() {
-    $("#apiary").attr("readonly", false); 
-    $("#apiary-description").attr("readonly", false); 
+    $("#apiary").attr("disabled", false); 
+    $("#apiary-description").attr("disabled", false); 
     $(".form-button").attr("hidden", false); 
     $(".option-button").attr("hidden", true); 
 }

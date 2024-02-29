@@ -15,7 +15,7 @@
 
 {% block content %}
 <section id="edit-apiary-container">
-    <!-- ** EDIT APIARY FORM ** -->
+    <!-- ** APIARY FORM ** -->
     <div class="container">
         <div class="sub-heading">
             <h2 class="feature-icon"><i class="material-icons">hive</i> Manage Single Apiary</h2>
@@ -28,19 +28,18 @@
                 <div class="form-floating">
                     <input id="apiary" name="apiary" class="form-control"
                         minlength="1" maxlength="50" type="text" 
-                        value="{{ apiary.apiary }}" class="validate" required readonly>
+                        value="{{ apiary.apiary }}" class="validate" required disabled>
                     <label for="apiary">Apiary</label>
                 </div>
 
                 <!-- description -->
                 <div>
                     <textarea id="apiary-description" name="apiary-description" 
-                        class="form-control" rows="5" readonly>
+                        class="form-control" rows="5" disabled>
                         {{- apiary.description -}}
                     </textarea>
                 </div>
 
-                
                 <!-- ** OPTION BUTTONS ** -->      
                 <div class="container">
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -57,13 +56,6 @@
                     <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden>Submit Update</button>
                 </div>
             </form>
-
-            
-
-            <!-- return home -->
-            <p class="mt-5 mb-3 text-body-secondary text-center">
-                <a href="{{ url_for('apiary_management') }}" class="">Return to Apiaries</a>
-            </p>
         </div>
     </div>
 </section>

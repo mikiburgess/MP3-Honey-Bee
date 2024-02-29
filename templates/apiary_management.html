@@ -31,17 +31,17 @@
                         <th scope="col" hidden>ID</th>
                         <th scope="col">Apiary</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Options</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 
                 <tbody class="table-group-divider">
                     {% for apiary in apiaries %}
-                    <tr id="{{ apiary._id }}">
+                    <tr id="{{ apiary._id }}" class="selected-apiary">
                         <td class="column0" hidden>{{ apiary._id }}></td>
                         <td class="column1">{{ apiary.apiary|capitalize }}</td>
                         <td class="column2">{{ apiary.description }}</td>
-                        <td class="column3">
+                        <td class="column3 table-button">
                             {% if session.user|lower == apiary.beekeeper|lower %}
                             <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Manage</a>
                             {% endif %}
