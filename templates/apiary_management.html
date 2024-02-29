@@ -25,7 +25,7 @@
         <!-- ** VIEW ALL HIVES ** -->
         {% if apiaries|length > 0 %}
         <div class="table-responsive">
-            <table class="table table-sm table-hover table-bordered hives-table">
+            <table class="table table-sm table-hover table-bordered apiaries-table">
                 <thead>
                     <tr>
                         <th scope="col" hidden>ID</th>
@@ -43,8 +43,7 @@
                         <td class="column2">{{ apiary.description }}</td>
                         <td class="column3">
                             {% if session.user|lower == apiary.beekeeper|lower %}
-                            <a href="{{ url_for('edit_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Edit</a>
-                            <a href="{{ url_for('delete_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Delete</a>
+                            <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Manage</a>
                             {% endif %}
                             <!-- <input type="button" value="Edit" class="selected-apiary" />
                             <input type="button" value="Delete" class="selected-apiary" /> -->

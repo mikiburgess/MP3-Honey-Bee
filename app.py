@@ -189,8 +189,8 @@ def add_apiary():
     return render_template("add_apiary.html")
 
 
-@app.route("/edit_apiary/<apiary_id>", methods=["GET", "POST"])
-def edit_apiary(apiary_id):
+@app.route("/manage_apiary/<apiary_id>", methods=["GET", "POST"])
+def manage_apiary(apiary_id):
     if request.method == "POST":
         submit = {
             "beekeeper": session["user"],
@@ -200,9 +200,8 @@ def edit_apiary(apiary_id):
         }
         mongo.db.apiaries.update_one({"_id": ObjectId(apiary_id)}, {"$set": submit})
         flash("Apiary Details Successfully Updated")
-    apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
-    
-    return render_template("edit_apiary.html", apiary=apiary)
+    apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})  
+    return render_template("manage_apiary.html", apiary=apiary)
 
 
 @app.route('/delete_apiary/<apiary_id>')

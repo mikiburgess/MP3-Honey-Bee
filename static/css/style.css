@@ -202,7 +202,7 @@ p, btn {
  } */
 
 
- /* WORK-IN-PROGRESS  --------------------------------------- */
+ 
 
 /* Still to be styled */
 .feature-icon {
@@ -223,10 +223,6 @@ input, select, textarea {
     max-width: 330px;
     padding: 1rem;
 }
-
-/* .form-signin .form-floating:focus-within {
-    z-index: 2;
-} */
 
 .form-floating:focus-within {
     z-index: 2;
@@ -250,14 +246,6 @@ input, select, textarea {
     padding: 1rem;
 }
 
-/* .form-register .form-floating:focus-within {
-    z-index: 2;
-} */
-
-/* .form-register input{
-    margin-bottom: 0.5rem;
-} */
-
 /* NEW HIVE FORM */
 .form-new-hive {
     max-width: 500px;
@@ -268,18 +256,19 @@ input, select, textarea {
     margin-bottom: 0.5rem;
 }
 
-/* .form-new-hive input, 
-.form-new-hive select{
-    margin-bottom: 0.5rem;
-} */
-
-/* .form-new-hive .form-floating:focus-within {
-    z-index: 2;
-} */
-
-.hives-table {
+/* SITE TABLES */
+.hives-table, .apiaries-table {
     vertical-align: middle;
+}
+
+.hives-table th, 
+.apiaries-table th {
     text-align: center;
+}
+
+.hives-table td, 
+.apiaries-table td {
+    text-align: left;
 }
 
 th, td {
@@ -299,8 +288,43 @@ th, td {
 }
 
 
+/* HIVE INSPECTION FORM */
+.form-hive-inspection label {
+    padding: 2px 5px;
+}
+
+.form-hive-inspection input {
+    padding: 2px 5px;
+}
+
+.form-hive-inspection .custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background: var(--green);
+    cursor: pointer;
+}
+
+.custom-range::-moz-range-thumb {
+    border: 0;
+    background: var(--green);
+    cursor: pointer;
+}
+
+.custom-range::-webkit-slider-thumb:active {
+    background-color: var(--dark);
+}
+
+.custom-range::-webkit-slider-runnable-track {
+    background-color: var(--honey);
+}
+
+.custom-range:hover {
+    opacity: 0.8;
+}
+
+/* SITE FOOTER */
 .site-footer {
     padding-top: 20px;
     font-size: small;
 }
-  

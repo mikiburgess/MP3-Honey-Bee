@@ -20,3 +20,21 @@ $(".selected-hive").click(function () {
     $('#selected').html(`Selected hive : <br> hive - ${$hive_apiary}, reference - ${$hive_reference}, hiveType - ${$hive_type}, bees - ${$hive_bees}, id - ${$hive_id}`);
 });
 
+// Set Apiary form to editable
+$(".view-apiary").click(function () {
+    $(".form-update-apiary #apiary").attr("readonly", true); 
+});
+
+function apiaryReadOnly() {
+    $("#apiary").attr("readonly", true); 
+    $("#apiary-description").attr("readonly", true); 
+    $(".form-button").attr("hidden", true); 
+    $(".option-button").attr("hidden", false); 
+}
+
+function apiaryRemoveReadOnly() {
+    $("#apiary").attr("readonly", false); 
+    $("#apiary-description").attr("readonly", false); 
+    $(".form-button").attr("hidden", false); 
+    $(".option-button").attr("hidden", true); 
+}
