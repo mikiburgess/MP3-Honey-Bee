@@ -242,6 +242,8 @@ def add_hive():
                 "reference": request.form.get("reference").lower(),
                 "hiveType": request.form.get("hiveType").lower(),
                 "bees": request.form.get("bees").lower(),
+                "queenColor": request.form.get("queenColor").lower(),
+                "description": request.form.get("hiveDescription"),
                 "date_added": datetime.datetime.now().strftime("%d %B %Y")
             }
             mongo.db.hives.insert_one(newHive)

@@ -25,16 +25,13 @@
 
                     <!-- enter hive location -->
                     <div class="form-floating">
-                        <!-- <input type="text" class="form-control" 
-                        id="apiary" name="apiary" placeholder="apiary">
-                    <label for="apiary">Apiary</label> -->
                         <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary">
-                            <!-- <option value="all" selected>All apiaries</option> -->
                             <option value="unspecified" selected>Unspecified</option>
                             {% for apiary in session.apiaries %}
                             <option value="{{ apiary }}">{{ apiary }}</option>
                             {% endfor %}
                         </select>
+                        <label for="apiary">Apiary</label>
                     </div>
 
                     <!-- enter hive reference -->
@@ -68,6 +65,25 @@
                             <option value="Other">Other</option>
                         </select>
                         <label for="bees">Bees</label>
+                    </div>
+
+                    <!-- queen type -->
+                    <div class="form-floating">
+                        <select class="form-select" id="queenColor" name="queenColor" aria-label="current queen">
+                            <option value="Blue">Blue (0 or 5)</option>
+                            <option value="White">White (1 or 6)</option>
+                            <option value="Yellow">Yellow (2 or 7)</option>
+                            <option value="Red">Red (3 or 8)</option>
+                            <option value="Green">Green (4 or 9)</option>
+                        </select>
+                        <label for="queenColor">Queen Color</label>
+                    </div>
+
+                    <!-- description -->
+                    <div>
+                        <textarea id="hiveDescription" name="hiveDescription" class="form-control" 
+                            rows="5" placeholder="Description (optional)" >
+                        </textarea>
                     </div>
 
                     <!-- form buttons -->
