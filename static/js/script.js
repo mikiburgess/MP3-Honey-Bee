@@ -21,40 +21,70 @@ $(".selected-hive").click(function () {
 });
 
 
+function toggleFormDisable(state) {
+    console.log('clicked')
+    var elements = ['input', 'select', 'textarea'];
+    var formElements = [];
+    var el = 0;
+    var i = 0;
+
+    for (el = 0; el < elements.length; el++) {
+        formElements = document.getElementsByTagName(elements[el]);
+        for (i = 0; i < formElements.length; i++) {
+            formElements[i].disabled = state;
+        }
+    }
+}
+
 // Update Manage Apiary page for editing/not-editing
 function apiaryReadOnly() {
-    $("#apiary").attr("disabled", true); 
-    $("#apiary-description").attr("disabled", true); 
+    // $("#apiary").attr("disabled", true); 
+    // $("#apiary-description").attr("disabled", true); 
+    toggleFormDisable(true);
     $(".form-button").attr("hidden", true); 
     $(".option-button").attr("hidden", false); 
 }
 
 function apiaryRemoveReadOnly() {
-    $("#apiary").attr("disabled", false); 
-    $("#apiary-description").attr("disabled", false); 
+    toggleFormDisable(false);
+    // $("#apiary").attr("disabled", false); 
+    // $("#apiary-description").attr("disabled", false); 
     $(".form-button").attr("hidden", false); 
     $(".option-button").attr("hidden", true); 
 }
 
 // Update Manage Hive page for editing/not-editing
 function hiveReadOnly() {
-    $("#apiary").attr("disabled", true); 
-    $("#colony").attr("disabled", true); 
-    $("#hiveType").attr("disabled", true); 
-    $("#bees").attr("disabled", true); 
-    $("#queenColor").attr("disabled", true); 
-    $("#hiveDescription").attr("disabled", true); 
+    toggleFormDisable(true);
+    // $("#apiary").attr("disabled", true); 
+    // $("#colony").attr("disabled", true); 
+    // $("#hiveType").attr("disabled", true); 
+    // $("#bees").attr("disabled", true); 
+    // $("#queenColor").attr("disabled", true); 
+    // $("#hiveDescription").attr("disabled", true); 
     $(".form-button").attr("hidden", true); 
     $(".option-button").attr("hidden", false); 
 }
 
 function hiveRemoveReadOnly() {
-    $("#apiary").attr("disabled", false); 
-    $("#colony").attr("disabled", false); 
-    $("#hiveType").attr("disabled", false); 
-    $("#bees").attr("disabled", false); 
-    $("#queenColor").attr("disabled", false); 
-    $("#hiveDescription").attr("disabled", false); 
+    toggleFormDisable(false);
+    // $("#apiary").attr("disabled", false); 
+    // $("#colony").attr("disabled", false); 
+    // $("#hiveType").attr("disabled", false); 
+    // $("#bees").attr("disabled", false); 
+    // $("#queenColor").attr("disabled", false); 
+    // $("#hiveDescription").attr("disabled", false); 
+    $(".form-button").attr("hidden", false); 
+    $(".option-button").attr("hidden", true); 
+}
+
+function inspectionReadOnly() {
+    toggleFormDisable(true);
+    $(".form-button").attr("hidden", true); 
+    $(".option-button").attr("hidden", false); 
+}
+function inspectionRemoveReadOnly() {
+    toggleFormDisable(false);
     $(".form-button").attr("hidden", false); 
     $(".option-button").attr("hidden", true); 
 }

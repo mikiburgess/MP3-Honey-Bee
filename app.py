@@ -299,6 +299,7 @@ def hive_inspection(hive_id):
                 "beekeeper": session["user"],
                 "apiary": hive["apiary"],
                 "colony": hive["colony"],
+                "hiveID": hive["_id"],
                 "inspectionDate": request.form.get("inspectionDate"),
                 # Queen
                 "queenPresent": request.form.get("queenPresent") == 'on',
@@ -320,10 +321,10 @@ def hive_inspection(hive_id):
                 "fondantAmount": request.form.get("fondantAmount"),
                 # Colony Health
                 "healthStatus": request.form.get("healthStatus"),
-                "healthCB": request.form.get("healthCB") == 'on',
-                "healthEFB": request.form.get("healthEFB") == 'on',
-                "healthAFB": request.form.get("healthAFB") == 'on',
-                "healthCBPV": request.form.get("healthCBPV") == 'on',
+                "healthCB": request.form.get("healthCB"),
+                "healthEFB": request.form.get("healthEFB"),
+                "healthAFB": request.form.get("healthAFB"),
+                "healthCBPV": request.form.get("healthCBPV"),
                 "varroaLevel": request.form.get("varroaLevel"),
                 "varroaPop": request.form.get("varroaPop"),
                 # Temper
@@ -341,6 +342,8 @@ def hive_inspection(hive_id):
 
             mongo.db.hiveInspections.insert_one(newInspection)
             flash("Success. Hive inspection recorded.")
+            # print(mongo.db.hives.find_one({"_id": ObjectId(newInspection["hiveID"])}))
+
         except Exception as e:
             flash("Error ocurred. Inspection not recorded. Please try again")
             print(e)
@@ -348,6 +351,22 @@ def hive_inspection(hive_id):
         return redirect(url_for('hive_inspection', hive_id=hive_id))
     
     return render_template("hive_inspection.html", hive=hive)
+
+
+@app.route("/inspection_record/<hive_id>")
+def inspection_record(hive_id): 
+    hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
+    inspections = list(mongo.db.hiveInspections.find(
+            {"hiveID": ObjectId(hive_id)}).sort("inspectionDate", 1))
+    return render_template("inspection_record.html", hive=hive, inspections=inspections)
+
+
+@app.route("/manage_inspection/<inspection_id>", methods=["GET", "POST"])
+def manage_inspection(inspection_id):
+    inspection = mongo.db.hiveInspections.find_one({"_id": ObjectId(inspection_id)})
+    hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})
+    
+    return render_template("manage_inspection.html", inspection=inspection, hive=hive)
 
 
 # MAIN - RUNNING IN DEBUG MODE
