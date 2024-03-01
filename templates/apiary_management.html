@@ -31,7 +31,7 @@
                         <th scope="col" hidden>ID</th>
                         <th scope="col">Apiary</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col"><i class="material-icons">read_more</i></th>
                     </tr>
                 </thead>
                 
@@ -43,10 +43,10 @@
                         <td class="column2">{{ apiary.description }}</td>
                         <td class="column3 table-button">
                             {% if session.user|lower == apiary.beekeeper|lower %}
-                            <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">Manage</a>
+                            <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">
+                                <i class="material-icons">read_more</i>
+                            </a>
                             {% endif %}
-                            <!-- <input type="button" value="Edit" class="selected-apiary" />
-                            <input type="button" value="Delete" class="selected-apiary" /> -->
                         </td>
                     </tr>
                     {% endfor %}

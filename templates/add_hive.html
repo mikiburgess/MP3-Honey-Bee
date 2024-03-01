@@ -23,6 +23,12 @@
             <div class="form-new-hive w-100 m-auto">
                 <form method="POST" action="{{ url_for('add_hive') }}">
 
+                    <!-- enter colony -->
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="colony" name="colony" placeholder="colony">
+                        <label for="colony">Hive/Colony Reference</label>
+                    </div>
+
                     <!-- enter hive location -->
                     <div class="form-floating">
                         <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary">
@@ -32,12 +38,6 @@
                             {% endfor %}
                         </select>
                         <label for="apiary">Apiary</label>
-                    </div>
-
-                    <!-- enter colony -->
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="colony" name="colony" placeholder="colony">
-                        <label for="colony">Colony</label>
                     </div>
 
                     <!-- enter hive type -->
@@ -70,6 +70,7 @@
                     <!-- queen type -->
                     <div class="form-floating">
                         <select class="form-select" id="queenColor" name="queenColor" aria-label="current queen">
+                            <option value="unspecified" selected>Select queen color/year</option>
                             <option value="white">White (1 or 6)</option>
                             <option value="yellow">Yellow (2 or 7)</option>
                             <option value="red">Red (3 or 8)</option>

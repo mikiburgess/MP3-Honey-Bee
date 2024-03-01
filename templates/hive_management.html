@@ -32,8 +32,8 @@
                         <th scope="col">Apiary</th>
                         <th scope="col">Colony</th>
                         <th scope="col">Hive Type</th>
-                        <th scope="col">Bees</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" class="d-none d-md-table-cell">Bees</th>
+                        <th scope="col"><i class="material-icons">read_more</i></th>
                     </tr>
                 </thead>
                 
@@ -44,11 +44,11 @@
                         <td class="column1">{{ hive.apiary }}</td>
                         <td class="column2">{{ hive.colony }}</td>
                         <td class="column3">{{ hive.hiveType }}</td>
-                        <td class="column4">{{ hive.bees }}</td>
+                        <td class="column4 d-none d-md-table-cell">{{ hive.bees }}</td>
                         <td class="column5 table-button">
                             {% if session.user|lower == hive.beekeeper|lower %}
-                            <a href="{{ url_for('hive_inspection', hive_id=hive._id) }}" class="btn site-button-small selected-hive">Inspect</a>
-                            <a href="{{ url_for('manage_hive', hive_id=hive._id)}}" class="btn site-button-small selected-hive">Manage</a>
+                            <a href="{{ url_for('manage_hive', hive_id=hive._id)}}" class="btn site-button-small selected-inspection">
+                                <i class="material-icons">read_more</i></a>
                             {% endif %}
                         </td>
                     </tr>
@@ -66,7 +66,7 @@
     <!-- ** OPTION BUTTONS ** -->
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a class="btn site-button-primary btn-sm px-4 gap-3" href="{{ url_for('add_hive') }}" role="button">Add New Hive</a>        
+            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('add_hive') }}" role="button">Add New Hive</a>        
         </div>  
     </div>
     

@@ -256,19 +256,25 @@ input, select, textarea {
 }
 
 /* SITE TABLES */
-.hives-table, .apiaries-table {
+.hives-table, 
+.apiaries-table,
+.inspection-record-table {
     vertical-align: middle;
 }
+
 
 .hives-table th,
 .hives-table .table-button, 
 .apiaries-table th,
-.apiaries-table .table-button {
+.apiaries-table .table-button 
+.inspection-record-table th, 
+.inspection-record-table button{
     text-align: center;
 }
 
 .hives-table td, 
-.apiaries-table td {
+.apiaries-table td,
+.inspection-record-table td {
     text-align: left;
 }
 
