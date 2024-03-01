@@ -152,7 +152,7 @@ def register():
 def apiary_management():
     apiaries = list(mongo.db.apiaries.find(
             {"beekeeper": session["user"]}
-        ).sort("reference", 1))
+        ).sort("colony", 1))
     return render_template("apiary_management.html", apiaries=apiaries)
 
 
@@ -224,7 +224,7 @@ def hive_management(apiary):
         # specific apiary selected, so return hives in that beekeepers apiary
         hives = list(mongo.db.hives.find(
             {"beekeeper": session["user"], "apiary": apiary}
-        ).sort("reference", 1))
+        ).sort("colony", 1))
         
     return render_template("hive_management.html", hives=hives)
 
@@ -239,7 +239,7 @@ def add_hive():
             newHive = {
                 "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
-                "reference": request.form.get("reference").lower(),
+                "colony": request.form.get("colony").lower(),
                 "hiveType": request.form.get("hiveType").lower(),
                 "bees": request.form.get("bees").lower(),
                 "queenColor": request.form.get("queenColor").lower(),
@@ -263,7 +263,7 @@ def manage_hive(hive_id):
         submit = {
             "beekeeper": session["user"],
             "apiary": request.form.get("apiary"),
-            "reference": request.form.get("reference"),
+            "colony": request.form.get("colony"),
             "hiveType": request.form.get("hiveType"),
             "bees": request.form.get("bees"),
             "queenColor": request.form.get("queenColor"),

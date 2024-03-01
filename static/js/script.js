@@ -12,12 +12,12 @@ $(".selected-apiary").click(function () {
 $(".selected-hive").click(function () {
     var $row = $(this).closest("tr");
     var $hive_apiary = $row.find(".column1").text();
-    var $hive_reference = $row.find(".column2").text();
+    var $hive_colony = $row.find(".column2").text();
     var $hive_type = $row.find(".column3").text();
     var $hive_bees = $row.find(".column4").text();
     var $hive_id = $row.find(".column0").text();
         
-    $('#selected').html(`Selected hive : <br> hive - ${$hive_apiary}, reference - ${$hive_reference}, hiveType - ${$hive_type}, bees - ${$hive_bees}, id - ${$hive_id}`);
+    $('#selected').html(`Selected hive : <br> hive - ${$hive_apiary}, colony - ${$colony}, hiveType - ${$hive_type}, bees - ${$hive_bees}, id - ${$hive_id}`);
 });
 
 
@@ -39,7 +39,7 @@ function apiaryRemoveReadOnly() {
 // Update Manage Hive page for editing/not-editing
 function hiveReadOnly() {
     $("#apiary").attr("disabled", true); 
-    $("#reference").attr("disabled", true); 
+    $("#colony").attr("disabled", true); 
     $("#hiveType").attr("disabled", true); 
     $("#bees").attr("disabled", true); 
     $("#queenColor").attr("disabled", true); 
@@ -50,7 +50,7 @@ function hiveReadOnly() {
 
 function hiveRemoveReadOnly() {
     $("#apiary").attr("disabled", false); 
-    $("#reference").attr("disabled", false); 
+    $("#colony").attr("disabled", false); 
     $("#hiveType").attr("disabled", false); 
     $("#bees").attr("disabled", false); 
     $("#queenColor").attr("disabled", false); 
