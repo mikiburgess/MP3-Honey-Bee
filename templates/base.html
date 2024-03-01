@@ -44,21 +44,9 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li> -->
                             {% if session.beekeeper %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Bees
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('apiary_management') }}">My Apiaries</a></li>
-                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('hive_management', apiary='all') }}">My Hives</a></li>
-                                    <li class="nav-item"><a class="dropdown-item" href="#">Record New Hive Inspection</a></li>
-                                    <li class="nav-item"><a class="dropdown-item" href="#">View Hive Inspections</a></li>
-                                </ul>
-                            </li>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('apiary_management') }}">Apiaries</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('hive_management', apiary='all') }}">Hives</a></li>
                             {% endif %}
                             {% if session.admin %}
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
