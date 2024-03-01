@@ -283,9 +283,70 @@ def delete_hive(hive_id):
     return redirect(url_for("hive_management", apiary="all"))
 
 
-@app.route('/hive_inspection/<hive_id>')
+@app.route('/hive_inspection/<hive_id>', methods=["GET", "POST"])
 def hive_inspection(hive_id):
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
+    # POST = New hive inspection entered
+    if request.method == "POST":
+        try:
+            # check if apiary and/or colony have been identified
+            if 'apiary' not in hive:
+                hive["apiary"] = "unspecified"
+            if 'colony' not in hive:
+                hive["colony"] = "unspecified"
+            # get inspection data and insert into database
+            newInspection = {
+                "beekeeper": session["user"],
+                "apiary": hive["apiary"],
+                "colony": hive["colony"],
+                "inspectionDate": request.form.get("inspectionDate"),
+                # Queen
+                "queenPresent": request.form.get("queenPresent") == 'on',
+                "queenClipped": request.form.get("queenClipped") == 'on',
+                "queenCellsSeen": request.form.get("queenCellsSeen"),
+                "queenCellsRemoved": request.form.get("queenCellsRemoved"),
+                # Brood
+                "eggsSeen": request.form.get("eggsSeen") == 'on',
+                "broodSeen": request.form.get("broodSeen") == 'on',
+                "broodPattern": request.form.get("broodPattern") == 'on',
+                "broodDrones": request.form.get("broodDrones") == 'on',
+                "broodFrames": request.form.get("broodFrames"),
+                "noBrood": request.form.get("noBrood") == 'on',
+                "eggRoom": request.form.get("eggRoom"),
+                # Stores and Feed
+                "storesAvailable": request.form.get("storesAvailable"),
+                "syrupAmount": request.form.get("syrupAmount"),
+                "syrupType": request.form.get("syrupType"),
+                "fondantAmount": request.form.get("fondantAmount"),
+                # Colony Health
+                "healthStatus": request.form.get("healthStatus"),
+                "healthCB": request.form.get("healthCB") == 'on',
+                "healthEFB": request.form.get("healthEFB") == 'on',
+                "healthAFB": request.form.get("healthAFB") == 'on',
+                "healthCBPV": request.form.get("healthCBPV") == 'on',
+                "varroaLevel": request.form.get("varroaLevel"),
+                "varroaPop": request.form.get("varroaPop"),
+                # Temper
+                "colonyTemper": request.form.get("colonyTemper"),
+                # Weather
+                "temperature": request.form.get("temperature"),
+                "weather": request.form.get("weather"),
+                # Supers
+                "supers": request.form.get("supers"),
+                "supersChange": request.form.get("supersChange"),
+                # Inspection notes
+                "inspectionNotes": request.form.get("inspectionNotes"),
+                "date_added": datetime.datetime.now().strftime("%Y-%m-%d")
+            }
+
+            mongo.db.hiveInspections.insert_one(newInspection)
+            flash("Success. Hive inspection recorded.")
+        except Exception as e:
+            flash("Error ocurred. Inspection not recorded. Please try again")
+            print(e)
+
+        return redirect(url_for('hive_inspection', hive_id=hive_id))
+    
     return render_template("hive_inspection.html", hive=hive)
 
 
