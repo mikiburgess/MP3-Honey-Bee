@@ -306,6 +306,10 @@ th, td {
     cursor: pointer;
 }
 
+.form-hive-inspection .form-check-inline {
+    margin-right: 0.5rem;
+}
+
 .custom-range::-moz-range-thumb {
     border: 0;
     background: var(--green);

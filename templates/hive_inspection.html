@@ -20,7 +20,8 @@
         <div class="sub-heading">
             <h2 class="feature-icon">
                 <i class="material-icons">hive</i> Inspection of hive <strong>{{ hive.colony }}</strong>
-                (in apiary <em>{{ hive.apiary }}</em>)</h2>
+                (in apiary <em>{{ hive.apiary }}</em>)
+            </h2>
         </div>
 
         <!-- ** INSPECTION FORM ** -->
@@ -39,11 +40,11 @@
                 <!-- Queen -->
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">QUEEN</label>
-                    <div class="col-3 form-check">
+                    <div class="col-4 col-lg-3 form-check">
                         <input id="queenPresent" class="form-check-input" type="checkbox" role="checkbox" />
                         <label for="queenPresent" class="form-check-label">Present?</label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-4 col-lg-3 form-check">
                         <input id="queenClipped" class="form-check-input" type="checkbox" role="checkbox" />
                         <label class="form-check-label" for="queenClipped">Clipped?</label>
                     </div>
@@ -69,11 +70,11 @@
                 <!-- Brood -->
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">BROOD</label>
-                    <div class="col-3 form-check">
+                    <div class="col-4 col-lg-3 form-check">
                         <input id="eggsSeen" class="form-check-input" type="checkbox" role="checkbox" />
                         <label for="eggsSeen" class="form-check-label">Eggs Seen?</label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-5 col-lg-4 form-check">
                         <input id="broodSeen" class="form-check-input" type="checkbox" role="checkbox" />
                         <label for="broodSeen" class="form-check-label">Capped Brood?</label>
                     </div>
@@ -81,11 +82,11 @@
 
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
-                    <div class="col-3 form-check">
+                    <div class="col-4 col-lg-3 form-check">
                         <input id="broodPattern" class="form-check-input" type="checkbox" role="checkbox" />
                         <label for="broodPattern" class="form-check-label">Brood Pattern OK?</label>
                     </div>
-                    <div class="col-3 form-check">
+                    <div class="col-5 col-lg-4 form-check">
                         <input id="broodDrones" class="form-check-input" type="checkbox" role="checkbox" />
                         <label for="broodDrones" class="form-check-label">Drone Brood Present?</label>
                     </div>
@@ -93,10 +94,10 @@
 
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
-                    <div class="col-1">
+                    <div class="col-2 col-lg-1">
                         <input id="broodFrames" class="form-control" type="number" value="0.0" />
                     </div>
-                    <div class="col-3">
+                    <div class="col-4 col-lg-3">
                         <label for="broodFrames" class="form-label"># Frames of Brood</label>
                     </div>
                     <div class="col-3 form-check">
@@ -126,17 +127,17 @@
                         <label for="storesAvailable" class="form-label">Super stores available (# frames)</label>
                     </div>
                 </div>
-                
+
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">FEED</label>
-                    <div class="col-1">
-                        <label class="col-2">Syrup</label>
+                    <div class="col-3 col-sm-2 col-lg-1">
+                        <label class="col-4 col-md-3">Syrup</label>
                     </div>
-                    <div class="col-1">
+                    <div class="col-2 col-md-1">
                         <input id="syrupAmount" class="form-control" type="number" value="0.0" />
                     </div>
-                    <div class="col-1">
-                        <label for="syrupAmount" class="form-label">Litres</label>
+                    <div class="col-1 col-md-1">
+                        <label for="syrupAmount" class="form-label">Ltr</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
                         <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" value="LS">
@@ -150,10 +151,10 @@
 
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3"></label>
-                    <div class="col-1">
-                        <label class="col-2">Fondant</label>
+                    <div class="col-3 col-sm-2 col-lg-1">
+                        <label class="col-4 col-md-3">Fondant</label>
                     </div>
-                    <div class="col-1">
+                    <div class="col-2 col-md-1">
                         <input id="fondantAmount" class="form-control" type="number" value="0.0" />
                     </div>
                     <div class="col-1">
@@ -165,48 +166,65 @@
                 <!-- Hive Health -->
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">HIVE HEALTH</label>
-                    <div class="form-check form-check-inline col-1">
+                    <div class="form-check form-check-inline col-2">
                         <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" value="OK">
                         <label class="form-check-label" for="healthOK">OK</label>
                     </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" value="Concerned">
+                    <div class="form-check form-check-inline col-3">
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
+                            value="Concerned">
                         <label class="form-check-label" for="healthConcern">Concerned</label>
                     </div>
+                </div>
 
-                    <div class="form-check form-check-inline col-1">
+                <div class="row-12 align-items-center input-group">
+                    <label class="col-3 form-label"></label>
+                    <div class="form-check form-check-inline col-2 col-lg-1">
                         <input class="form-check-input" type="checkbox" id="healthCB" value="healthCB">
                         <label class="form-check-label" for="healthCB">CB</label>
                     </div>
-                    <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="checkbox" id="healthFB" value="healthFB">
-                        <label class="form-check-label" for="healthFB">FB</label>
+                    <div class="form-check form-check-inline col-2 col-lg-1">
+                        <input class="form-check-input" type="checkbox" id="healthEFB" value="healthEFB">
+                        <label class="form-check-label" for="healthEFB">EFB</label>
                     </div>
-                    <div class="form-check form-check-inline col-1">
+                    <div class="form-check form-check-inline col-2 col-lg-1">
+                        <input class="form-check-input" type="checkbox" id="healthAFB" value="healthAFB">
+                        <label class="form-check-label" for="healthAFB">AFB</label>
+                    </div>
+                    <div class="form-check form-check-inline col-2 col-lg-1">
                         <input class="form-check-input" type="checkbox" id="healthCBPV" value="healthCBPV">
                         <label class="form-check-label" for="healthCBPV">CBPV</label>
                     </div>
                 </div>
 
+
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">VARROA</label>
-                    <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" value="low">
-                        <label class="form-check-label" for="varroaLow">Low</label>
+                    <div class="col-9 varroa-rating">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" value="low">
+                            <label class="form-check-label" for="varroaLow">Low</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
+                                value="medium">
+                            <label class="form-check-label" for="varroaMedium">Med.</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
+                                value="high">
+                            <label class="form-check-label" for="varroaHigh">High</label>
+                        </div>
                     </div>
-                    <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" value="medium">
-                        <label class="form-check-label" for="varroaMedium">Med.</label>
-                    </div>
-                    <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" value="high">
-                        <label class="form-check-label" for="varroaHigh">High</label>
-                    </div>
-                    <div class="col-2">
-                        <input id="varroaPop" class="form-control" type="number" value="0000" />
-                    </div>
-                    <div class="col-2">
-                        <label for="varroaPop" class="form-label">approx population</label>
+
+                    <div class="row-12 align-items-center input-group">
+                        <label class="col-3 form-label"></label>
+                        <div class="col-2 col-lg-1">
+                            <input id="varroaPop" class="form-control" type="number" value="0000" />
+                        </div>
+                        <div class="col">
+                            <label for="varroaPop" class="form-label"> Population estimate </label>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -217,12 +235,12 @@
                     <!-- <div class="col-3">
                         <label for="colonyTemper" class="form-label">Docility of the colony</label>
                      </div> -->
-                    <div class="col-5">
+                    <div class="col-8">
                         <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="colonyTemper">
-                    </div>    
-                    
+                    </div>
+
                 </div>
-                
+
                 <!-- Weather -->
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">WEATHER</label>
@@ -231,15 +249,15 @@
                     </div>
                     <div class="col-2">
                         <label for="temperature" class="form-label">temp.</label>
-                    </div> 
+                    </div>
                     <div class="col-2">
                         <input id="weather" class="form-control" type="text" value="sunny" />
                     </div>
                     <div class="col-2">
                         <label for="weather" class="form-label">weather</label>
-                    </div>    
-                    
-                
+                    </div>
+
+
                 </div>
 
                 <!-- Supers -->
@@ -247,16 +265,17 @@
                     <label class="col-3 form-label">SUPERS</label>
                     <div class="form-check form-check-inline col-1">
                         <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added">
-                        <label class="form-check-label" for="supersAdded">Added</label>
+                        <label class="form-check-label" for="supersAdded">+</label>
                     </div>
-                    <div class="form-check form-check-inline col-2">
+                    <div class="form-check form-check-inline col-1">
                         <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed">
-                        <label class="form-check-label" for="supersRemoved">Removed</label>
+                        <label class="form-check-label" for="supersRemoved">-</label>
                     </div>
-                    <div class="col-1">
+
+                    <div class="col-2 col-md-1">
                         <input id="supersChange" class="form-control" type="number" value="0.0" />
                     </div>
-                    <div class="col-1">
+                    <div class="col-2">
                         <label for="supersChange" class="form-label">quantity</label>
                     </div>
                 </div>
