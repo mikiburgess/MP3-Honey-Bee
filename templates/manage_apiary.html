@@ -43,8 +43,8 @@
                 <!-- ** OPTION BUTTONS ** -->      
                 <div class="container">
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" onclick="apiaryRemoveReadOnly()" role="button">Edit Apiary</a>                    
-                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('delete_apiary', apiary_id=apiary._id)}}" role="button">Delete Apiary</a>
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" onclick="apiaryRemoveReadOnly()" role="button"><i class="material-icons">edit</i> Edit Apiary</a>                    
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('delete_apiary', apiary_id=apiary._id)}}" role="button"><i class="material-icons">delete</i> Delete Apiary</a>
                         <!-- <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('apiary_management')}}" role="button">View All Apiaries</a> -->
                         <!-- <a class="btn site-button-primary px-4 gap-3" href="{{ url_for('apiary_management')}}" role="button">Return to Apiaries</a> -->
                     </div>  
@@ -52,8 +52,8 @@
 
                 <!-- form buttons -->
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="apiaryReadOnly()" role="button" hidden>Cancel</a>
-                    <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden>Submit Update</button>
+                    <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="apiaryReadOnly()" role="button" hidden><i class="material-icons">cancel</i> Cancel</a>
+                    <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden><i class="material-icons">add_box</i> Submit Update</button>
                 </div>
             </form>
 

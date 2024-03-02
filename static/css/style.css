@@ -91,9 +91,17 @@ footer {
     font-family: Karma, sans-serif;
 }
 
-p, btn {
-    font-size: 14px;
+
+/* ICON STYLES  ------------------------------------- */
+.material-icons {
+    vertical-align: middle;
 }
+
+.feature-icon {
+    color: var(--dark);    
+    text-shadow: var(--shadow);
+}
+
 
 /* .site-button-honey {
     color: var(--site-font);
@@ -212,18 +220,6 @@ p, btn {
  /* .flash-messages {
     background-color: var(--secondary);
  } */
-
-
- 
-
-/* Still to be styled */
-.feature-icon {
-    /* font-size: x-large;
-    color: darkorange;
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem; */
-}
 
 
 input, select, textarea {
