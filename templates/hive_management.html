@@ -10,7 +10,7 @@
             <p class="lead">View All Hives</p>
             <br>
         </div>
-        
+
     </div>
 </section>
 {% endblock %}
@@ -19,7 +19,8 @@
 <section id="hive-management-container">
     <div class="container">
         <div class="sub-heading">
-                <h2 class="feature-icon"><i class="material-icons">hive</i> Hives for Beekeeper <em>{{ session["user"]|capitalize() }}</em></h2>
+            <h2 class="feature-icon"><i class="material-icons">hive</i> Hives for Beekeeper <em>{{
+                    session["user"]|capitalize() }}</em></h2>
         </div>
 
         <!-- ** VIEW ALL HIVES ** -->
@@ -36,7 +37,7 @@
                         <th scope="col"><i class="material-icons">read_more</i></th>
                     </tr>
                 </thead>
-                
+
                 <tbody class="table-group-divider">
                     {% for hive in hives %}
                     <tr id="{{ hive._id }}" class="selected-hive">
@@ -47,16 +48,17 @@
                         <td class="column4 d-none d-md-table-cell">{{ hive.bees }}</td>
                         <td class="column5 table-button">
                             {% if session.user|lower == hive.beekeeper|lower %}
-                            <a href="{{ url_for('manage_hive', hive_id=hive._id)}}" class="btn site-button-small selected-inspection">
+                            <a href="{{ url_for('manage_hive', hive_id=hive._id)}}"
+                                class="btn site-button-small selected-inspection">
                                 <i class="material-icons">read_more</i></a>
                             {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
-                
+
             </table>
-            <p ></p>
+            <p></p>
         </div>
         {% else %}
         <h3>No Hives Found</h3>
@@ -66,12 +68,10 @@
     <!-- ** OPTION BUTTONS ** -->
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('add_hive') }}" role="button"><i class="material-icons">add_box</i> Add New Hive</a>        
-        </div>  
+            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('add_hive') }}"
+                role="button"><i class="material-icons">add_box</i> Add New Hive</a>
+        </div>
     </div>
-    
-    <!-- TEMPORARY SECTION - for displaying selected row -->
-    <div id="selected"> </div>
 
 </section>
 {% endblock %}

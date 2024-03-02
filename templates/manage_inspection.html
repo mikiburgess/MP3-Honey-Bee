@@ -31,8 +31,8 @@
                 <div class="row-10 align-items-center input-group">
                     <label for="inspectionDate" class="col-3 form-label">INSPECTION DATE</label>
                     <div class="col-6">
-                        <input class="form-control" id="inspectionDate" name="inspectionDate" 
-                            type="date" value="{{ inspection.inspectionDate }}" required disabled />
+                        <input class="form-control" id="inspectionDate" name="inspectionDate" type="date"
+                            value="{{ inspection.inspectionDate }}" required disabled />
                     </div>
                 </div>
                 <hr>
@@ -41,15 +41,13 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">QUEEN</label>
                     <div class="col-4 col-lg-3 form-check">
-                        <input class="form-check-input" id="queenPresent" name="queenPresent" 
-                                type="checkbox" role="checkbox" disabled 
-                                checked="{{ inspection.queenPresent }}"/>
+                        <input class="form-check-input" id="queenPresent" name="queenPresent" type="checkbox"
+                            role="checkbox" disabled checked="{{ inspection.queenPresent }}" />
                         <label class="form-check-label" for="queenPresent">Present?</label>
                     </div>
                     <div class="col-4 col-lg-3 form-check">
-                        <input class="form-check-input" id="queenClipped" name="queenClipped" 
-                            type="checkbox" role="checkbox" disabled
-                            checked="{{ inspection.queenClipped }}"/>
+                        <input class="form-check-input" id="queenClipped" name="queenClipped" type="checkbox"
+                            role="checkbox" disabled checked="{{ inspection.queenClipped }}" />
                         <label class="form-check-label" for="queenClipped">Clipped?</label>
                     </div>
                 </div>
@@ -57,15 +55,15 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">QUEEN CELLS</label>
                     <div class="col-1">
-                        <input class="form-control" id="queenCellsSeen" name="queenCellsSeen" 
-                            value="{{ inspection.queenCellsSeen }}" type="number" value="0" disabled/>
+                        <input class="form-control" id="queenCellsSeen" name="queenCellsSeen"
+                            value="{{ inspection.queenCellsSeen }}" type="number" value="0" disabled />
                     </div>
                     <div class="col-3">
                         <label class="form-label" for="queenCellsSeen"># Seen</label>
                     </div>
                     <div class="col-1">
-                        <input class="form-control" id="queenCellsRemoved" name="queenCellsRemoved" 
-                            value="{{ inspection.queenCellsRemoved }}" type="number" value="0" disabled/>
+                        <input class="form-control" id="queenCellsRemoved" name="queenCellsRemoved"
+                            value="{{ inspection.queenCellsRemoved }}" type="number" value="0" disabled />
                     </div>
                     <div class="col-3">
                         <label class="form-label" for="queenCellsRemoved"># Removed</label>
@@ -77,13 +75,13 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">BROOD</label>
                     <div class="col-4 col-lg-3 form-check">
-                        <input class="form-check-input" id="eggsSeen" name="eggsSeen" 
-                            checked="{{ inspection.eggsSeen }}" type="checkbox" role="checkbox" disabled/>
+                        <input class="form-check-input" id="eggsSeen" name="eggsSeen"
+                            checked="{{ inspection.eggsSeen }}" type="checkbox" role="checkbox" disabled />
                         <label class="form-check-label" for="eggsSeen">Eggs Seen?</label>
                     </div>
                     <div class="col-5 col-lg-4 form-check">
-                        <input class="form-check-input" id="broodSeen" name="broodSeen" 
-                            checked="{{ inspection.broodSeen }}" type="checkbox" role="checkbox" disabled/>
+                        <input class="form-check-input" id="broodSeen" name="broodSeen"
+                            checked="{{ inspection.broodSeen }}" type="checkbox" role="checkbox" disabled />
                         <label class="form-check-label" for="broodSeen">Capped Brood?</label>
                     </div>
                 </div>
@@ -91,13 +89,13 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="col-4 col-lg-3 form-check">
-                        <input class="form-check-input" id="broodPattern" name="broodPattern" 
-                            checked="{{ inspection.broodPattern }}" type="checkbox" role="checkbox" disabled/>
+                        <input class="form-check-input" id="broodPattern" name="broodPattern"
+                            checked="{{ inspection.broodPattern }}" type="checkbox" role="checkbox" disabled />
                         <label class="form-check-label" for="broodPattern">Brood Pattern OK?</label>
                     </div>
                     <div class="col-5 col-lg-4 form-check">
-                        <input class="form-check-input" id="broodDrones" name="broodDrones" 
-                            checked="{{ inspection.broodDrones }}" type="checkbox" role="checkbox"disabled />
+                        <input class="form-check-input" id="broodDrones" name="broodDrones"
+                            checked="{{ inspection.broodDrones }}" type="checkbox" role="checkbox" disabled />
                         <label class="form-check-label" for="broodDrones">Drone Brood Present?</label>
                     </div>
                 </div>
@@ -105,15 +103,15 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="col-2 col-lg-1">
-                        <input class="form-control" id="broodFrames" name="broodFrames" 
+                        <input class="form-control" id="broodFrames" name="broodFrames"
                             value="{{ inspection.broodFrames }}" type="number" value="0" disabled />
                     </div>
                     <div class="col-4 col-lg-3">
                         <label class="form-label" for="broodFrames"># Frames of Brood</label>
                     </div>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" id="noBrood" name="noBrood" 
-                            checked="{{ inspection.noBrood }}" type="checkbox" role="checkbox" disabled />
+                        <input class="form-check-input" id="noBrood" name="noBrood" checked="{{ inspection.noBrood }}"
+                            type="checkbox" role="checkbox" disabled />
                         <label class="form-check-label" for="noBrood">No Brood?</label>
                     </div>
                 </div>
@@ -121,8 +119,8 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">ROOM</label>
                     <div class="col-1">
-                        <input class="form-control" id="eggRoom" name="eggRoom" 
-                            value="{{ inspection.eggRoom }}" type="number" value="0" disabled />
+                        <input class="form-control" id="eggRoom" name="eggRoom" value="{{ inspection.eggRoom }}"
+                            type="number" value="0" disabled />
                     </div>
                     <div class="col">
                         <label class="form-label" for="eggRoom">Available space for queen to lay eggs (# frames)</label>
@@ -134,7 +132,7 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">STORES</label>
                     <div class="col-1">
-                        <input class="form-control" id="storesAvailable" name="storesAvailable" 
+                        <input class="form-control" id="storesAvailable" name="storesAvailable"
                             value="{{ inspection.storesAvailable }}" type="number" value="0" disabled />
                     </div>
                     <div class="col">
@@ -148,7 +146,7 @@
                         <label class="col-4 col-md-3">Syrup</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="syrupAmount" name="syrupAmount" 
+                        <input class="form-control" id="syrupAmount" name="syrupAmount"
                             value="{{ inspection.syrupAmount }}" type="number" value="0" disabled />
                     </div>
                     <div class="col-1 col-md-1">
@@ -156,21 +154,17 @@
                     </div>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.syrupType == 'LS' %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
-                            checked disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" checked disabled>
                         {% else %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
-                            disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" disabled>
                         {% endif %}
                         <label class="form-check-label" for="syrupLS">LS</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.syrupType == 'HS' %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
-                            checked disabled >
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" checked disabled>
                         {% else %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
-                            disabled >
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" disabled>
                         {% endif %}
                         <label class="form-check-label" for="syrupHS">HS</label>
                     </div>
@@ -182,7 +176,7 @@
                         <label class="col-4 col-md-3">Fondant</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="fondantAmount" name="fondantAmount" 
+                        <input class="form-control" id="fondantAmount" name="fondantAmount"
                             value="{{ inspection.fondantAmount }}" type="number" value="0" disabled />
                     </div>
                     <div class="col-1">
@@ -196,21 +190,18 @@
                     <label class="col-3 form-label">HIVE HEALTH</label>
                     <div class="form-check form-check-inline col-2">
                         {% if inspection.healthStatus == 'OK' %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
-                            checked disabled >
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" checked disabled>
                         {% else %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
-                            disabled >
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" disabled>
                         {% endif %}
                         <label class="form-check-label" for="healthOK">OK</label>
                     </div>
                     <div class="form-check form-check-inline col-3">
                         {% if inspection.healthStatus == 'Concerned' %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
-                            checked disabled >
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" checked
+                            disabled>
                         {% else %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
-                            disabled >
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" disabled>
                         {% endif %}
                         <label class="form-check-label" for="healthConcern">Concerned</label>
                     </div>
@@ -219,22 +210,22 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthCB" id="healthCB" 
-                            checked="{{ inspection.healthCB }}" type="checkbox" role="checkbox" disabled>
+                        <input class="form-check-input" id="healthCB" id="healthCB" checked="{{ inspection.healthCB }}"
+                            type="checkbox" role="checkbox" disabled>
                         <label class="form-check-label" for="healthCB">CB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthEFB" id="healthEFB" 
+                        <input class="form-check-input" id="healthEFB" id="healthEFB"
                             checked="{{ inspection.healthEFB }}" type="checkbox" role="checkbox" disabled>
                         <label class="form-check-label" for="healthEFB">EFB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthAFB" id="healthAFB" 
+                        <input class="form-check-input" id="healthAFB" id="healthAFB"
                             checked="{{ inspection.healthAFB }}" type="checkbox" role="checkbox" disabled>
                         <label class="form-check-label" for="healthAFB">AFB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthCBPV" id="healthCBPV" 
+                        <input class="form-check-input" id="healthCBPV" id="healthCBPV"
                             checked="{{ inspection.healthCBPV }}" type="checkbox" role="checkbox" disabled>
                         <label class="form-check-label" for="healthCBPV">CBPV</label>
                     </div>
@@ -245,31 +236,28 @@
                     <div class="col-9 varroa-rating">
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'low' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
-                                checked disabled >
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" checked
+                                disabled>
                             {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
-                                disabled >
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" disabled>
                             {% endif %}
                             <label class="form-check-label" for="varroaLow">Low</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'medium' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
-                                checked disabled>
-                            {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" checked
                                 disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" disabled>
                             {% endif %}
                             <label class="form-check-label" for="varroaMedium">Med.</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'high' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
-                                checked disabled>
-                            {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" checked
                                 disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" disabled>
                             {% endif %}
                             <label class="form-check-label" for="varroaHigh">High</label>
                         </div>
@@ -278,8 +266,8 @@
                     <div class="row-12 align-items-center input-group">
                         <label class="col-3 form-label"></label>
                         <div class="col-2 col-lg-1">
-                            <input id="varroaPop" class="form-control" type="number" 
-                                value="{{ inspection.varroaPop }}" disabled />
+                            <input id="varroaPop" class="form-control" type="number" value="{{ inspection.varroaPop }}"
+                                disabled />
                         </div>
                         <div class="col">
                             <label for="varroaPop" class="form-label"> Population estimate </label>
@@ -293,8 +281,8 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">TEMPER</label>
                     <div class="col-8">
-                        <input type="range" class="form-range custom-range" min="0" max="10" step="1" 
-                        id="colonyTemper" name="colonyTemper" value="{{ inspection.colonyTemper }}" disabled>
+                        <input type="range" class="form-range custom-range" min="0" max="10" step="1" id="colonyTemper"
+                            name="colonyTemper" value="{{ inspection.colonyTemper }}" disabled>
                     </div>
 
                 </div>
@@ -303,15 +291,15 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">WEATHER</label>
                     <div class="col-2">
-                        <input class="form-control" id="temperature" name="temperature" type="text" 
-                            placeholder="e.g. warm" value="{{ inspection.temperature }}" disabled/>
+                        <input class="form-control" id="temperature" name="temperature" type="text"
+                            placeholder="e.g. warm" value="{{ inspection.temperature }}" disabled />
                     </div>
                     <div class="col-2">
                         <label for="temperature" class="form-label">temp.</label>
                     </div>
                     <div class="col-2">
-                        <input class="form-control" id="weather" name="weather" type="text" 
-                            placeholder="e.g. sunny" value="{{ inspection.weather }}" disabled/>
+                        <input class="form-control" id="weather" name="weather" type="text" placeholder="e.g. sunny"
+                            value="{{ inspection.weather }}" disabled />
                     </div>
                     <div class="col-2">
                         <label for="weather" class="form-label">weather</label>
@@ -345,7 +333,7 @@
                     </div>
 
                     <div class="col-2 col-md-1">
-                        <input id="supersChange" class="form-control" type="number" 
+                        <input id="supersChange" class="form-control" type="number"
                             value="{{ inspection.supersChange }}" disabled />
                     </div>
                     <div class="col-2">
@@ -358,39 +346,38 @@
                 <!--Inspection Notes -->
                 <div>
                     <textarea class="form-control" id="inspectionNotes" name="inspectionNotes"
-                        placeholder="Add additional observations and comments here" rows="5" 
+                        placeholder="Add additional observations and comments here" rows="5"
                         disabled>{{ inspection.inspectionNotes }}</textarea>
                     </textarea>
                 </div>
 
 
-                <!-- ** OPTION BUTTONS ** -->      
+                <!-- ** OPTION BUTTONS ** -->
                 <div class="container">
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <!-- <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('hive_inspection', hive_id=hive._id) }}" role="button">Inspect Hive</a> -->
-                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" onclick="inspectionRemoveReadOnly()" role="button"><i class="material-icons">edit</i> Edit Inspection</a>                    
-                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('delete_inspection', inspection_id=inspection._id)}}" role="button"><i class="material-icons">delete</i> Delete Inspection</a>
-                        <!-- <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('delete_inspection', inspection_id=inspection._id, hive_id=hive._id)}}" role="button">Delete Inspection</a> -->
-                    </div>  
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                            onclick="inspectionRemoveReadOnly()" role="button">
+                            <i class="material-icons">edit</i> Edit Inspection</a>
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                            href="{{ url_for('delete_inspection', inspection_id=inspection._id)}}" role="button"><i
+                                class="material-icons">delete</i> Delete Inspection</a>
+                    </div>
                 </div>
-                <!-- <div class="container">
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a class="btn site-button-primary px-5 m-2 gap-3 option-button" href="{{ url_for('inspection_record', hive_id=hive._id)}}" role="button">Inspection Record</a>
-                        <a class="btn site-button-primary px-5 m-2 gap-3 option-button" href="{{ url_for('hive_management', apiary='all')}}" role="button">View All Hives</a>
-                    </div>  
-                </div> -->
 
                 <!-- form buttons -->
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="inspectionReadOnly()" role="button" hidden>Cancel</a>
-                    <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden>Submit Update</button>
+                    <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="inspectionReadOnly()"
+                        role="button" hidden>
+                        <i class="material-icons">cancel</i> Cancel</a>
+                    <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden><i
+                            class="material-icons">add_box</i> Submit Update</button>
                 </div>
 
             </form>
 
             <!-- go back -->
             <p class="mt-5 mb-3 text-body-secondary text-center">
-                <a href="{{ url_for('inspection_record', hive_id=hive._id)}}" class="">Return to Inspections</a>
+                <a href="{{ url_for('inspection_record', hive_id=hive._id)}}">Return to Inspections</a>
             </p>
 
         </div>

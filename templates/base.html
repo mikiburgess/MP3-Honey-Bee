@@ -6,26 +6,28 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Fonts - Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <!-- Icons - Google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-     <!-- enable custom styles -->
-     {% block styles %}
-     {% endblock %}
- 
+    <!-- enable custom styles -->
+    {% block styles %}
+    {% endblock %}
+
     <title>Honey Bee (Milestone Project 3)</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/hive-icon.png') }}">
 </head>
@@ -35,9 +37,10 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('home') }}"><i class="material-icons d-inline-block align-text-top">hive</i></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="{{ url_for('home') }}"><i
+                        class="material-icons d-inline-block align-text-top">hive</i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas offcanvas-end offcanvas-custom" tabindex="-1" id="offcanvasNavbar"
@@ -45,17 +48,21 @@
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
                             <a class="nav-link" href="{{ url_for('home') }}">
-                                <i class="material-icons d-inline-block align-text-top">hive</i> Honey Bee</a></h5>
+                                <i class="material-icons d-inline-block align-text-top">hive</i> Honey Bee</a>
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             {% if session.beekeeper %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('apiary_management') }}">Apiaries</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('hive_management', apiary='all') }}">Hives</a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url_for('apiary_management') }}">Apiaries</a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url_for('hive_management', apiary='all') }}">Hives</a></li>
                             {% endif %}
                             {% if session.admin %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('placeholder') }}">User Management</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('placeholder') }}">User
+                                    Management</a></li>
                             {% endif %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" href="#" id="navbarDropdownMenuLink"
@@ -63,19 +70,25 @@
                                     Explore
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('home') }}">Home</a></li>
-                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true" aria-disabled="true">Learn About Bees</a></li>
-                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true" aria-disabled="true">Gallery</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('home') }}">Home</a>
+                                    </li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true"
+                                            aria-disabled="true">Learn About Bees</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true"
+                                            aria-disabled="true">Gallery</a></li>
                                     {% if session.user %}
                                     <li class="nav-item"><a class="dropdown-item disabled" href="#">My Profile</a></li>
                                     {% endif %}
-                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
+                                    <li class="nav-item"><a class="dropdown-item"
+                                            href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
                                 </ul>
                             </li>
                             {% if session.user %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signout') }}"><i class="material-icons">logout</i> Sign Out</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signout') }}"><i
+                                        class="material-icons">logout</i> Sign Out</a></li>
                             {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signin') }}"><i class="material-icons">login</i> Sign In</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('signin') }}"><i
+                                        class="material-icons">login</i> Sign In</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -85,21 +98,21 @@
         {% block header %}
         {% endblock %}
     </header>
-    
+
 
     <!-- ** FLASH MESSAGES/ALERTS ** -->
     <section class="flash-messages">
         <!-- Inspired by Code Institute Task Manager walkthrough project, module 3 -->
         <!-- Using Bootstrap Alerts -->
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-success alert-dismissible fade show">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    <strong> {{ message }}</strong>
-                </div>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong> {{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
     </section>
 
@@ -114,22 +127,27 @@
     <!-- ** SITE FOOTER ** -->
     <footer class="site-footer container-fluid">
         <p class="text-body-secondary">
-            <i class="material-icons">copyright</i> 
+            <i class="material-icons">copyright</i>
             2024 M Burgess. Created for Code Institute Milestone Project 3.
         </p>
-        
+
     </footer>
 
 
     <!-- ** SCRIPTS ** -->
     <!-- cdn scripts - jquery and bootstrap -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- enable custom scripts -->
     {% block scripts %}
     {% endblock %}
 
 </body>
+
 </html>

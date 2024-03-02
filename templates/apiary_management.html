@@ -10,7 +10,7 @@
             <p class="lead">View All Apiaries</p>
             <br>
         </div>
-        
+
     </div>
 </section>
 {% endblock %}
@@ -19,7 +19,8 @@
 <section id="apiary-management-container">
     <div class="container">
         <div class="sub-heading">
-                <h2 class="feature-icon"><i class="material-icons">hive</i> Apiaries for Beekeeper <em>{{ session["user"]|capitalize() }}</em></h2>
+            <h2 class="feature-icon"><i class="material-icons">hive</i> Apiaries for Beekeeper <em>{{
+                    session["user"]|capitalize() }}</em></h2>
         </div>
 
         <!-- ** VIEW ALL HIVES ** -->
@@ -34,7 +35,7 @@
                         <th scope="col"><i class="material-icons">read_more</i></th>
                     </tr>
                 </thead>
-                
+
                 <tbody class="table-group-divider">
                     {% for apiary in apiaries %}
                     <tr id="{{ apiary._id }}" class="selected-apiary">
@@ -43,7 +44,8 @@
                         <td class="column2">{{ apiary.description }}</td>
                         <td class="column3 table-button">
                             {% if session.user|lower == apiary.beekeeper|lower %}
-                            <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}" class="btn site-button-small selected-apiary">
+                            <a href="{{ url_for('manage_apiary', apiary_id=apiary._id)}}"
+                                class="btn site-button-small selected-apiary">
                                 <i class="material-icons">read_more</i>
                             </a>
                             {% endif %}
@@ -51,9 +53,9 @@
                     </tr>
                     {% endfor %}
                 </tbody>
-                
+
             </table>
-            <p ></p>
+            <p></p>
         </div>
         {% else %}
         <h3>No Apiaries Found</h3>
@@ -63,14 +65,10 @@
     <!-- ** OPTION BUTTONS ** -->
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <!-- <a class="btn btn-secondary btn-sm px-4 gap-3 disabled" href="{{ url_for('placeholder') }}" role="button">Edit Apiary</a> -->
-            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('add_apiary') }}" role="button"><i class="material-icons">add_box</i> Add New Apiary</a>
-        </div>  
+            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('add_apiary') }}"
+                role="button"><i class="material-icons">add_box</i> Add New Apiary</a>
+        </div>
     </div>
 
-    <!-- TEMPORARY SECTION - for displaying selected row -->
-    <div id="selected"> </div>
-
-    
 </section>
 {% endblock %}

@@ -17,22 +17,18 @@
     <!-- ** LOG IN FORM ** -->
     <div class="form-signin w-100 m-auto">
         <form method="POST" action="{{ url_for('signin') }}">
-            
+
             <!-- enter username -->
             <div class="form-floating">
-                <input type="text" class="form-control validate" 
-                    id="username" name="username" placeholder="username" 
-                    minlength="5" maxlength="15"
-                    pattern="^[a-zA-Z0-9{5,15}]$" required>
+                <input type="text" class="form-control validate" id="username" name="username" placeholder="username"
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="username">Username</label>
             </div>
-                
+
             <!-- enter password -->
             <div class="form-floating">
-                <input type="password" class="form-control validate" 
-                    id="password" name="password" placeholder="Password"
-                    minlength="5" maxlength="15"
-                    pattern="^[a-zA-Z0-9{5,15}]$" required>
+                <input type="password" class="form-control validate" id="password" name="password"
+                    placeholder="Password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="password">Password</label>
             </div>
 
@@ -40,11 +36,11 @@
             <button class="btn site-button-primary w-100 py-2" type="submit">
                 <i class="material-icons">login</i> Sign In
             </button>
-            
+
             <!-- New user? Go to Register -->
             <p class="mt-5 mb-3 text-body-secondary text-center">
-                    New Here?
-                    <a href="{{ url_for('register') }}" class="">Register Account</a>
+                New Here?
+                <a href="{{ url_for('register') }}">Register Account</a>
             </p>
         </form>
     </div>

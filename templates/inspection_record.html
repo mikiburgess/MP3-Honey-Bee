@@ -10,7 +10,7 @@
             <p class="lead">Inspection Record</p>
             <br>
         </div>
-        
+
     </div>
 </section>
 {% endblock %}
@@ -19,9 +19,9 @@
 <section id="hive-management-container">
     <div class="container">
         <div class="sub-heading">
-                <h2 class="feature-icon">
-                    <i class="material-icons">hive</i> Inspections for hive <strong>{{ hive.colony }}</strong>
-                </h2>
+            <h2 class="feature-icon">
+                <i class="material-icons">hive</i> Inspections for hive <strong>{{ hive.colony }}</strong>
+            </h2>
         </div>
 
         <!-- ** VIEW ALL INSPECTION RECORDS FOR HIVE ** -->
@@ -40,7 +40,7 @@
                         <th scope="col"><i class="material-icons">read_more</i></th>
                     </tr>
                 </thead>
-                
+
                 <tbody class="table-group-divider">
                     {% for inspection in inspections %}
                     <tr id="{{ inspection._id }}" class="selected-inspection">
@@ -48,72 +48,73 @@
                         <td class="column1">{{ inspection.inspectionDate }}</td>
                         <td class="column2">
                             {% if inspection.queenPresent %}
-                                <i class="material-icons">check</i>
+                            <i class="material-icons">check</i>
                             {% else %}
-                                <i class="material-icons">close</i>
+                            <i class="material-icons">close</i>
                             {% endif %}
                             {% if inspection.queenClipped %}
-                                <strong>C</strong>
+                            <strong>C</strong>
                             {% endif %}
-                        </td> 
+                        </td>
                         <td class="column3">
                             {% if inspection.queenCellsSeen %}
-                                {{ inspection.queenCellsSeen }}
-                                <i class="material-icons">check</i>
-                                {{ inspection.queenCellsRemoved }}x
+                            {{ inspection.queenCellsSeen }}
+                            <i class="material-icons">check</i>
+                            {{ inspection.queenCellsRemoved }}x
                             {% else %}
-                                <i class="material-icons">close</i>
+                            <i class="material-icons">close</i>
                             {% endif %}
                         </td>
                         <td class="column4 d-none d-md-table-cell">
                             {% if inspection.broodSeen %}
-                                <strong>3</strong>
+                            <strong>3</strong>
                             {% endif %}
                             {% if inspection.broodPattern %}
-                                <i class="material-icons">check</i>
+                            <i class="material-icons">check</i>
                             {% endif %}
                             {% if inspection.broodDrones %}
-                                <strong>D</strong>
+                            <strong>D</strong>
                             {% endif %}
                             {{ inspection.broodFrames }}F
                             {% if inspection.noBrood %}
-                                <i class="material-icons">warning</i>
+                            <i class="material-icons">warning</i>
                             {% endif %}
                         </td>
                         <td class="column5 d-none d-md-table-cell">{{ inspection.storesAvailable }}</td>
                         <td class="column6 d-none d-lg-table-cell">
                             {% if inspection.healthStatus == 'ok' %}
-                                <i class="material-icons">check</i>
+                            <i class="material-icons">check</i>
                             {% endif %}
                             {% if inspection.healthStatus == 'Concerned' %}
-                                <i class="material-icons">warning</i>
+                            <i class="material-icons">warning</i>
                             {% endif %}
                             {% if inspection.healthCB == 'on' %}
-                                <strong>CB</strong>
+                            <strong>CB</strong>
                             {% endif %}
                             {% if inspection.healthEFB == 'on' %}
-                                <strong>EFB</strong>
+                            <strong>EFB</strong>
                             {% endif %}
                             {% if inspection.healthAFB == 'on' %}
-                                <strong>AFB</strong>
+                            <strong>AFB</strong>
                             {% endif %}
                             {% if inspection.healthCBPV == 'on' %}
-                                <strong>CBPV</strong>
+                            <strong>CBPV</strong>
                             {% endif %}
                         </td>
 
                         <td class="column table-button">
                             {% if session.user|lower == hive.beekeeper|lower %}
-                            <a href="{{ url_for('manage_inspection', inspection_id=inspection._id)}}" class="btn site-button-small selected-inspection">
+                            <a href="{{ url_for('manage_inspection', inspection_id=inspection._id)}}"
+                                class="btn site-button-small selected-inspection">
                                 <i class="material-icons">read_more</i></a>
                             {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
-                
+
             </table>
-            <p ></p>
+            <p></p>
         </div>
         {% else %}
         <h3>No Inspections Found</h3>
@@ -123,18 +124,19 @@
     <!-- ** OPTION BUTTONS ** -->
     <div class="container">
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('hive_inspection', hive_id=hive._id) }}" role="button"><i class="material-icons">assignment_add</i>  Inspect Hive</a>
-            <a class="btn site-button-primary px-4 m-2 gap-3 option-button" href="{{ url_for('manage_hive', hive_id=hive._id) }}" role="button"><i class="material-icons">info</i> View Hive Details</a>
-        </div>  
+            <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                href="{{ url_for('hive_inspection', hive_id=hive._id) }}" role="button"><i
+                    class="material-icons">assignment_add</i> Inspect Hive</a>
+            <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                href="{{ url_for('manage_hive', hive_id=hive._id) }}" role="button"><i class="material-icons">info</i>
+                View Hive Details</a>
+        </div>
     </div>
 
     <!-- go back -->
     <p class="mt-5 mb-3 text-body-secondary text-center">
-        <a href="{{ url_for('hive_management', apiary='all') }}" class="">Return to Hives</a>
+        <a href="{{ url_for('hive_management', apiary='all') }}">Return to Hives</a>
     </p>
 
-    <!-- TEMPORARY SECTION - for displaying selected row -->
-    <div id="selected"> </div>
-    
 </section>
 {% endblock %}
