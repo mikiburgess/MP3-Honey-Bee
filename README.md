@@ -2,16 +2,18 @@
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
-<p align="center">
-  <h1>Honey Bee</h1>
-</p>
 
+<h1 align="center"> Honey Bee</h1>
+
+ 
 This repository and the accompanying interactive website is presented for Code Institute Milestone Project 3.
+
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=green)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/t/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=yellow)
 ![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![Static Badge](https://img.shields.io/badge/Visit%20the%20Deployed%20Site%20-%20red?style=plastic&logo=Heroku&link=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F&up_message=online&up_color=green&down_message=offline&down_color=red&style=plastic)
+
 
 - - -
 
