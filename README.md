@@ -1,13 +1,17 @@
-# Honey Bee
- 
+<p align="center">
+  <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
+
+<p align="center">
+  <h1>Honey Bee</h1>
+</p>
+
 This repository and the accompanying interactive website is presented for Code Institute Milestone Project 3.
 
-
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee/main?style=plastic&logo=github)
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
+![GitHub last commit](https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=green)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=yellow)
 ![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![GitHub top language](https://img.shields.io/github/languages/top/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![Deployed Site](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/)
+![Static Badge](https://img.shields.io/badge/Visit%20the%20Deployed%20Site%20-%20red?style=plastic&logo=Heroku&link=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F)
 
 - - -
 
@@ -139,6 +143,24 @@ The following are outside scope for the first version of this site (as submitted
 <br>
 <em>Figure: MongoDB Data Schema</em>
 </p>
+
+
+The backend file structure, implementing the designs outlined above, was constructed according to the following design:
+
+    - 📰 app.py               <-- Python application, using Flask
+    - 📂 static               <-- Site files
+        - 📂 css              
+            - 📰 style.css    <-- CSS stylesheet 
+        - 📂 img              <-- Folder containing all site images 
+            - 📰 *.jpg
+            - 📰 *.png
+        - 📂 js
+            - 📰 script.js    <-- JavaScript code for dynamic web-page functionality 
+    - 📂 templates            <-- Site pages
+        - 📰 base.html        <-- Base HTML page using Jinja templating
+        - 📰 *.html 
+
+*Figure : Design of site file structure*
 
 
 
