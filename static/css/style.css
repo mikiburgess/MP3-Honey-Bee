@@ -73,6 +73,13 @@
     max-height: 200px;
 }
 
+.banner-image-top {
+    margin-bottom: 25px;
+}
+
+.banner-image-bottom {
+    margin-top: 25px;
+}
 /* HTML ELEMENT STYLES  ------------------------------------- */
 
 h1, h2, h3, p {

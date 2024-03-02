@@ -2,7 +2,7 @@
 
 {% block header %}
 <section id="edit-hive-header">
-    <div class="parallax parallax-small sunflower">
+    <div class="parallax parallax-small banner-image-top sunflower">
         <div class="heading-text-block">
             <br>
             <h2 class="display-5 fw-bold">Hive Management</h2>
@@ -10,120 +10,125 @@
             <br>
         </div>
     </div>
-    {% endblock %}
+</section>
+{% endblock %}
 
-    {% block content %}
-    <section id="edit-hive-container">
-        <!-- ** HIVE FORM ** -->
-        <div class="container">
-            <div class="sub-heading">
-                <h2 class="feature-icon"><i class="material-icons">hive</i> Manage Single Hive</h2>
-            </div>
+{% block content %}
+<section id="edit-hive-container">
+    <!-- ** HIVE FORM ** -->
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon"><i class="material-icons">hive</i> Manage Single Hive</h2>
+        </div>
 
-            <div class="form-update-hive w-100 m-auto">
-                <form method="POST" action="{{ url_for('manage_hive', hive_id=hive._id) }}">
+        <div class="form-update-hive w-100 m-auto">
+            <form method="POST" action="{{ url_for('manage_hive', hive_id=hive._id) }}">
 
-                    <!-- hive location -->
-                    <div class="form-floating">
-                        <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary" disabled>
-                            <option value="{{ hive.apiary }}" selected>{{ hive.apiary }}</option>
-                            <option value="unspecified">Unspecified</option>
-                            {% for apiary in session.apiaries %}
-                            <option value="{{ apiary }}">{{ apiary }}</option>
-                            {% endfor %}
-                        </select>
-                        <label for="apiary">Apiary</label>
-                    </div>
+                <!-- hive location -->
+                <div class="form-floating">
+                    <select class="form-select" id="apiary" name="apiary" aria-label="Select apiary" disabled>
+                        <option value="{{ hive.apiary }}" selected>{{ hive.apiary }}</option>
+                        <option value="unspecified">Unspecified</option>
+                        {% for apiary in session.apiaries %}
+                        <option value="{{ apiary }}">{{ apiary }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="apiary">Apiary</label>
+                </div>
 
-                    <!-- colony -->
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="colony" name="colony" placeholder="colony"
-                            value="{{ hive.colony }}" disabled>
-                        <label for="colony">Colony</label>
-                    </div>
+                <!-- colony -->
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="colony" name="colony" placeholder="colony"
+                        value="{{ hive.colony }}" disabled>
+                    <label for="colony">Colony</label>
+                </div>
 
-                    <!-- hive type -->
-                    <div class="form-floating">
-                        <select class="form-select" id="hiveType" name="hiveType" aria-label="type of beehive" disabled>
-                            <option value="{{ hive.hiveType }}" selected>{{ hive.hiveType }}</option>
-                            <option value="BS National">BS National</option>
-                            <option value="Flow Hive">Flow Hive</option>
-                            <option value="Langstroth">Langstroth</option>
-                            <option value="Skep">Skep</option>
-                            <option value="WBC">WBC</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <label for="hiveType">Type of Hive</label>
-                    </div>
+                <!-- hive type -->
+                <div class="form-floating">
+                    <select class="form-select" id="hiveType" name="hiveType" aria-label="type of beehive" disabled>
+                        <option value="{{ hive.hiveType }}" selected>{{ hive.hiveType }}</option>
+                        <option value="BS National">BS National</option>
+                        <option value="Flow Hive">Flow Hive</option>
+                        <option value="Langstroth">Langstroth</option>
+                        <option value="Skep">Skep</option>
+                        <option value="WBC">WBC</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="hiveType">Type of Hive</label>
+                </div>
 
-                    <!-- bee type -->
-                    <div class="form-floating">
-                        <select class="form-select" id="bees" name="bees" aria-label="type of honey bee" disabled>
-                            <option value="{{ hive.bees }}" selected>{{ hive.bees }}</option>
-                            <option value="Buckfast">Buckfast</option>
-                            <option value="Welsh Black">Welsh Black</option>
-                            <option value="Buzzy">Buzzy</option>
-                            <option value="Scary">Scary</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <label for="bees">Bees</label>
-                    </div>
+                <!-- bee type -->
+                <div class="form-floating">
+                    <select class="form-select" id="bees" name="bees" aria-label="type of honey bee" disabled>
+                        <option value="{{ hive.bees }}" selected>{{ hive.bees }}</option>
+                        <option value="Buckfast">Buckfast</option>
+                        <option value="Welsh Black">Welsh Black</option>
+                        <option value="Buzzy">Buzzy</option>
+                        <option value="Scary">Scary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label for="bees">Bees</label>
+                </div>
 
-                    <!-- queen type -->
-                    <div class="form-floating">
-                        <select class="form-select" id="queenColor" name="queenColor" aria-label="current queen"
-                            disabled>
-                            <option value="{{ hive.queenColor }}" selected>{{ hive.queenColor }}</option>
-                            <option value="white">White (1 or 6)</option>
-                            <option value="yellow">Yellow (2 or 7)</option>
-                            <option value="red">Red (3 or 8)</option>
-                            <option value="green">Green (4 or 9)</option>
-                            <option value="blue">Blue (0 or 5)</option>
-                        </select>
-                        <label for="queenColor">Queen Color</label>
-                    </div>
+                <!-- queen type -->
+                <div class="form-floating">
+                    <select class="form-select" id="queenColor" name="queenColor" aria-label="current queen" disabled>
+                        <option value="{{ hive.queenColor }}" selected>{{ hive.queenColor }}</option>
+                        <option value="white">White (1 or 6)</option>
+                        <option value="yellow">Yellow (2 or 7)</option>
+                        <option value="red">Red (3 or 8)</option>
+                        <option value="green">Green (4 or 9)</option>
+                        <option value="blue">Blue (0 or 5)</option>
+                    </select>
+                    <label for="queenColor">Queen Color</label>
+                </div>
 
-                    <!-- description -->
-                    <div>
-                        <textarea id="hiveDescription" name="hiveDescription" class="form-control" rows="5" disabled>
+                <!-- description -->
+                <div>
+                    <textarea id="hiveDescription" name="hiveDescription" class="form-control" rows="5" disabled>
                         {{- hive.description -}}
                     </textarea>
-                    </div>
+                </div>
 
-                    <!-- ** OPTION BUTTONS ** -->
-                    <div class="container">
-                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
-                                href="{{ url_for('hive_inspection', hive_id=hive._id) }}" role="button">
-                                <i class="material-icons">assignment_add</i> Inspect Hive</a>
-                            <a class="btn site-button-primary px-5 m-2 gap-3 option-button"
-                                href="{{ url_for('inspection_record', hive_id=hive._id)}}" role="button">
-                                <i class="material-icons">assignment</i> All Inspections</a>
-                            <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
-                                onclick="hiveRemoveReadOnly()" role="button">
-                                <i class="material-icons">edit</i> Edit Hive</a>
-                            <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
-                                href="{{ url_for('delete_hive', hive_id=hive._id)}}" role="button">
-                                <i class="material-icons">delete</i> Delete Hive</a>
-                        </div>
-                    </div>
-
-                    <!-- form buttons -->
+                <!-- ** OPTION BUTTONS ** -->
+                <div class="container">
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="hiveReadOnly()"
-                            role="button" hidden>
-                            <i class="material-icons">cancel</i> Cancel</a>
-                        <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden><i
-                                class="material-icons">add_box</i> Submit Update</button>
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                            href="{{ url_for('hive_inspection', hive_id=hive._id) }}" role="button">
+                            <i class="material-icons">assignment_add</i> Inspect Hive</a>
+                        <a class="btn site-button-primary px-5 m-2 gap-3 option-button"
+                            href="{{ url_for('inspection_record', hive_id=hive._id)}}" role="button">
+                            <i class="material-icons">assignment</i> All Inspections</a>
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button" onclick="hiveRemoveReadOnly()"
+                            role="button">
+                            <i class="material-icons">edit</i> Edit Hive</a>
+                        <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
+                            href="{{ url_for('delete_hive', hive_id=hive._id)}}" role="button">
+                            <i class="material-icons">delete</i> Delete Hive</a>
                     </div>
-                </form>
+                </div>
 
-                <!-- go back -->
-                <p class="mt-5 mb-3 text-body-secondary text-center">
-                    <a href="{{ url_for('hive_management', apiary='all') }}">Return to Hives</a>
-                </p>
+                <!-- form buttons -->
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a class="btn site-button-secondary px-4 gap-3 form-button" onclick="hiveReadOnly()" role="button"
+                        hidden>
+                        <i class="material-icons">cancel</i> Cancel</a>
+                    <button class="btn site-button-primary px-5 gap-3 form-button" type="submit" hidden><i
+                            class="material-icons">add_box</i> Submit Update</button>
+                </div>
+            </form>
 
-            </div>
+            <!-- go back -->
+            <p class="mt-5 mb-3 text-body-secondary text-center">
+                <a href="{{ url_for('hive_management', apiary='all') }}">Return to Hives</a>
+            </p>
+
         </div>
-    </section>
-    {% endblock %}
+    </div>
+</section>
+
+<section>
+    <div class="parallax parallax-small banner-image-bottom sunflower">
+</section>
+
+{% endblock %}

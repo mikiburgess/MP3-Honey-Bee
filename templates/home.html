@@ -3,7 +3,7 @@
 {% block header %}
 <!-- ** PAGE BANNER ** -->
 <section id="home-page-header">
-  <div class="parallax parallax-large sunflower">
+  <div class="parallax parallax-large banner-image-top sunflower">
     <div class="heading-text-block">
       <br>
       <h1 class="display-5 fw-bold">Honey Bee</h1>
@@ -40,11 +40,22 @@
   <div class="container ">
 
     <div class="row g-4 py-5 row-cols-1 row-cols-md-3">
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="feature-icon"><i class="material-icons amber-dark">local_florist</i></h2>
+          <h3 class="">Beekeepers</h3>
+          <p class="light">Are you a beekeeper? If so, you can register here to access our online apiary management toolbox!
+            Keep track of your hives and apiaries, and record hive inspections using our tool based on the 
+            <a href="https://www.bbka.org.uk/" target="_blank">BBKA</a> Hive Record System, recording colony condition and 
+            health as required for the Certificate in Beekeeping Husbandry.</p>
+        </div>
+      </div>
+
       <div class="col s12 m4">
         <div class="icon-block">
           <h2 class="feature-icon"><i class="material-icons">hive</i></h2>
           <h3 class="">Learn About Bees</h3>
-
           <p class="light">If you're interested in honey bees and beekeeping, then you've come to the right place.
             Explore the site to learn more about honey bees, their lifecycle and roles. Learn about hives and honey
             production. And find out which plants are best to grow if you wnt to attract honey bees to your garden.</p>
@@ -55,28 +66,18 @@
         <div class="icon-block">
           <h2 class="feature-icon"><i class="material-icons amber-dark">emoji_nature</i></h2>
           <h3 class="">Bee Gallery</h3>
-
           <p class="light">Find out more about the bees in your area by exploring the GALLERY. See photos and read
-            stories from amateur and professional Beekeepers to learn more about their work and what it takes to be a
-            beekeeper (and a honey bee!).</p>
+            stories from amateur beekeepers to learn more about their work, what it takes to be a
+            beekeeper and find out your local honey. You'll also get to meet the honey producers - the bees!</p>
         </div>
       </div>
 
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="feature-icon"><i class="material-icons amber-dark">local_florist</i></h2>
-          <h3 class="">The Beekeepers</h3>
-
-          <p class="light">Are you a beekeeper? If so, you can register here to access our Online Apiary Toolbox (OAT)!
-            Keep track of your hives and apiaries, share photos and stories about your work, and use our online BBKA
-            Hive Record System to record your hive checks, as required for the Certificate in Beekeeping Husbandry.</p>
-        </div>
-      </div>
+    
     </div>
   </div>
 </section>
 
 <section>
-  <div class="parallax apiary"></div>
+  <div class="parallax parallax-small banner-image-bottom sunflower">
 </section>
 {% endblock %}
