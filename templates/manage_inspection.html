@@ -155,13 +155,23 @@
                         <label class="form-label" for="syrupAmount">Ltr</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
+                        {% if inspection.syrupType == 'LS' %}
                         <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
-                            value="{{ inspection.syrupLS }}" disabled>
+                            checked disabled>
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
+                            disabled>
+                        {% endif %}
                         <label class="form-check-label" for="syrupLS">LS</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
+                        {% if inspection.syrupType == 'HS' %}
                         <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
-                            value="{{ inspection.syrupHS }}" disabled >
+                            checked disabled >
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
+                            disabled >
+                        {% endif %}
                         <label class="form-check-label" for="syrupHS">HS</label>
                     </div>
                 </div>
@@ -185,13 +195,23 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">HIVE HEALTH</label>
                     <div class="form-check form-check-inline col-2">
+                        {% if inspection.healthStatus == 'OK' %}
                         <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
-                            value="{{ inspection.healthStatus }}" disabled >
+                            checked disabled >
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
+                            disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthOK">OK</label>
                     </div>
                     <div class="form-check form-check-inline col-3">
+                        {% if inspection.healthStatus == 'Concerned' %}
                         <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
-                            value="{{ inspection.healthConcern }}" disabled >
+                            checked disabled >
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
+                            disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthConcern">Concerned</label>
                     </div>
                 </div>
@@ -224,18 +244,33 @@
                     <label class="col-3 form-label">VARROA</label>
                     <div class="col-9 varroa-rating">
                         <div class="form-check form-check-inline">
+                            {% if inspection.varroaLevel == 'low' %}
                             <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
-                                value="{{ inspection.varroaLow }}" disabled >
+                                checked disabled >
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
+                                disabled >
+                            {% endif %}
                             <label class="form-check-label" for="varroaLow">Low</label>
                         </div>
                         <div class="form-check form-check-inline">
+                            {% if inspection.varroaLevel == 'medium' %}
                             <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
-                                value="{{ inspection.varroaMedium }}" disabled>
+                                checked disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
+                                disabled>
+                            {% endif %}
                             <label class="form-check-label" for="varroaMedium">Med.</label>
                         </div>
                         <div class="form-check form-check-inline">
+                            {% if inspection.varroaLevel == 'high' %}
                             <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
-                                value="{{ inspection.varroaHigh }}" disabled>
+                                checked disabled>
+                            {% else %}
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
+                                disabled>
+                            {% endif %}
                             <label class="form-check-label" for="varroaHigh">High</label>
                         </div>
                     </div>
@@ -251,6 +286,7 @@
                         </div>
                     </div>
                 </div>
+
                 <hr>
 
                 <!-- Temper -->
@@ -288,11 +324,23 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">SUPERS</label>
                     <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added">
+                        {% if inspection.supers == 'added' %}
+                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added"
+                            checked disabled>
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added"
+                            disabled>
+                        {% endif %}
                         <label class="form-check-label" for="supersAdded">+</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
-                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed">
+                        {% if inspection.supers == 'removed' %}
+                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed"
+                            checked disabled>
+                        {% else %}
+                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed"
+                            disabled>
+                        {% endif %}
                         <label class="form-check-label" for="supersRemoved">-</label>
                     </div>
 
@@ -310,8 +358,8 @@
                 <!--Inspection Notes -->
                 <div>
                     <textarea class="form-control" id="inspectionNotes" name="inspectionNotes"
-                        placeholder="Add additional observations and comments here" rows="5" disabled>
-                        {{- inspection.inspectionNotes -}}
+                        placeholder="Add additional observations and comments here" rows="5" 
+                        disabled>{{ inspection.inspectionNotes }}</textarea>
                     </textarea>
                 </div>
 
@@ -338,10 +386,12 @@
                 </div>
 
             </form>
-            <!-- return home -->
+
+            <!-- go back -->
             <p class="mt-5 mb-3 text-body-secondary text-center">
                 <a href="{{ url_for('inspection_record', hive_id=hive._id)}}" class="">Return to Inspections</a>
             </p>
+            
         </div>
     </div>
 

@@ -95,7 +95,7 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="col-2 col-lg-1">
-                        <input class="form-control" id="broodFrames" name="broodFrames" type="number" value="0" />
+                        <input class="form-control" id="broodFrames" name="broodFrames" type="number" value="0" step="0.25"/>
                     </div>
                     <div class="col-4 col-lg-3">
                         <label class="form-label" for="broodFrames"># Frames of Brood</label>
@@ -109,7 +109,7 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">ROOM</label>
                     <div class="col-1">
-                        <input class="form-control" id="eggRoom" name="eggRoom" type="number" value="0" />
+                        <input class="form-control" id="eggRoom" name="eggRoom" type="number" value="0" step="0.25"/>
                     </div>
                     <div class="col">
                         <label class="form-label" for="eggRoom">Available space for queen to lay eggs (# frames)</label>
@@ -121,7 +121,7 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">STORES</label>
                     <div class="col-1">
-                        <input class="form-control" id="storesAvailable" name="storesAvailable" type="number" value="0" />
+                        <input class="form-control" id="storesAvailable" name="storesAvailable" type="number" value="0" step="0.25"/>
                     </div>
                     <div class="col">
                         <label class="form-label" for="storesAvailable">Super stores available (# frames)</label>
@@ -134,7 +134,7 @@
                         <label class="col-4 col-md-3">Syrup</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="syrupAmount" name="syrupAmount" type="number" value="0" />
+                        <input class="form-control" id="syrupAmount" name="syrupAmount" type="number" value="0" step="0.25"/>
                     </div>
                     <div class="col-1 col-md-1">
                         <label class="form-label" for="syrupAmount">Ltr</label>
@@ -155,7 +155,7 @@
                         <label class="col-4 col-md-3">Fondant</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="fondantAmount" name="fondantAmount" type="number" value="0" />
+                        <input class="form-control" id="fondantAmount" name="fondantAmount" type="number" value="0" step="0.25" />
                     </div>
                     <div class="col-1">
                         <label class="form-label" for="fondantAmount">Kg</label>
@@ -219,7 +219,7 @@
                     <div class="row-12 align-items-center input-group">
                         <label class="col-3 form-label"></label>
                         <div class="col-2 col-lg-1">
-                            <input id="varroaPop" class="form-control" type="number" value="0000" />
+                            <input id="varroaPop" name="varroaPop" class="form-control" type="number" value="0000" step="1000" />
                         </div>
                         <div class="col">
                             <label for="varroaPop" class="form-label"> Population estimate </label>
@@ -244,19 +244,17 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">WEATHER</label>
                     <div class="col-2">
-                        <input id="temperature" class="form-control" type="text" placeholder="e.g. warm" />
+                        <input id="temperature" name="temperature" class="form-control" type="text" placeholder="e.g. warm" />
                     </div>
                     <div class="col-2">
                         <label for="temperature" class="form-label">temp.</label>
                     </div>
                     <div class="col-2">
-                        <input id="weather" class="form-control" type="text" placeholder="e.g. sunny" />
+                        <input id="weather" name="weather" class="form-control" type="text" placeholder="e.g. sunny" />
                     </div>
                     <div class="col-2">
                         <label for="weather" class="form-label">weather</label>
                     </div>
-
-
                 </div>
 
                 <!-- Supers -->
@@ -272,7 +270,7 @@
                     </div>
 
                     <div class="col-2 col-md-1">
-                        <input id="supersChange" class="form-control" type="number" value="0.0" />
+                        <input id="supersChange" name="supersChange" class="form-control" type="number" value="0" step="0.25" />
                     </div>
                     <div class="col-2">
                         <label for="supersChange" class="form-label">quantity</label>
