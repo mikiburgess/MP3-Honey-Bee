@@ -1,5 +1,5 @@
 # Deploying Honey Bee
-  A Guide to Development and Deployment
+> A Guide to Development and Deployment
 
 This section describes how to use the Honey Bee project repository for undertaking further local development or deploying the site to Heroku
 
@@ -38,29 +38,42 @@ Go to [Heroku](https://www.heroku.com/). Log in or create an account
 2. Enter a unique name for your project with no capital letters or spaces and select the region closest to you (e.g., Europe). Click 'Create App'.
 3. Inside the dashboard for your new app, go to the 'Settings' tab. 
 4. Scroll down and click 'Reveal Config Vars' then enter data for the following variables:
-    - IP : 0.0.0.0
-    - PORT : 5000
-    - MONGO_DBNAME : Your MongoDB database name
-    - MONGO_URI : Your MongoBD URI (found on MongoDB by going to Clusters > Connect > Connect to your application)
-    - SECRET_KEY : Your secret key
+    - `IP : 0.0.0.0`
+    - `PORT : 5000`
+    - `MONGO_DBNAME : ...` Your MongoDB database name
+    - `MONGO_URI : ...` Your MongoBD URI (found on MongoDB by going to Clusters > Connect > Connect to your application)
+    - `SECRET_KEY : ...` Your secret key
 
-![Heroku config variables*](docs/images/heroku-config-vars.png)
-*Figure 1: Heroku Config Variables*
+<p align="center">
+    <img src="images/heroku-config-vars.png" alt="Heroku config variables">
+<br>
+<em>Figure 1: Heroku Config Variables</em>
+</p>
+
 
 5. Link Github repo to Heroku by navigating to the Deploy tab. Select 'GitHub, enter the name of the repository and click connect. 
 
-![Connecting to GitHub*](docs/images/heroku-connect-to-github.png)
-*Figure 2: Connecting to GitHub*
+<p align="center">
+    <img src="images/heroku-connect-to-github.png" alt="Connecting to GitHub">
+<br>
+<em>Figure 2: Connecting to GitHub</em>
+</p>
 
 6. Once connected, select the repo branch to deploy (e.g. main) then click the Enable Automatic Deployment option.
 
-![Deployment branch*](docs/images/heroku-deploy-branch.png)
-*Figure 3: Selecting the branch to deploy*
+<p align="center">
+    <img src="images/heroku-deploy-branch.png" alt="Deployment branch">
+<br>
+<em>Figure 3: Selecting the branch to deploy</em>
+</p>
 
 To deploy immediately, in the Manual Deploy section again select the branch you want to deploy and click Deploy Branch. This will retrieve the code from GitHub. Once this is complete you'll receive a message "Your app was successfully deployed." You can then click "View" to access the deployed app.
 
-![Successful deployment*](docs/images/heroku-app-deployed.png)
-*Figure 4: Successful deployment*
+<p align="center">
+    <img src="images/heroku-app-deployed.png" alt="Successful deployment">
+<br>
+<em>Figure 4: Successful deployment</em>
+</p>
 
 <kbd>[Return to Top](#Deploying-Honey-Bee)</kbd>
 
