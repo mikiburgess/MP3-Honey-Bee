@@ -7,7 +7,7 @@ This repository and the accompanying interactive website is presented for Code I
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
 ![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
 ![GitHub top language](https://img.shields.io/github/languages/top/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![Website]()
+![Deployed Site](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/)
 
 - - -
 
@@ -29,75 +29,167 @@ This repository and the accompanying interactive website is presented for Code I
 - [Credits](#Credits)
 
 - - -
-
+<p align="center">
+  <img src="docs/images/apiary.jpg" alt="Apiary, from Pixabay">
+</p>
 
 ## Introduction
 
 This repository and the associated deployed website comprise my submission for the Diploma in Web Development, Milestone Project 3. 
+The purpose of this project is to demonstrate ability to design and develop a database-backed web site, implemented using Flask and an appropriate database management system, with full CRUD (Create, Read, Update, Delete) functionality.
+
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 - - -
 
+<p align="center">
+  <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
+
 ## User Experience (UX)
-...
+The intended users of this web application are amateur beekeepers. 
+In order to complete the British Beekeeping Association (BBKA) Certificate in Beekeeping Husbandry records need to be maintained of the checks carried out on every colony (hive). 
+Although there is no standardised approach for inspection record keeping some data must be retained, such as data about colony health. Many variations and suggestions exist to help beekeepers in maintaining their records, with the BBKA suggesting their own [Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system). 
+
+<p align="center">
+  <a href="docs/images/bbka-hive-recording-system.png">
+    <img src="docs/images/bbka-hive-recording-system-small.png" alt="BBKA Hive Recording System">
+  </a>
+<br>
+<em>Figure: BBKA Hive Recording System</em>
+</p>
+
+The aim of this application is to provide an online portal for beekeepers to maintain records of their colonies/hives and the apiaries in which they're located, plus a full digital record of every hive inspection. To this end the [BBKA Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system) has been used as the foundation for this hive inspection system.
 
 
 ### Project Goals
-The primary goal of this project is to design, develop and deploy a website ...
+The primary goal of this project is to design, develop and deploy an interactive website for amateur beekeepers, for the recording and maintaining of apiary and hive data. In particular, this site needs to be usable when on location, and therefore should be designed taking a mobile-first approach.
 
 ### Strategy
 <!-- What are we aiming to achieve, and for whom? -->
-The target audience for this site is ...
-As the focus of this site is ...
-
+The target audience for this site are amateur beekeepers. It will support them in maintaining a record of all apiaries and hives/colonies, as well as providing an online form to be used for recording every hive inspection (undertaken weekly from spring to autumn).  
+Due to the nature of hive inspections, being conducted on-site in the apiary, this web app is designed primary for use on mobile devices (i.e., smartphones/tablets). Hive inspections can therefore be recorded during the inspection process, or immediately after whilst sitting in the van with a flask of tea. 
+It's expected that additional editing and viewing of report data is likely to then be done back at home/in the office.
 
 ### Scope
 <!-- What features do we want to include in the design? What's on the table, and whats off (for now)? -->
-...
-The needs of these users have been identified and described in the following set of user stories.
+
+The scope of this application focuses on the implementation of a record-keeping. This will implement full CRUD functionality for data about apiaries, hives and hive records.
+
+The target audience for this application doesn't include professional bee farmers. These experienced professionals won't be aiming to complete the Certificate in Beekeeping Husbandry and will have more complex requirements for maintaining business records.
 
 
 #### User Stories
-The ____ identified users for this site are listed below, along with their specific needs:
+The specific needs of the primary target users of this site, amateur beekeepers are outlines in the following user stories:
 
 * As a Beekeeper I want to ...
-  1. Be able to keep a record of all of my hives 
-  2. Record details of my weekly check of each hive
-	3. View a full inspection report for each of my hives
-	4. Have a registered account fo secure access to editing my work
+  1. Be able to maintain a record of all of my apiaries (create, read, update & delete)
+  2. Be able to maintain a record of all of my hives/colonies (create, read, update & delete)
+  3. Record details of my weekly check of each hive, and save them for later use.
+	4. View a full inspection report for each of my hives
+	5. Have a registered account to secure access to my records
 
-* As a site administrator I want to ...
-  1. Be able to edit roles of registered users
+#### Outside Scope
+Some elements considered in the current design will not be implemented due to being outside the scope described above. These include general information pages about honey bees and the beekeeping. 
+Additional users and their user stories have been identified and are listed below. These have been flagged for future development as they fall outside the scope and requirements for Milestone Project 3.
 
+<details>
+<summary>Future User Stories<summary>
+In order to support the design and implementation decisions made during this project additional user stories were considered for three additional users: Site Administrator, Mentor and Site Visitor. Additional user stories for the primary intended users, amateur beekeepers, have also been noted.
+The following are outside scope for the first version of this site (as submitted for milestone project 3) but have been identified and noted to both demonstrate how this site will be developed post-MVP and to ensure that design/development decisions are made that will enable further development in future.
 
-Future Developments
+* As a Site Administrator I want to ...
+  1. Maintain the accounts of registered site users.
+  2. Be able to edit roles of registered users.
+
 * As a Beekeeper I'd like to ...
-	1. Have access to guidance regarding completing weekly check record
-	2. Add images of my bees, with descriptions, to the site gallery
-  3. Maintain a record of all apiaries
-	4. Find other beekeepers in the local area
+	1. Have access to guidance regarding completing weekly check record.
+  2. Be able to export hive records to PDF for printing and sharing with others, such as at local association meetings.
+  3. Create a profile for advertising my work to the local community.
+	4. Add images of my bees, with descriptions, to the site gallery to keep the local community informed about and engaged with my work.
 
 * As a Mentor I'd like to ...
-  1. Be able to view the hive data for each of my mentee's	
+  1. Be able to view the hive data for each of my mentee's apiaries.
+  2. Provide feedback on mentee's progress and management of their hives.
 
-* As a site visitor I'd like to ...
-  1. Learn about honey bees
-	2. Browse gallery of images
-	3. Interact with images posted by others (i.e., 'like' images)
+* As a Site Visitor I'd like to ...
+  1. Learn more about honey bees and the local beekeepers.
+  2. Browse gallery of images of local apiaries.
+  3. Get recommendations for reputable sources of further information.
+  4. Find contact details for local beekeepers who are able to remove swarms from my property.
+
+</details>
 
 ### Structure
 <!-- How is the information structured, and is it logically grouped? -->
+
+<p align="center">
+  <a href="docs/design/site-map.png">
+    <img src="docs/design/site-map-small.png" alt="Site Map">
+  </a>
+<br>
+<em>Figure: Site Map</em>
+</p>
+
+
+<p align="center">
+  <a href="docs/design/schema.png">
+    <img src="docs/design/schema-small.png" alt="MongoDB Data Schema">
+  </a>
+<br>
+<em>Figure: MongoDB Data Schema</em>
+</p>
+
+
 
 ### Skeleton
 <!-- How the information should be implemented, and how the user will navigate through the info/features -->
 
 #### Wireframes
+Due to the primary aim of this site being a tool for beekeepers to use whilst on location, taking records whilst inspecting their bee colonies, the design focus has been on the mobile devices they will be using - smartphones and tablets. 
+The user interface designs are separated into three groups: Apiary Management, Hive Management and Hive Inspections. In addition there are two pages for registered users - Registration and Sign In - and a Home page to welcome all site visitors.
+
+<p align="center">
+  <img src="docs/design/mobile-design-home-user.png" alt="Home and User Pages">
+<br>
+<em>Figure: Home and User Pages</em>
+</p>
+
+<p align="center">
+  <img src="docs/design/mobile-design-apiary-management.png" alt="Apiary Management">
+<br>
+<em>Figure: Apiary Management</em>
+</p>
+
+<p align="center">
+  <img src="docs/design/mobile-design-hive-management.png" alt="Hive Management">
+<br>
+<em>Figure: Hive Management</em>
+</p>
+
+<p align="center">
+  <img src="docs/design/mobile-design-hive-inspection.png" alt="Hive Inspection">
+<br>
+<em>Figure: Hive Inspection</em>
+</p>
+
 
 ### Surface
 <!-- What the product will actually look like, colors, typography, images, design elements, etc -->
 
+#### Site Icons
+
+#### Site Color Palette
+The design intention was to select colors that are associated with bees, honey and nature.
+
+#### Typography
+Fonts used across the site were selected using the [Fontjoy](https://fontjoy.com/) font pairing suggestion site, where fonts pairings are suggested using AI/Deep Learning. The heading font ([Montserrat](https://fonts.google.com/specimen/Montserrat)) was selected first, then complementary body ([PT Sans](https://fonts.google.com/specimen/PT+Sans)) and supporting ([Karma](https://fonts.google.com/specimen/Karma)) fonts generated and selected that complement the heading font.
 
 - - -
+<p align="center">
+  <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
+
 
 - - -
 
@@ -107,10 +199,10 @@ Future Developments
 - All images obtained from [Pixabay](https://pixabay.com/) are free to use under their [Content License](https://pixabay.com/service/license-summary/). The individual creators for these images are as follows:
   - image - [attribution](url)
   - 
-- Site icons - from [Google Fonts](https://fonts.google.com/icons)
+- Google [fonts](https://fonts.google.com/) and [icons](https://fonts.google.com/icons) have been used across the site.
+
 
 ### Additional Code and Resources
-- fonts
 - 
 - Information badges at top of README created using [Shields.io](https://shields.io/)
 
@@ -142,4 +234,8 @@ I would like to acknowledge the following people who helped me complete this mil
 
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+<p align="center">
+  <img src="docs/images/newbee.jpg" alt="Birth of a Bee, from Pixabay">
+</p>
 - - -
