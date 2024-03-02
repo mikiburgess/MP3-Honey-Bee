@@ -1,4 +1,9 @@
-# Deploying Honey Bee
+<p align="center">
+  <img src="images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
+
+<h1 align="center">Deploying Honey Bee</h1>
+
 > A Guide to Development and Deployment
 
 This section describes how to use the Honey Bee project repository for undertaking further local development or deploying the site to Heroku
