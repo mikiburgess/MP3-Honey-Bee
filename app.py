@@ -34,6 +34,7 @@ mongo = PyMongo(app)
  ---------------------
 """
 
+
 # LOAD BEEKEEPER APIARIES UPON LOGIN/CHANGE
 def load_apiaries():
     if session["beekeeper"]:
@@ -364,9 +365,15 @@ def inspection_record(hive_id):
 @app.route("/manage_inspection/<inspection_id>", methods=["GET", "POST"])
 def manage_inspection(inspection_id):
     inspection = mongo.db.hiveInspections.find_one({"_id": ObjectId(inspection_id)})
-    hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})
-    
+    hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})    
     return render_template("manage_inspection.html", inspection=inspection, hive=hive)
+
+
+@app.route('/delete_inspection/<inspection_id>')
+def delete_inspection(inspection_id):
+    mongo.db.hiveInspections.delete_one({"_id": ObjectId(inspection_id)})
+    flash("Inspection Successfully Deleted")
+    return redirect(url_for("hive_management", apiary='all'))
 
 
 # MAIN - RUNNING IN DEBUG MODE
