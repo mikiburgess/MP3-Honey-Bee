@@ -43,7 +43,6 @@ def load_apiaries():
         apiaries = mongo.db.apiaries.find({"beekeeper": session['user']})
         for apiary in apiaries:
             session["apiaries"].append(apiary["apiary"])
-    print(session['apiaries'])
 
 
 """
@@ -86,9 +85,9 @@ def signin():
                 session["admin"] = existing_user["administrator"]
 
                 if session["beekeeper"]:
-                    flash(f"Welcome back, Beekeeper {session['user']}")
+                    flash(f"Welcome, Beekeeper {session['user']}")
                 else:
-                    flash(f"Welcome back, {session['user']}")
+                    flash(f"Welcome, {session['user']}")
                 return redirect(url_for("home", username=session["user"]))
             else:
                 # invalid password match
@@ -114,36 +113,40 @@ def signout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        print(request.form.get("firstname"))
-        # check if username already exists in db
-        existing_user = mongo.db.siteUsers.find_one(
-            {"username": request.form.get("username").lower()})
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("register"))
+        try:
+            print(request.form.get("firstname"))
+            # check if username already exists in db
+            existing_user = mongo.db.siteUsers.find_one(
+                {"username": request.form.get("username").lower()})
+            if existing_user:
+                flash("Username already exists")
+                return redirect(url_for("register"))
 
-        # check if user is a beekeeper
-        if request.form.get("beekeeper"):
-            beekeeper = True
-        else:
-            beekeeper = False
+            # check if user is a beekeeper
+            if request.form.get("beekeeper"):
+                beekeeper = True
+            else:
+                beekeeper = False
 
-        # add user registration to database
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "firstname": request.form.get("firstname").lower(),
-            "surname": request.form.get("surname").lower(),
-            "beekeeper": beekeeper,
-            "administrator": False
-        }
-        mongo.db.siteUsers.insert_one(register)
+            # add user registration to database
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password")),
+                "firstname": request.form.get("firstname").lower(),
+                "surname": request.form.get("surname").lower(),
+                "beekeeper": beekeeper,
+                "administrator": False
+            }
+            mongo.db.siteUsers.insert_one(register)
 
-        # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        flash(f"Registration successful. Welcome {session['user']}")
-        return redirect(url_for("home", username=session["user"]))
-
+            flash("Registration successful.  You can now sign in.")
+            return redirect(url_for("signin"))
+        except Exception as e:
+            flash("Error ocurred. Registration unsuccessful. Please try again")
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Register new user",
+                 "exception": e})
     return render_template("register.html")
 
 
@@ -167,20 +170,21 @@ def add_apiary():
                 flash("Error: Apiary already exists")
                 return redirect(url_for("add_apiary"))
             # add new apiary to database
+            today = datetime.datetime.now()
             newApiary = {
                 "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
                 "description": request.form.get("apiary-description"),
-                "date_added": datetime.datetime.now().strftime("%d %B %Y")
+                "date_added": today.strftime("%d %B %Y"),
+                "update_history": [{"date": today, "action": "New apiary created"}]
             }
             mongo.db.apiaries.insert_one(newApiary)
             flash("Success. New apiary added.")
             load_apiaries()
-
         except Exception as e:
             flash("Error ocurred. New apiary not added. Please try again")
-            print(e)
-
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(), "action": "Add new apiary", "exception": e})
         return redirect(url_for('apiary_management', apiary="all"))
 
     return render_template("add_apiary.html")
@@ -189,22 +193,46 @@ def add_apiary():
 @app.route("/manage_apiary/<apiary_id>", methods=["GET", "POST"])
 def manage_apiary(apiary_id):
     if request.method == "POST":
-        submit = {
-            "beekeeper": session["user"],
-            "apiary": request.form.get("apiary"),
-            "description": request.form.get("apiary-description"),
-            "last_updated": datetime.datetime.now().strftime("%d %B %Y")
-        }
-        mongo.db.apiaries.update_one({"_id": ObjectId(apiary_id)}, {"$set": submit})
-        flash("Apiary Details Successfully Updated")
+        try:
+            edit_date = datetime.datetime.now()
+            # set data for apiary
+            mongo.db.apiaries.update_one(
+                {"_id": ObjectId(apiary_id)}, 
+                {"$set": {
+                    "beekeeper": session["user"],
+                    "apiary": request.form.get("apiary"),
+                    "description": request.form.get("apiary-description"),
+                    "last_updated": edit_date.strftime("%d %B %Y")
+                }})
+            # add current datetime to update history
+            mongo.db.apiaries.update_one(
+                {"_id": ObjectId(apiary_id)},
+                {"$addToSet": {
+                    "update_history": 
+                        {"date": edit_date,
+                            "action": "Content edited"}
+                }})
+            flash("Apiary Details Successfully Updated")
+        except Exception as e:
+            flash("Error ocurred. Apiary not updated. Please try again")
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(), "action": "Update apiary", "exception": e})
+
     apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
     return render_template("manage_apiary.html", apiary=apiary)
 
 
 @app.route('/delete_apiary/<apiary_id>')
 def delete_apiary(apiary_id):
-    mongo.db.apiaries.delete_one({"_id": ObjectId(apiary_id)})
-    flash("Apiary Successfully Deleted")
+    try:
+        mongo.db.apiaries.delete_one({"_id": ObjectId(apiary_id)})
+        flash("Apiary Successfully Deleted")
+    except Exception as e:
+        flash("Error ocurred. Apiary not deleted.")
+        mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Delete apiary",
+                 "exception": e})
     return redirect(url_for("apiary_management"))
 
 
@@ -246,7 +274,10 @@ def add_hive():
             flash("Success. New hive added.")
         except Exception as e:
             flash("Error ocurred. New hive not added. Please try again")
-            print(e)
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Add new hive",
+                 "exception": e})
 
         return redirect(url_for('hive_management', apiary="all"))
     return render_template("add_hive.html")
@@ -255,26 +286,41 @@ def add_hive():
 @app.route("/manage_hive/<hive_id>", methods=["GET", "POST"])
 def manage_hive(hive_id):
     if request.method == "POST":
-        submit = {
-            "beekeeper": session["user"],
-            "apiary": request.form.get("apiary"),
-            "colony": request.form.get("colony"),
-            "hiveType": request.form.get("hiveType"),
-            "bees": request.form.get("bees"),
-            "queenColor": request.form.get("queenColor"),
-            "description": request.form.get("hiveDescription"),
-            "last_updated": datetime.datetime.now().strftime("%d %B %Y")
-        }
-        mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
-        flash("Hive Details Successfully Updated")
+        try:
+            submit = {
+                "beekeeper": session["user"],
+                "apiary": request.form.get("apiary"),
+                "colony": request.form.get("colony"),
+                "hiveType": request.form.get("hiveType"),
+                "bees": request.form.get("bees"),
+                "queenColor": request.form.get("queenColor"),
+                "description": request.form.get("hiveDescription"),
+                "last_updated": datetime.datetime.now().strftime("%d %B %Y")
+            }
+            mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
+            flash("Hive Details Successfully Updated")
+        except Exception as e:
+            flash("Error ocurred. Hive not updated. Please try again")
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Update hive",
+                 "exception": e})
+
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     return render_template("manage_hive.html", hive=hive)
 
 
 @app.route('/delete_hive/<hive_id>')
 def delete_hive(hive_id):
-    mongo.db.hives.delete_one({"_id": ObjectId(hive_id)})
-    flash("Hive Successfully Deleted")
+    try:
+        mongo.db.hives.delete_one({"_id": ObjectId(hive_id)})
+        flash("Hive Successfully Deleted")
+    except Exception as e:
+        flash("Error ocurred. Hive not deleted.")
+        mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Delete hive",
+                 "exception": e})
     return redirect(url_for("hive_management", apiary="all"))
 
 
@@ -337,11 +383,13 @@ def hive_inspection(hive_id):
 
             mongo.db.hiveInspections.insert_one(newInspection)
             flash("Success. Hive inspection recorded.")
-            # print(mongo.db.hives.find_one({"_id": ObjectId(newInspection["hiveID"])}))
 
         except Exception as e:
             flash("Error ocurred. Inspection not recorded. Please try again")
-            print(e)
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Add hive inspection record",
+                 "exception": e})
 
         return redirect(url_for('hive_inspection', hive_id=hive_id))
     return render_template("hive_inspection.html", hive=hive)
@@ -364,8 +412,15 @@ def manage_inspection(inspection_id):
 
 @app.route('/delete_inspection/<inspection_id>')
 def delete_inspection(inspection_id):
-    mongo.db.hiveInspections.delete_one({"_id": ObjectId(inspection_id)})
-    flash("Inspection Successfully Deleted")
+    try:
+        mongo.db.hiveInspections.delete_one({"_id": ObjectId(inspection_id)})
+        flash("Inspection Successfully Deleted")
+    except Exception as e:
+        flash("Error ocurred. Inspection not deleted. Please try again")
+        mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Delete inspection record",
+                 "exception": e})
     return redirect(url_for("hive_management", apiary='all'))
 
 
