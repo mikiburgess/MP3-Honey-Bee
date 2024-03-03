@@ -184,7 +184,9 @@ def add_apiary():
         except Exception as e:
             flash("Error ocurred. New apiary not added. Please try again")
             mongo.db.exceptionLog.insert_one(
-                {"datetime": datetime.datetime.now(), "action": "Add new apiary", "exception": e})
+                {"datetime": datetime.datetime.now(), 
+                 "action": "Add new apiary",
+                 "exception": e})
         return redirect(url_for('apiary_management', apiary="all"))
 
     return render_template("add_apiary.html")
@@ -260,6 +262,7 @@ def add_hive():
     if request.method == "POST":
         try:
             # add user registration to database
+            today = datetime.datetime.now()
             newHive = {
                 "beekeeper": session["user"],
                 "apiary": request.form.get("apiary").lower(),
@@ -268,7 +271,8 @@ def add_hive():
                 "bees": request.form.get("bees").lower(),
                 "queenColor": request.form.get("queenColor").lower(),
                 "description": request.form.get("hiveDescription"),
-                "date_added": datetime.datetime.now().strftime("%d %B %Y")
+                "date_added": today.strftime("%d %B %Y"),
+                "update_history": [{"date": today, "action": "New hive created"}]
             }
             mongo.db.hives.insert_one(newHive)
             flash("Success. New hive added.")
@@ -287,17 +291,27 @@ def add_hive():
 def manage_hive(hive_id):
     if request.method == "POST":
         try:
-            submit = {
-                "beekeeper": session["user"],
-                "apiary": request.form.get("apiary"),
-                "colony": request.form.get("colony"),
-                "hiveType": request.form.get("hiveType"),
-                "bees": request.form.get("bees"),
-                "queenColor": request.form.get("queenColor"),
-                "description": request.form.get("hiveDescription"),
-                "last_updated": datetime.datetime.now().strftime("%d %B %Y")
-            }
-            mongo.db.hives.update_one({"_id": ObjectId(hive_id)}, {"$set": submit})
+            edit_date = datetime.datetime.now()
+            mongo.db.hives.update_one(
+                {"_id": ObjectId(hive_id)},
+                {"$set": {
+                    "beekeeper": session["user"],
+                    "apiary": request.form.get("apiary"),
+                    "colony": request.form.get("colony"),
+                    "hiveType": request.form.get("hiveType"),
+                    "bees": request.form.get("bees"),
+                    "queenColor": request.form.get("queenColor"),
+                    "description": request.form.get("hiveDescription"),
+                    "last_updated": edit_date.strftime("%d %B %Y")
+                }})
+            # add current datetime to update history
+            mongo.db.hives.update_one(
+                {"_id": ObjectId(hive_id)},
+                {"$addToSet": {
+                    "update_history": 
+                        {"date": edit_date,
+                            "action": "Content edited"}
+                }})
             flash("Hive Details Successfully Updated")
         except Exception as e:
             flash("Error ocurred. Hive not updated. Please try again")
@@ -336,6 +350,7 @@ def hive_inspection(hive_id):
             if 'colony' not in hive:
                 hive["colony"] = "unspecified"
             # get inspection data and insert into database
+            today = datetime.datetime.now()
             newInspection = {
                 "beekeeper": session["user"],
                 "apiary": hive["apiary"],
@@ -378,7 +393,8 @@ def hive_inspection(hive_id):
                 "supersChange": request.form.get("supersChange"),
                 # Inspection notes
                 "inspectionNotes": request.form.get("inspectionNotes"),
-                "date_added": datetime.datetime.now().strftime("%Y-%m-%d")
+                "date_added": today.strftime("%Y-%m-%d"),
+                "update_history": [{"date": today, "action": "New inspection record created"}]
             }
 
             mongo.db.hiveInspections.insert_one(newInspection)
