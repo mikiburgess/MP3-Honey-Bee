@@ -123,12 +123,17 @@ def signout():
 def register():
     if request.method == "POST":
         try:
-            print(request.form.get("firstname"))
+            # print(request.form.get("firstname"))
             # check if username already exists in db
             existing_user = mongo.db.siteUsers.find_one(
                 {"username": request.form.get("username").lower()})
             if existing_user:
                 flash("Username already exists")
+                return redirect(url_for("register"))
+
+            # check passwords match
+            if request.form.get("password") != request.form.get("password-repeat"):
+                flash("Passwords do not match. Please try again.")
                 return redirect(url_for("register"))
 
             # check if user is a beekeeper
