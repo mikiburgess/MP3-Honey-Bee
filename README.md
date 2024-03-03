@@ -362,6 +362,31 @@ Guidance for how to use the project repository for deploying the site or for und
 ## Project Review and Reflection
 
 
+### Improvements to Design and Development
+
+#### Defensive programming
+Currently the user is able to edit and delete data and is notified of success via flash messaging. However, functionality could be improved by adopting a more defensive approach to coding by including checks, asking users to actively confirm deletions and edits.
+
+#### Automated Testing
+Manual testing was undertaken before project completion. However, this process could be improved and the site more robust through the inclusion of automated testing.
+
+#### Site Security
+Site currently relies on HTTP. Future development should include upgrading this to HTTPS.
+
+
+### Future Features
+Aside from implementing the Future User Stories listed above, the site could be improved by undertaking some additional work on this current version. The initial improvements are listed in this section.
+
+#### Additional User Guidance
+Including popovers or tooltips would help users. In particular, including these on the hive inspection would be beneficial for new beekeepers who will have a lot to learn and handle out in the field. Providing guidance during inspections would support them in skill development and confidence growth.
+These popovers/tooltips would be an optional feature that could be turned off once no longer required.
+
+#### Text truncation
+Some areas of the site have the potential to become crowded by text. Description table columns in particular could potentially contain more text than fits comfortably on a small screen. In future text would be truncated according to standard breakpoints.
+
+
+
+
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
