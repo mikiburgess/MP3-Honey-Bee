@@ -3,7 +3,7 @@
 </p>
 
 
-<h1 align="center"> Honey Bee</h1>
+<h1 align="center">Honey Bee</h1>
 
  
 This repository and the accompanying interactive website is presented for Code Institute Milestone Project 3.
@@ -14,6 +14,13 @@ This repository and the accompanying interactive website is presented for Code I
 ![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F&up_message=online&up_color=green&down_message=offline&down_color=red&style=plastic)
 
+- - -
+
+<p align="center">
+    <img src="docs/images/am-i-responsive.png" alt="Illustration of the Honey Bee site across a variety of devices">
+</p>
+
+[Visit the Honey Bee site at Heroku](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/ "Honey Bee")
 
 - - -
 
@@ -55,17 +62,17 @@ The purpose of this project is to demonstrate ability to design and develop a da
 ## User Experience (UX)
 The intended users of this web application are amateur beekeepers. 
 In order to complete the British Beekeeping Association (BBKA) Certificate in Beekeeping Husbandry records need to be maintained of the checks carried out on every colony (hive). 
-Although there is no standardised approach for inspection record keeping some data must be retained, such as data about colony health. Many variations and suggestions exist to help beekeepers in maintaining their records, with the BBKA suggesting their own [Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system). 
+Although there is no standardised approach for inspection record keeping some data must be retained, such as data about colony health. Many variations and suggestions exist to help beekeepers in maintaining their records, with the BBKA suggesting their own [Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system "BBKA Hive Keeping Record Sheet"). 
 
 <p align="center">
-  <a href="docs/images/bbka-hive-recording-system.png">
+  <a href="docs/images/bbka-hive-recording-system.png" target="_blank">
     <img src="docs/images/bbka-hive-recording-system-small.png" alt="BBKA Hive Recording System">
   </a>
 <br>
 <em>Figure: BBKA Hive Recording System</em>
 </p>
 
-The aim of this application is to provide an online portal for beekeepers to maintain records of their colonies/hives and the apiaries in which they're located, plus a full digital record of every hive inspection. To this end the [BBKA Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system) has been used as the foundation for this hive inspection system.
+The aim of this application is to provide an online portal for beekeepers to maintain records of their colonies/hives and the apiaries in which they're located, plus a full digital record of every hive inspection. To this end the [BBKA Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system "BBKA Hive Keeping Record Sheet") has been used as the foundation for this hive inspection system.
 
 
 ### Project Goals
@@ -100,19 +107,22 @@ Some elements considered in the current design will not be implemented due to be
 Additional users and their user stories have been identified and are listed below. These have been flagged for future development as they fall outside the scope and requirements for Milestone Project 3.
 
 <details>
-<summary>Future User Stories<summary>
+
+<summary>Future User Stories (click to expand)</summary>
+
 In order to support the design and implementation decisions made during this project additional user stories were considered for three additional users: Site Administrator, Mentor and Site Visitor. Additional user stories for the primary intended users, amateur beekeepers, have also been noted.
 The following are outside scope for the first version of this site (as submitted for milestone project 3) but have been identified and noted to both demonstrate how this site will be developed post-MVP and to ensure that design/development decisions are made that will enable further development in future.
 
 * As a Site Administrator I want to ...
-  1. Maintain the accounts of registered site users.
-  2. Be able to edit roles of registered users.
+  1. Be able to manage the accounts of registered site users.
+  2. View edit history of apiary and beehive edits, in case of audits.
 
 * As a Beekeeper I'd like to ...
-	1. Have access to guidance regarding completing weekly check record.
+	1. Be able to more effectively track health concerns across my apiaries (FB, Varroa, etc), to facilitate reporting to [BeeBase](https://www.nationalbeeunit.com/).
   2. Be able to export hive records to PDF for printing and sharing with others, such as at local association meetings.
-  3. Create a profile for advertising my work to the local community.
-	4. Add images of my bees, with descriptions, to the site gallery to keep the local community informed about and engaged with my work.
+  3. Be able to review data edit history in case of auditing.
+  4. Create a profile for advertising my work to the local community.
+	5. Add images of my bees, with descriptions, to the site gallery to keep the local community informed about and engaged with my work.
 
 * As a Mentor I'd like to ...
   1. Be able to view the hive data for each of my mentee's apiaries.
@@ -130,7 +140,7 @@ The following are outside scope for the first version of this site (as submitted
 <!-- How is the information structured, and is it logically grouped? -->
 
 <p align="center">
-  <a href="docs/design/site-map.png">
+  <a href="docs/design/site-map.png" target="_blank">
     <img src="docs/design/site-map-small.png" alt="Site Map">
   </a>
 <br>
@@ -139,11 +149,11 @@ The following are outside scope for the first version of this site (as submitted
 
 
 <p align="center">
-  <a href="docs/design/schema.png">
-    <img src="docs/design/schema-small.png" alt="MongoDB Data Schema">
+  <a href="docs/design/schema.png" target="_blank">
+    <img src="docs/design/schema-small.png" alt="MongoDB Database Schema">
   </a>
 <br>
-<em>Figure: MongoDB Data Schema</em>
+<em>Figure: MongoDB Database Schema</em>
 </p>
 
 
@@ -161,6 +171,7 @@ The backend file structure, implementing the designs outlined above, was constru
     - 📂 templates            <-- Site pages
         - 📰 base.html        <-- Base HTML page using Jinja templating
         - 📰 *.html 
+    - 📂 docs                 <-- Location of project documentation files
 
 *Figure : Design of site file structure*
 
@@ -168,6 +179,32 @@ The backend file structure, implementing the designs outlined above, was constru
 
 ### Skeleton
 <!-- How the information should be implemented, and how the user will navigate through the info/features -->
+
+Honey Bee will be constructed using a `base` template file, and populated with data from other html files according to application endpoints defined in flask and content population using the Jinja templating framework. From the perspective of the site visitor however it will appear to be comprised of a number of distinct pages:
+
+- Home / Welcome Page
+- Sign in and Registration Pages
+- Apiary Pages: View all apiaries, add apiary, edit apiary, delete apiary
+- Hive Pages: View all hives, add hive, edit hive, delete hive
+- Hive Inspection Pages: View all inspection reports per hive, add inspection report, edit inspection report, delete inspection report.
+- Learn About Bees Page (draft content only)
+- A placeholder page for as-yet unimplemented content (included for illustration, although in practice all unimplemented functionality would be hidden from site visitors).
+- plus, for the unfortunate visitor, and error page informing them when something goes wrong.
+
+#### Error Handling
+
+Error handling will be provided throughout to ensure that user engagement is not interrupted by functional or runtime errors (or at least minimised). This error handling will be implemented as follows:
+
+- Failed Operations
+Flask's [flash messages](https://flask.palletsprojects.com/en/2.3.x/patterns/flashing/ "Message Flashing in Flask") will be employed throughout the site. These will keep the site user informed of backend functionality, informing them when events occur 'behind the scenes'. Users will mostly see messages relating to successful operations (successful login, data update or deletion, etc). Flash messages will also be used when an error occurs, such as when data cannot be located in the database, when a data update fails, and so on. 
+In addition to flash messages, every failed operation will be logged in the database for later review.
+
+- Application Exceptions
+When an exception is raised by the application an error page will be displayed including details of the error that occurred. This is included to 
+
+- Out of Scope Functionality
+Until all future functionality is completed, some elements of the site will not be active. Although these are outside the scope of this project, these may cause an issue to visitors of the initial site. As such, where a page is not yet available in the site the page `placeholder.html` will inform the visitor that the functionality has not yet been implemented.
+
 
 #### Wireframes
 Due to the primary aim of this site being a tool for beekeepers to use whilst on location, taking records whilst inspecting their bee colonies, the design focus has been on the mobile devices they will be using - smartphones and tablets. 
@@ -207,15 +244,90 @@ The user interface designs are separated into three groups: Apiary Management, H
 The design intention was to select colors that are associated with bees, honey and nature.
 
 #### Typography
-Fonts used across the site were selected using the [Fontjoy](https://fontjoy.com/) font pairing suggestion site, where fonts pairings are suggested using AI/Deep Learning. The heading font ([Montserrat](https://fonts.google.com/specimen/Montserrat)) was selected first, then complementary body ([PT Sans](https://fonts.google.com/specimen/PT+Sans)) and supporting ([Karma](https://fonts.google.com/specimen/Karma)) fonts generated and selected that complement the heading font.
+Fonts used across the site were chosen using the [Fontjoy](https://fontjoy.com/ "Fontjoy - Font suggestions using Deep Learning") font pairing suggestion site, where fonts pairings are suggested using AI/Deep Learning. The heading font ([Montserrat](https://fonts.google.com/specimen/Montserrat "Montserrat @ Google Fonts")) was selected first due to it's clear structure being easily visible on small viewports. The complementary body ([PT Sans](https://fonts.google.com/specimen/PT+Sans "PT Sans @ Google Fonts")) and supporting ([Karma](https://fonts.google.com/specimen/Karma "Karma @ Google Fonts")) fonts generated were selected based on those I felt complemented the heading font.
+
+<p align="center">
+  <img src="docs/design/site-fonts.png" alt="Site fonts identified using Fontjoy">
+<br>
+<em>Figure: Final font selection in <a href="https://fontjoy.com/" target="_blank">Fontjoy</a></em>
+</p>
 
 - - -
 <p align="center">
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
+- - -
+
+# Site Functionality
 
 - - -
+
+# Site Development
+
+## Technologies
+
+**Markup Languages**
+- [HTML](https://www.w3schools.com/html/html_intro.asp "HTML Introduction, W3Schools"): The standard web page markup language for constructing static web pages.
+- [Markdown](https://en.wikipedia.org/wiki/Markdown "Markdown overview, Wikipedia"): Use to produce project documentation, including this README.
+
+**Coding**
+- [Python](https://www.python.org/ "Python.org"): The Python programming language was used to provide the majority of the backend functionality.   
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/ "lask Microframework"): The Flask micro web framework was used to provide a web routing functionality.
+- [Jinja](https://jinja.palletsprojects.com/en/3.1.x/ "Jinja Templating Engine"): This templating language was used to enable dynamic data modifications in the web application from Python and Flask.
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/3.0.x/ "Werkzeug Application Library"): The *security* and *exceptions* modules of Werkzeug were employed to provide password encryption and route exception handling respectively to the web application.
+- [JavaScript](https://www.w3schools.com/js/js_intro.asp "JavaScript Introduction, W3Schools") & [jQuery](https://jquery.com/ "jQuery"): These were used to add additional functionality to the site, primarily for modifying the status of elements within HTML pages, 
+
+**Styling**
+- [Bootstrap 5.3](https://getbootstrap.com/ "Bootstrap"): The Bootstrap toolkit was used for site layout and styling. 
+- [CSS](https://www.w3schools.com/css/css_intro.asp "CSS Introduction, W3Schools"): Additional styling was added to the site using CSS.
+
+
+## Data Management
+
+The backend functionality of this web application is underpinned by [MongoDB](https://www.mongodb.com/ "MongoDB").
+
+This NoSQL database management system (DBMS) was chosen, primarily, for the following three reasons.
+  1. The database schema for this initial version of the web application isn't overly complex and is relatively static. Future developments would however require schema flexibility for efficient storing of profile data, images, and other unstructured data.
+  2. The flexibility of a MongoDB schema allows for maintaining a (short) record of each database update for each item in each collection, thus maintaining a history of edits. The current approach includes appending each update to an `update-history` array, currently in the form of  a dictionary containing a datetime stamp and comment. Storing this expanding array of dictionaries would not be possible in a relational database without breaking one of the key requirements for first normal form, where each attribute should be atomic.
+
+<p align="center">
+  <img src="docs/images/db-example-apiary.png" alt="Sample apiary database record">
+<br>
+<em>Figure: Sample apiary record from the project database, illustrating update history</a></em>
+</p>
+
+  3. Although relationships and referential integrity can be enforced, the approach to this is flexible and can be controlled by the application developer. This allows for more flexibility in developing this application such as allowing for future intended developments where an administrator can maintain records for apiaries that are no longer managed by a beekeeper. In a relational database breaking the relationship between beekeeper and apiary (or hive) would undermine referential integrity. This is not an issue however within a NoSQL schema.
+  
+
+
+
+## Tools
+This section lists the tools used during this project in support of the development and deployment stages.
+- VS Code: All code was developed using a local installation of VS Code. (Code Institute development tools were not used during this project)
+- [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools "DevTools"): Used throughout development to support page design, testing and accessibility. 
+- Git & GitHub: Git used for version control, with GitHub being employed as the online repository for all project work.
+- [Heroku](https://www.heroku.com/ "Heroku"): The Heroku platform has been used in this project to host the final, [deployed web site](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/ "Honey Bee"). 
+
+- - -
+
+# Testing
+
+Full overview and results of site testing can be found in [TESTING.MD](docs/TESTING.md).
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
+
+# Guide to Deployment and Development
+
+Guidance for how to use the project repository for deploying the site or for undertaking further local development can be found in [DEPLOYMENT.MD](docs/DEPLOYMENT.md).
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
+
+
 
 ## Credits
 
@@ -227,23 +339,22 @@ Fonts used across the site were selected using the [Fontjoy](https://fontjoy.com
 
 
 ### Additional Code and Resources
-- 
+- Inspiration for site button styling was taken from [CSS Scan](https://getcssscan.com/css-buttons-examples). 
 - Information badges at top of README created using [Shields.io](https://shields.io/)
 
 ### Learning Resources
-- Development of the two project markdown files were supported through reference to the following three resources:
+- Development of the two project markdown files were supported through reference to the following resources:
   - GitHub's [Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github) documentation, 
   - Kera Cudmore's [Readme Examples](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md) for Code Institute Diploma Students,
   - Adam Pritchard's [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 - General accessibility guidance was obtained from the [W3C ARIA guidelines](https://www.w3.org/WAI/ARIA/apg/).
-- Guidance on ARIA roles and attributes obtained from [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
+- Guidance on ARIA roles and descriptions obtained from [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
 
 - The following resources were used to develop coding skills, in addition to the Code Institute learning materials:
     - Information on using Bootstrap 5 was obtained from both the [Bootstrap 5.3 documentation](https://getbootstrap.com/docs/5.3/) and [W3Schools Bootstrap 5 Tutorial](https://www.w3schools.com/bootstrap5/index.php).
     - [MongoDB Atlas](https://www.mongodb.com/docs/atlas/) documentation and the [MongoDB University](https://learn.mongodb.com/) free courses.
     - Guidance on how to handle application errors, resulting in the inclusion of error handling endpoint and error.html file, obtained from [Flask's documentation](https://flask.palletsprojects.com/en/2.3.x/)
-
 - Guidance on using the three Lighthouse modes (user flows) was obtained from Google Chrome's [Lighthouse documentation](https://github.com/GoogleChrome/lighthouse/blob/HEAD/docs/user-flows.md).
 
 ### Inspiration
@@ -262,4 +373,6 @@ I would like to acknowledge the following people who helped me complete this mil
 <p align="center">
   <img src="docs/images/newbee.jpg" alt="Birth of a Bee, from Pixabay">
 </p>
+
 - - -
+
