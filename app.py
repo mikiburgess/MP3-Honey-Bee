@@ -70,6 +70,10 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/learn_about_bees")
+def learn_about_bees():
+    return render_template("learn_about_bees.html")
+
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":

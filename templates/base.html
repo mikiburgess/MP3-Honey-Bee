@@ -72,15 +72,12 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li class="nav-item"><a class="dropdown-item" href="{{ url_for('home') }}">Home</a>
                                     </li>
-                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true"
-                                            aria-disabled="true">Learn About Bees</a></li>
-                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true"
-                                            aria-disabled="true">Gallery</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('learn_about_bees') }}">Learn About Bees</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true">Gallery</a></li>
                                     {% if session.user %}
-                                    <li class="nav-item"><a class="dropdown-item disabled" href="#">My Profile</a></li>
+                                    <li class="nav-item"><a class="dropdown-item disabled" href="#" aria-disabled="true">My Profile</a></li>
                                     {% endif %}
-                                    <li class="nav-item"><a class="dropdown-item"
-                                            href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
+                                    <li class="nav-item"><a class="dropdown-item" href="{{ url_for('placeholder') }}">About 'Honey Bee'</a></li>
                                 </ul>
                             </li>
                             {% if session.user %}
