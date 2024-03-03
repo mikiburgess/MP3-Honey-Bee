@@ -77,7 +77,7 @@ def signin():
         # check username exists in db
         existing_user = mongo.db.siteUsers.find_one(
             {"username": request.form.get("username").lower()})
-    
+        # if user is registered, check password
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(existing_user["password"], request.form.get("password")):
@@ -95,10 +95,9 @@ def signin():
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("signin"))
         else:
-            # username doesn't exist
+            # username doesn't exist so inform user of error, without being specific (security)
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
-    
     return render_template("signin.html")
 
 
@@ -119,7 +118,6 @@ def register():
         # check if username already exists in db
         existing_user = mongo.db.siteUsers.find_one(
             {"username": request.form.get("username").lower()})
-        
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
@@ -162,13 +160,12 @@ def add_apiary():
     if request.method == "POST":
         try:
             existing_apiary = mongo.db.apiaries.find_one(
-                {"beekeeper": session["user"], 
+                {"beekeeper": session["user"],
                     "apiary": request.form.get("apiary").lower()})
             print(existing_apiary)
             if existing_apiary:
                 flash("Error: Apiary already exists")
                 return redirect(url_for("add_apiary"))
-            
             # add new apiary to database
             newApiary = {
                 "beekeeper": session["user"],
@@ -176,7 +173,6 @@ def add_apiary():
                 "description": request.form.get("apiary-description"),
                 "date_added": datetime.datetime.now().strftime("%d %B %Y")
             }
-        
             mongo.db.apiaries.insert_one(newApiary)
             flash("Success. New apiary added.")
             load_apiaries()
@@ -201,7 +197,7 @@ def manage_apiary(apiary_id):
         }
         mongo.db.apiaries.update_one({"_id": ObjectId(apiary_id)}, {"$set": submit})
         flash("Apiary Details Successfully Updated")
-    apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})  
+    apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
     return render_template("manage_apiary.html", apiary=apiary)
 
 
@@ -226,7 +222,6 @@ def hive_management(apiary):
         hives = list(mongo.db.hives.find(
             {"beekeeper": session["user"], "apiary": apiary}
         ).sort("colony", 1))
-        
     return render_template("hive_management.html", hives=hives)
 
 
@@ -254,7 +249,6 @@ def add_hive():
             print(e)
 
         return redirect(url_for('hive_management', apiary="all"))
-    
     return render_template("add_hive.html")
 
 
@@ -350,12 +344,11 @@ def hive_inspection(hive_id):
             print(e)
 
         return redirect(url_for('hive_inspection', hive_id=hive_id))
-    
     return render_template("hive_inspection.html", hive=hive)
 
 
 @app.route("/inspection_record/<hive_id>")
-def inspection_record(hive_id): 
+def inspection_record(hive_id):
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     inspections = list(mongo.db.hiveInspections.find(
             {"hiveID": ObjectId(hive_id)}).sort("inspectionDate", 1))
@@ -365,7 +358,7 @@ def inspection_record(hive_id):
 @app.route("/manage_inspection/<inspection_id>", methods=["GET", "POST"])
 def manage_inspection(inspection_id):
     inspection = mongo.db.hiveInspections.find_one({"_id": ObjectId(inspection_id)})
-    hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})    
+    hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})
     return render_template("manage_inspection.html", inspection=inspection, hive=hive)
 
 
