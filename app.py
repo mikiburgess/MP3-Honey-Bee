@@ -50,10 +50,14 @@ def load_apiaries():
  ---------------------
 """
 
-# NON-SPECIFIC ERROR HANDLER
-# @app.errorhandler(Exception)
-# def handle_exception(e):
-#     return render_template("error.html", e=e)
+# ERROR HANDLER ENDPOINTS
+@app.errorhandler(400)
+@app.errorhandler(401)
+@app.errorhandler(404)
+@app.errorhandler(500)
+@app.errorhandler(502)
+def page_not_found(error):
+    return render_template('error.html', error=error)
 
 
 # APPLICATION ENDPOINTS
@@ -73,6 +77,7 @@ def home():
 @app.route("/learn_about_bees")
 def learn_about_bees():
     return render_template("learn_about_bees.html")
+
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():

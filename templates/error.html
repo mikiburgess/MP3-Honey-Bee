@@ -19,7 +19,26 @@
     <!-- ** ERROR ** -->
     <div class="container text-center">
         <br>
-        <h3>We're sorry. Something has gone wrong.</h3>
+        <h3>We're sorry, something has gone wrong.</h3>
+        <br>
+        <!-- error message card -->
+        <div class="card text-center">
+            <div class="card-header">
+                <i class="material-icons">info</i> The following error was raised by this application
+            </div>
+            <div class="card-body">
+                <!-- <h5 class="card-title">The following error was raised by this application</h5> -->
+                <p class="card-text">{{ error }}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                If you think it's important, please raise this with the site administrator.
+                <br>
+                But it probably isn't so just ignore it and continue enjoying your day. Cheers <i
+                    class="material-icons">coffee</i>
+            </div>
+        </div>
+        
+        <br>
         <a href="{{ url_for('home') }}">Return home</a>
         <hr>
         <br>
