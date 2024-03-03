@@ -6,13 +6,18 @@
 <h1 align="center">Honey Bee</h1>
 
  
-This repository and the accompanying interactive website is presented for Code Institute Milestone Project 3.
+<p align="center"> This repository and the accompanying interactive website is presented for Code Institute Milestone Project 3.</p>
 
-
-![GitHub last commit](https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=green)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/t/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=yellow)
-![GitHub language count](https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github)
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F&up_message=online&up_color=green&down_message=offline&down_color=red&style=plastic)
+<p align="center">
+  <!-- GitHub Last Commit -->
+  <img src="https://img.shields.io/github/last-commit/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=green" alt="GitHub last commit"/>
+  <!-- GitHub commit activity -->
+  <img src="https://img.shields.io/github/commit-activity/t/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github&logoColor=yellow" alt="GitHub commit activity"/>
+  <!-- GitHub language count -->
+  <img src="https://img.shields.io/github/languages/count/mikiburgess/MP3-Honey-Bee?style=plastic&logo=github" alt="GitHub language count"/>
+  <!-- Website Status -->
+  <img src="https://img.shields.io/website?url=https%3A%2F%2Fmp3-honey-bee-be78d1a6d0c0.herokuapp.com%2F&up_message=online&up_color=green&down_message=offline&down_color=red&style=plastic" alt="Website Status"/>
+</p>
 
 - - -
 
@@ -60,6 +65,7 @@ The purpose of this project is to demonstrate ability to design and develop a da
 </p>
 
 ## User Experience (UX)
+
 The intended users of this web application are amateur beekeepers. 
 In order to complete the British Beekeeping Association (BBKA) Certificate in Beekeeping Husbandry records need to be maintained of the checks carried out on every colony (hive). 
 Although there is no standardised approach for inspection record keeping some data must be retained, such as data about colony health. Many variations and suggestions exist to help beekeepers in maintaining their records, with the BBKA suggesting their own [Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system "BBKA Hive Keeping Record Sheet"). 
@@ -74,7 +80,6 @@ Although there is no standardised approach for inspection record keeping some da
 
 The aim of this application is to provide an online portal for beekeepers to maintain records of their colonies/hives and the apiaries in which they're located, plus a full digital record of every hive inspection. To this end the [BBKA Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-system "BBKA Hive Keeping Record Sheet") has been used as the foundation for this hive inspection system.
 
-
 ### Project Goals
 The primary goal of this project is to design, develop and deploy an interactive website for amateur beekeepers, for the recording and maintaining of apiary and hive data. In particular, this site needs to be usable when on location, and therefore should be designed taking a mobile-first approach.
 
@@ -86,11 +91,9 @@ It's expected that additional editing and viewing of report data is likely to th
 
 ### Scope
 <!-- What features do we want to include in the design? What's on the table, and whats off (for now)? -->
-
 The scope of this application focuses on the implementation of a record-keeping. This will implement full CRUD functionality for data about apiaries, hives and hive records.
 
 The target audience for this application doesn't include professional bee farmers. These experienced professionals won't be aiming to complete the Certificate in Beekeeping Husbandry and will have more complex requirements for maintaining business records.
-
 
 #### User Stories
 The specific needs of the primary target users of this site, amateur beekeepers are outlines in the following user stories:
@@ -138,6 +141,7 @@ The following are outside scope for the first version of this site (as submitted
 
 ### Structure
 <!-- How is the information structured, and is it logically grouped? -->
+The site structure according to functionality groupings (not strictly mapped to site pages) is shown in the Site Map figure. At the backend all data will be stored online using MongoDB. The structure of the backend database is illustrated in the MongoDB Database Schema figure.
 
 <p align="center">
   <a href="docs/design/site-map.png" target="_blank">
@@ -176,7 +180,6 @@ The backend file structure, implementing the designs outlined above, was constru
 *Figure : Design of site file structure*
 
 
-
 ### Skeleton
 <!-- How the information should be implemented, and how the user will navigate through the info/features -->
 
@@ -200,7 +203,7 @@ Flask's [flash messages](https://flask.palletsprojects.com/en/2.3.x/patterns/fla
 In addition to flash messages, every failed operation will be logged in the database for later review.
 
 - Application Exceptions
-When an exception is raised by the application an error page will be displayed including details of the error that occurred. This is included to 
+When an exception is raised by the application an error page will be displayed including details of the error that occurred. This is included to ensure the application doesn't 'crash' but informs the user of events that have occurred. In order to handle such exceptions the site will employ the [Flash errorhandler endpoint](https://flask.palletsprojects.com/en/2.3.x/errorhandling/ "Flash Error Handling"). 
 
 - Out of Scope Functionality
 Until all future functionality is completed, some elements of the site will not be active. Although these are outside the scope of this project, these may cause an issue to visitors of the initial site. As such, where a page is not yet available in the site the page `placeholder.html` will inform the visitor that the functionality has not yet been implemented.
@@ -237,11 +240,21 @@ The user interface designs are separated into three groups: Apiary Management, H
 
 ### Surface
 <!-- What the product will actually look like, colors, typography, images, design elements, etc -->
+The surface design decisions were made ono consideration of keeping the interface simple, intuitive, with colors associated with nature and bees
 
 #### Site Icons
+All icons across the site are from Google's font library. These [Material Symbols and Icons](https://fonts.google.com/icons "Material Symbols and Icons") have ben selected to align most closely with the topic to which they're attached (such as a hive or bee) or familiarity to users (sign in and out, information and edit, cancel, etc). 
 
 #### Site Color Palette
 The design intention was to select colors that are associated with bees, honey and nature.
+
+Having selected a honey-yellow color this was entered into the online palette generator from [ColorSpace](https://mycolor.space/?hex=%23FFD340&sub=1 "Color palette suggestions") in order to generate suggested palette options. Picking a potential contracting color for site font text, [Adobe's Color Contrast Analyzer](https://color.adobe.com/create/color-contrast-analyzer "Color Contrast Analyzer") was used to tweak the color match to ensure the site is accessible to a wider audience of users.
+
+<p align="center">
+  <img src="docs/design/color-contrast-check.png" alt="Color contrast checker">
+<br>
+<em>Figure: Color contrast checker from <a href="https://color.adobe.com/create/color-contrast-analyzer" target="_blank">Adobe Accessibility Tools</a></em>
+</p>
 
 #### Typography
 Fonts used across the site were chosen using the [Fontjoy](https://fontjoy.com/ "Fontjoy - Font suggestions using Deep Learning") font pairing suggestion site, where fonts pairings are suggested using AI/Deep Learning. The heading font ([Montserrat](https://fonts.google.com/specimen/Montserrat "Montserrat @ Google Fonts")) was selected first due to it's clear structure being easily visible on small viewports. The complementary body ([PT Sans](https://fonts.google.com/specimen/PT+Sans "PT Sans @ Google Fonts")) and supporting ([Karma](https://fonts.google.com/specimen/Karma "Karma @ Google Fonts")) fonts generated were selected based on those I felt complemented the heading font.
@@ -252,16 +265,30 @@ Fonts used across the site were chosen using the [Fontjoy](https://fontjoy.com/ 
 <em>Figure: Final font selection in <a href="https://fontjoy.com/" target="_blank">Fontjoy</a></em>
 </p>
 
+#### Site Images
+All images used across Honey Bee were chosen from Pixabay from their royalty free library.
+
+#### Accessibility
+Site accessibility was considered throughout the design, development and testing process. This was guided by [W3C ARIA guidelines](https://www.w3.org/WAI/ARIA/apg/ "ARIA Guidelines") and [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA "ARIA Guidelines").
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
 - - -
+
 <p align="center">
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
-- - -
-
 # Site Functionality
 
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
 - - -
+
+<p align="center">
+  <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
 
 # Site Development
 
@@ -300,14 +327,15 @@ This NoSQL database management system (DBMS) was chosen, primarily, for the foll
   3. Although relationships and referential integrity can be enforced, the approach to this is flexible and can be controlled by the application developer. This allows for more flexibility in developing this application such as allowing for future intended developments where an administrator can maintain records for apiaries that are no longer managed by a beekeeper. In a relational database breaking the relationship between beekeeper and apiary (or hive) would undermine referential integrity. This is not an issue however within a NoSQL schema.
   
 
-
-
 ## Tools
 This section lists the tools used during this project in support of the development and deployment stages.
 - VS Code: All code was developed using a local installation of VS Code. (Code Institute development tools were not used during this project)
 - [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools "DevTools"): Used throughout development to support page design, testing and accessibility. 
 - Git & GitHub: Git used for version control, with GitHub being employed as the online repository for all project work.
 - [Heroku](https://www.heroku.com/ "Heroku"): The Heroku platform has been used in this project to host the final, [deployed web site](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/ "Honey Bee"). 
+
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
 
@@ -327,18 +355,25 @@ Guidance for how to use the project repository for deploying the site or for und
 
 - - -
 
+<p align="center">
+  <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
+</p>
 
+## Project Review and Reflection
+
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
 
 ## Credits
 
 ### Site Media
-- All images obtained from [Pixabay](https://pixabay.com/) are free to use under their [Content License](https://pixabay.com/service/license-summary/). The individual creators for these images are as follows:
-  - image - [attribution](url)
-  - 
+- All images obtained from [Pixabay](https://pixabay.com/) are free to use under their [Content License](https://pixabay.com/service/license-summary/).
 - Google [fonts](https://fonts.google.com/) and [icons](https://fonts.google.com/icons) have been used across the site.
 
-
 ### Additional Code and Resources
+- Exception handling code was adapted from the [Flash errorhandler endpoint](https://flask.palletsprojects.com/en/2.3.x/errorhandling/ "Flash Error Handling") example code.
 - Inspiration for site button styling was taken from [CSS Scan](https://getcssscan.com/css-buttons-examples). 
 - Information badges at top of README created using [Shields.io](https://shields.io/)
 
@@ -358,7 +393,7 @@ Guidance for how to use the project repository for deploying the site or for und
 - Guidance on using the three Lighthouse modes (user flows) was obtained from Google Chrome's [Lighthouse documentation](https://github.com/GoogleChrome/lighthouse/blob/HEAD/docs/user-flows.md).
 
 ### Inspiration
-- 
+- Inspiration for the Hive Inspection Form was taken from the [British Beekeeping Association (BBKA) Hive Keeping Record Sheet](https://www.bbka.org.uk/bbka-hive-keeping-record-systemn "BBKA"), my need to maintain such records as a new beekeeper and not being able to find a simple-to-use digital system for recording this data.
 
 ### Acknowledgements
 I would like to acknowledge the following people who helped me complete this milestone project:
@@ -368,11 +403,11 @@ I would like to acknowledge the following people who helped me complete this mil
 - My volunteer human testing and feedback team of Dr N Caine, Mr M Burgess.
 
 
-<kbd>[Return to ToC](#Table-of-Contents)</kbd>
-
 <p align="center">
   <img src="docs/images/newbee.jpg" alt="Birth of a Bee, from Pixabay">
 </p>
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
 
