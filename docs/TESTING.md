@@ -4,13 +4,11 @@
 
 <h1 align="center">Testing Honey Bee</h1>
 
+> Overview of Web Application Testing
 
-Overview of the testing of Milestone Project 3 - Honey Bee.
+This document provides an overview of the testing of Milestone Project 3 - the Honey Bee web application project.
 
-<p align="center">
-    <img src="" alt="Illustration of site across a variety of devices">
-</p>
-
+- - -
 
 ## Table of Contents
 
@@ -44,10 +42,8 @@ Browser compatibility testing was completed with Chrome, Firefox, Safari and Ope
 | Intended appearance? | [x] | [x] | [x] | [x] | No issues identified |
 | Intended responsiveness? | [x] | [x] | [x] | [x] | No issues identified |
 
-Results of the testing undertaken on each browser can also be seen in the following folders: [Chrome](browsers/chrome/), [Firefox](browsers/firefox/), [Safari](browsers/safari/), [Opera](browsers/opera/).
-
-
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
 - - -
 
 ## Site Responsiveness
@@ -62,10 +58,29 @@ Responsiveness tests were undertaken using Google Chrome DevTools and the online
 
 Due to lack of access to multiple devices, all device responsiveness tests were completed using the [Google Chrome DevTools simulation tool](https://developer.chrome.com/docs/devtools/device-mode/). Before professional site deployment, responsiveness would need to be tested on real devices.
 
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
 
 ## Lighthouse Testing
+The [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) tool in Google Chrome was used to test site performance, accessibility and best practice.
+
+| *PAGE* | *RESULT* | *REPORT* |
+| :--- | :---: | :---: |
+| Home page | ![Home page result](testing/lighthouse-summaries/lighthouse-home-page.png) | [pdf](testing/lighthouse-reports/lighthouse-home-page.pdf) |
+| View Apiaries | ![View Apiaries result](testing/lighthouse-summaries/lighthouse-apiary-table.png) | [pdf](testing/lighthouse-reports/lighthouse-apiary-table.pdf) |
+| View Hives | ![View Hives result](testing/lighthouse-summaries/lighthouse-hive-table.png) | [pdf](testing/lighthouse-reports/lighthouse-hive-table.pdf) |
+| View Hive Inspections | ![View Inspections result](testing/lighthouse-summaries/lighthouse-inspection-table.png) | [pdf](testing/lighthouse-reports/lighthouse-inspection-table.pdf) |
+| Record a Hive Inspection | ![Record Inspections result](testing/lighthouse-summaries/lighthouse-record-inspection.png) | [pdf](testing/lighthouse-reports/lighthouse-record-inspection.pdf) |
+| View a Inspection Report | ![View Inspection result](testing/lighthouse-summaries/lighthouse-view-inspection.png) | [pdf](testing/lighthouse-reports/lighthouse-view-inspection.pdf) |
+| Learn About Bees | ![Learn About Bees result](testing/lighthouse-summaries/lighthouse-learn-about-bees.png) | [pdf](testing/lighthouse-reports/lighthouse-learn-about-bees.pdf) |
+| About Honey Bee | ![About Page result](testing/lighthouse-summaries/lighthouse-about-page.png) | [pdf](testing/lighthouse-reports/lighthouse-about-page.pdf) |
+
+*Table: Summary of Lighthouse Testing Results*
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
 
 ## User Stories
 To validate the achievement of original goals for this MP3 web application, the table below revisits every user story and reviews how each is achieved.
