@@ -25,7 +25,9 @@
     <img src="docs/images/am-i-responsive.png" alt="Illustration of the Honey Bee site across a variety of devices">
 </p>
 
-[Visit the Honey Bee site at Heroku](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/ "Honey Bee")
+<p align="center"> 
+  <a href="https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/" target="_blank">Visit the Honey Bee site on Heroku</a>
+</p>
 
 - - -
 
@@ -98,12 +100,26 @@ The target audience for this application doesn't include professional bee farmer
 #### User Stories
 The specific needs of the primary target users of this site, amateur beekeepers are outlines in the following user stories:
 
-* As a Beekeeper I want to ...
-  1. Be able to maintain a record of all of my apiaries (create, read, update & delete)
-  2. Be able to maintain a record of all of my hives/colonies (create, read, update & delete)
-  3. Record details of my weekly check of each hive, and save them for later use.
-	4. View a full inspection report for each of my hives
-	5. Have a registered account to secure access to my records
+*As a Beekeeper I want to ...*
+  1. Be able to maintain a record of all of my apiaries:
+    1. create apiary record
+    2. read (view) apiary record
+    3. update apiary record
+    4. delete apiary record
+    5. view all apiary records
+  2. Be able to maintain a record of all of my hives/colonies:
+    1. create hive record
+    2. read (view) hive record
+    3. update hive record
+    4. delete hive record
+    5. view all hive records
+  3. Record details of my weekly hive inspections, and save them for later use:
+    1. create hive inspection record
+    2. read (view) inspection records
+    3. update inspection record
+    4. delete inspection record
+    5. view all inspection records for each of my hives
+  4. Have a registered account to secure access to my records
 
 #### Outside Scope
 Some elements considered in the current design will not be implemented due to being outside the scope described above. These include general information pages about honey bees and the beekeeping. 
@@ -126,6 +142,8 @@ The following are outside scope for the first version of this site (as submitted
   3. Be able to review data edit history in case of auditing.
   4. Create a profile for advertising my work to the local community.
 	5. Add images of my bees, with descriptions, to the site gallery to keep the local community informed about and engaged with my work.
+  6. Be able to export my data.
+  7. Be able to delete my account.
 
 * As a Mentor I'd like to ...
   1. Be able to view the hive data for each of my mentee's apiaries.
@@ -279,7 +297,32 @@ Site accessibility was considered throughout the design, development and testing
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
-# Site Functionality
+## Site Functionality
+
+
+**User access** - registration, sign in & sign out
+
+**Apiary Management** - adding, viewing, editing & deleting
+
+**Hive Management** - adding, viewing, editing & deleting
+
+**Hive Inspections** - adding, viewing, editing, deleting.
+
+
+**Error handling**
+- Failed Operations - flash messages & error logging
+
+```
+flash("Error ocurred. New apiary not added. Please try again")
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(), 
+                 "action": "Add new apiary",
+                 "exception": e})
+```
+
+- Application Exceptions: error page
+- Out of Scope Functionality - placeholder page
+
 
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
@@ -290,9 +333,9 @@ Site accessibility was considered throughout the design, development and testing
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
-# Site Development
+## Site Development
 
-## Technologies
+### Technologies
 
 **Markup Languages**
 - [HTML](https://www.w3schools.com/html/html_intro.asp "HTML Introduction, W3Schools"): The standard web page markup language for constructing static web pages.
@@ -310,7 +353,7 @@ Site accessibility was considered throughout the design, development and testing
 - [CSS](https://www.w3schools.com/css/css_intro.asp "CSS Introduction, W3Schools"): Additional styling was added to the site using CSS.
 
 
-## Data Management
+### Data Management
 
 The backend functionality of this web application is underpinned by [MongoDB](https://www.mongodb.com/ "MongoDB").
 
@@ -327,19 +370,19 @@ This NoSQL database management system (DBMS) was chosen, primarily, for the foll
   3. Although relationships and referential integrity can be enforced, the approach to this is flexible and can be controlled by the application developer. This allows for more flexibility in developing this application such as allowing for future intended developments where an administrator can maintain records for apiaries that are no longer managed by a beekeeper. In a relational database breaking the relationship between beekeeper and apiary (or hive) would undermine referential integrity. This is not an issue however within a NoSQL schema.
   
 
-## Tools
+### Tools
 This section lists the tools used during this project in support of the development and deployment stages.
 - VS Code: All code was developed using a local installation of VS Code. (Code Institute development tools were not used during this project)
 - [Google Chrome Developer Tools](https://developer.chrome.com/docs/devtools "DevTools"): Used throughout development to support page design, testing and accessibility. 
 - Git & GitHub: Git used for version control, with GitHub being employed as the online repository for all project work.
 - [Heroku](https://www.heroku.com/ "Heroku"): The Heroku platform has been used in this project to host the final, [deployed web site](https://mp3-honey-bee-be78d1a6d0c0.herokuapp.com/ "Honey Bee"). 
-
+- [Tinyfy](https://tinypng.com/ "Tnyfy - compress your images"): Used to optimize site images to reduce download time.
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
 
-# Testing
+## Testing
 
 Full overview and results of site testing can be found in [TESTING.MD](docs/TESTING.md).
 
@@ -347,7 +390,7 @@ Full overview and results of site testing can be found in [TESTING.MD](docs/TEST
 
 - - -
 
-# Guide to Deployment and Development
+## Guide to Deployment and Development
 
 Guidance for how to use the project repository for deploying the site or for undertaking further local development can be found in [DEPLOYMENT.MD](docs/DEPLOYMENT.md).
 
@@ -360,7 +403,7 @@ Guidance for how to use the project repository for deploying the site or for und
 </p>
 
 ## Project Review and Reflection
-
+There are a number of areas where this project could be improved, and where the site can (and will) be developed further.
 
 ### Improvements to Design and Development
 
@@ -384,8 +427,11 @@ These popovers/tooltips would be an optional feature that could be turned off on
 #### Text truncation
 Some areas of the site have the potential to become crowded by text. Description table columns in particular could potentially contain more text than fits comfortably on a small screen. In future text would be truncated according to standard breakpoints.
 
+#### Hive Report Management
+When a Hive is deleted, hive inspection reports are currently left unmodified in the database. This is to ensure all records are maintained for reference and auditing. In future versions of this site hives the hive owner will be able to maintain access to all previous records and choose to either export them or permanently delete them. The site administrator will also have access to be able to create digital backups or export to a hard copy.
 
-
+### Hive and Apiary Record Deletion
+Currently, when deletion is selected the records are deleted from the database. In future there will be a two-stage delete where the records are flagged as historical. They can the be deleted at a later date once definitely no longer required (eg, when reporting period has passed, according to legal record keeping deadline, etc.)
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
