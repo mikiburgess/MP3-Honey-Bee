@@ -172,7 +172,9 @@ The following tests could not be undertaken within the project timeframe:
  - User testing with a selection of volunteer users, including amateur beekeepers.
  - Production of illustrations of testing responsiveness using Google Chrome DevTools.
  - Production of illustrations of testing site across a range of browsers.
+ - Inclusion of automated testing.
  - Testing site on mobile devices, including tests in apiary environment (testing access speed and usability 'in the field').
+
 
 Before the further development outlined in the README file is undertaken the above additional tests would be completed.
 
