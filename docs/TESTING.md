@@ -19,7 +19,7 @@ This document provides an overview of the testing of Milestone Project 3 - the H
    - [Lighthouse Testing](#Lighthouse-Testing)
    - [User Stories](#User-Stories)
    - [Features](#Features)
-   - [Bugs and Issues](#Bugs-and-Issues)
+   - [Issues](#Issues)
 
 
 - - -
@@ -57,6 +57,50 @@ Responsiveness tests were undertaken using Google Chrome DevTools and the online
 </p>
 
 Due to lack of access to multiple devices, all device responsiveness tests were completed using the [Google Chrome DevTools simulation tool](https://developer.chrome.com/docs/devtools/device-mode/). Before professional site deployment, responsiveness would need to be tested on real devices.
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
+
+## Code Validation
+
+### Python
+
+Python file `app.py` was validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/).
+
+<p align="center">
+  <img src="testing/code-validation/ci-python-linter.png" alt="Results of Python Validation">
+<br>
+<em>Figure: CI Python Linter Result</em>
+</p>
+
+No issues identified.
+
+### JavaScript
+
+JavaScript file `script.js` was validated using [JSHint v2.13](https://jshint.com/). 
+
+<p align="center">
+  <img src="testing/code-validation/script_js.png" alt="Results of JavaScript validation">
+<br>
+<em>Figure: JavaScript Validation Result</em>
+</p>
+
+JSHint highlighted some undefined variables and unused functions. These were due to them being used/accessed from within the HTML pages rather than within the script itself. There were no other issues.
+
+
+### CSS Validation
+
+The [W3C Jigsaw Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) was used to check project CSS (using the 'direct input' option).
+
+<p align="center">
+  <img src="testing/code-validation/css-validation.png" alt="Results of CSS validation">
+<br>
+<em>Figure: CSS Validation Result</em>
+</p>
+
+No errors were raised. 
+8 warnings were flagged relating to reference to vendor toolkits, which had been included in addition to non-vendor specific code to support broader access. These are therefore of no concern.
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
@@ -115,31 +159,29 @@ To validate the achievement of original goals for this MP3 web application, the 
 
 
 ## Features
-All site features have been manually tested. The results of these tests are shown in the tables below:
+All site features have been manually tested. The full set of testing images can be found in the [Walkthrough](images/walkthrough/) folder.
 
-| Page | Feature | Expected Outcome | Action | Result | Pass/Fail | 
-| :---: | ------- | ------- | ------- | ------- | :-----: |
-| Home | '*Sign In*' button | Clicking the '*Sign In*' button will take the user to a page to sign into their account | Click the '*Sign In*' button | Sign In page is displayed | Pass | 
-|  |  |  |  |  |  |
-
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-
-*Table: Result of feature tests*
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
 - - -
 
-| .. | Results |
-| --- | --- | 
-| | <ul><li>- [x] completed</li></ul> | 
-| | <ul><li>- [ ] completed</li></ul> | 
+## Issues
+
+The following tests could not be undertaken within the project timeframe:
+ - User testing with a selection of volunteer users, including amateur beekeepers.
+ - Production of illustrations of testing responsiveness using Google Chrome DevTools.
+ - Production of illustrations of testing site across a range of browsers.
+ - Testing site on mobile devices, including tests in apiary environment (testing access speed and usability 'in the field').
+
+Before the further development outlined in the README file is undertaken the above additional tests would be completed.
+
+
+<p align="center">
+  <img src="images/newbee.jpg" alt="Birth of a Bee, from Pixabay">
+</p>
+
+<kbd>[Return to ToC](#Table-of-Contents)</kbd>
+
+- - -
+
