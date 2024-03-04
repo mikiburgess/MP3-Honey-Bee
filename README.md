@@ -303,14 +303,15 @@ Site accessibility was considered throughout the design, development and testing
 ## Site Functionality
 This section provides an overview of the application functionality. Further illustrations of application functionality can be found in the accompanying [TESTING](docs/TESTING.md) document.
 
-**User access** - [registration](docs/images/walkthrough/05-register-complete.png), [sign in](docs/images/walkthrough/07-signin.png) & [sign out](docs/images/walkthrough/01-home.png)
+ - **User access** - [registration](docs/images/walkthrough/05-register-complete.png), [sign in](docs/images/walkthrough/07-signin.png) & [sign out](docs/images/walkthrough/01-home.png)
 
-**Apiary Management** - [adding](docs/images/walkthrough/10-apiary-newentry.png), [viewing](docs/images/walkthrough/13-apiary-view.png), [view all](docs/images/walkthrough/11-apiary-list.png), [editing](docs/images/walkthrough/14-apiary-update.png) & [deleting](docs/images/walkthrough/16-apiary-deletion.png)
+ - **Apiary Management** - [adding](docs/images/walkthrough/10-apiary-newentry.png), [viewing](docs/images/walkthrough/13-apiary-view.png), [view all](docs/images/walkthrough/11-apiary-list.png), [editing](docs/images/walkthrough/14-apiary-update.png) & [deleting](docs/images/walkthrough/16-apiary-deletion.png)
 
-**Hive Management** - [adding](docs/images/walkthrough/20-hive-newhive.png), [viewing one](docs/images/walkthrough/22-hive-view.png), [view all](docs/images/walkthrough/21-hive-list.png), [editing](docs/images/walkthrough/23-hive-update.png) & [deleting](docs/images/walkthrough/26-hive-delete.png)
+ - **Hive Management** - [adding](docs/images/walkthrough/20-hive-newhive.png), [viewing one](docs/images/walkthrough/22-hive-view.png), [view all](docs/images/walkthrough/21-hive-list.png), [editing](docs/images/walkthrough/23-hive-update.png) & [deleting](docs/images/walkthrough/26-hive-delete.png)
 
-**Hive Inspections** - [adding](docs/images/walkthrough/32-hive-inspectionformfilled.png), [viewing](docs/images/walkthrough/35-hive-inspection-record.png), [view all](docs/images/walkthrough/34-hive-inspectionlist.png), editing, deleting.
+ - **Hive Inspections** - [adding](docs/images/walkthrough/32-hive-inspectionformfilled.png), [viewing](docs/images/walkthrough/35-hive-inspection-record.png), [view all](docs/images/walkthrough/34-hive-inspectionlist.png), editing, deleting.
 
+- **Additional Pages** - [home page](docs/images/walkthrough/01-home.png), [learn about bees](docs/images/walkthrough/51-learn-about-bees.png) & [about Honey Bee](docs/images/walkthrough/52-about-page.png)
 
 ### Error Handling
 This application has been developed with the intention of it failing gracefully when unforeseen errors occur, and keeping the user informed at all times.
@@ -447,6 +448,9 @@ Manual testing was undertaken before project completion. However, this process c
 
 #### Site Security
 Site currently relies on HTTP. Future development should include upgrading this to HTTPS.
+
+#### Color-Coding Flash Messages
+Currently flash messages are displayed green. In the next stage of development these would be altered according to the type of message being displayed, such as red for errors/warnings. Using familiar and intuitive colors wil improve the user experience.
 
 
 ### Future Features
