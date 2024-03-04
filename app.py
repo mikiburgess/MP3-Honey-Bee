@@ -79,6 +79,11 @@ def learn_about_bees():
     return render_template("learn_about_bees.html")
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
     if request.method == "POST":
@@ -121,28 +126,16 @@ def signout():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    register = {}
     if request.method == "POST":
         try:
-            # print(request.form.get("firstname"))
-            # check if username already exists in db
-            existing_user = mongo.db.siteUsers.find_one(
-                {"username": request.form.get("username").lower()})
-            if existing_user:
-                flash("Username already exists")
-                return redirect(url_for("register"))
-
-            # check passwords match
-            if request.form.get("password") != request.form.get("password-repeat"):
-                flash("Passwords do not match. Please try again.")
-                return redirect(url_for("register"))
-
             # check if user is a beekeeper
             if request.form.get("beekeeper"):
                 beekeeper = True
             else:
                 beekeeper = False
 
-            # add user registration to database
+            # store user entered data
             register = {
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(request.form.get("password")),
@@ -151,17 +144,32 @@ def register():
                 "beekeeper": beekeeper,
                 "administrator": False
             }
-            mongo.db.siteUsers.insert_one(register)
+            
+            # check if username already exists in db
+            existing_user = mongo.db.siteUsers.find_one(
+                {"username": request.form.get("username").lower()})
+            if existing_user:
+                flash("Username already exists")
+                return render_template("register.html", register=register)
 
+            # check passwords match
+            if request.form.get("password") != request.form.get("password-repeat"):
+                flash("Passwords do not match. Please try again.")
+                return render_template("register.html", register=register)
+
+            # data validation complete so record details in database
+            mongo.db.siteUsers.insert_one(register)
             flash("Registration successful.  You can now sign in.")
             return redirect(url_for("signin"))
+        
         except Exception as e:
             flash("Error ocurred. Registration unsuccessful. Please try again")
             mongo.db.exceptionLog.insert_one(
                 {"datetime": datetime.datetime.now(),
                  "action": "Register new user",
                  "exception": e})
-    return render_template("register.html")
+            
+    return render_template("register.html", register=register)
 
 
 @app.route("/apiary_management")
