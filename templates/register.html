@@ -56,11 +56,21 @@
                 <label for="floatingPassword">Choose your password</label>
             </div>
 
-            <!-- reenter password -->
+            <!-- re-enter password -->
             <div class="form-floating">
                 <input type="password" class="form-control validate" id="password-repeat" name="password-repeat"
                     placeholder="Repeat Password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9{5,15}]$" required>
                 <label for="password-repeat">Retype your password</label>
+            </div>
+
+            <!-- account type -->
+            <div class="d-grid gap-2 gap-md-5 d-flex justify-content-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" role="checkbox" 
+                    id="human-user" name="human-user" required>
+                    <label class="form-check-label" for="human-user" 
+                    aria-label="Tick the checkbox to confirm you are a human">I'm a human. Please let me in!</label>
+                </div>
             </div>
 
             <!-- form buttons -->
