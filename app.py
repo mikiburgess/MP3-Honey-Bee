@@ -14,7 +14,7 @@ from flask import (
     redirect, request, session, url_for)
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.exceptions import HTTPException
-from bson.objectid import ObjectId  # Enables us to work with MongoDB Object IDs
+from bson.objectid import ObjectId
 
 if os.path.exists("env.py"):
     import env
@@ -49,6 +49,7 @@ def load_apiaries():
  APPLICATION ENDPOINTS
  ---------------------
 """
+
 
 # ERROR HANDLER ENDPOINTS
 @app.errorhandler(400)
@@ -93,7 +94,8 @@ def signin():
         # if user is registered, check password
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"],
+                                   request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 session["beekeeper"] = existing_user["beekeeper"]
                 session["admin"] = existing_user["administrator"]
@@ -108,7 +110,7 @@ def signin():
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("signin"))
         else:
-            # username doesn't exist so inform user of error, without being specific (security)
+            # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("signin"))
     return render_template("signin.html")
@@ -138,13 +140,14 @@ def register():
             # store user entered data
             register = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(
+                    request.form.get("password")),
                 "firstname": request.form.get("firstname").lower(),
                 "surname": request.form.get("surname").lower(),
                 "beekeeper": beekeeper,
                 "administrator": False
             }
-            
+
             # check if username already exists in db
             existing_user = mongo.db.siteUsers.find_one(
                 {"username": request.form.get("username").lower()})
@@ -153,7 +156,8 @@ def register():
                 return render_template("register.html", register=register)
 
             # check passwords match
-            if request.form.get("password") != request.form.get("password-repeat"):
+            if request.form.get("password") != request.form.get(
+                    "password-repeat"):
                 flash("Passwords do not match. Please try again.")
                 return render_template("register.html", register=register)
 
@@ -161,14 +165,14 @@ def register():
             mongo.db.siteUsers.insert_one(register)
             flash("Registration successful.  You can now sign in.")
             return redirect(url_for("signin"))
-        
+
         except Exception as e:
             flash("Error ocurred. Registration unsuccessful. Please try again")
             mongo.db.exceptionLog.insert_one(
                 {"datetime": datetime.datetime.now(),
                  "action": "Register new user",
                  "exception": e})
-            
+
     return render_template("register.html", register=register)
 
 
@@ -198,7 +202,8 @@ def add_apiary():
                 "apiary": request.form.get("apiary").lower(),
                 "description": request.form.get("apiary-description"),
                 "date_added": today.strftime("%d %B %Y"),
-                "update_history": [{"date": today, "action": "New apiary created"}]
+                "update_history": [{"date": today,
+                                    "action": "New apiary created"}]
             }
             mongo.db.apiaries.insert_one(newApiary)
             flash("Success. New apiary added.")
@@ -206,7 +211,7 @@ def add_apiary():
         except Exception as e:
             flash("Error ocurred. New apiary not added. Please try again")
             mongo.db.exceptionLog.insert_one(
-                {"datetime": datetime.datetime.now(), 
+                {"datetime": datetime.datetime.now(),
                  "action": "Add new apiary",
                  "exception": e})
         return redirect(url_for('apiary_management', apiary="all"))
@@ -221,7 +226,7 @@ def manage_apiary(apiary_id):
             edit_date = datetime.datetime.now()
             # set data for apiary
             mongo.db.apiaries.update_one(
-                {"_id": ObjectId(apiary_id)}, 
+                {"_id": ObjectId(apiary_id)},
                 {"$set": {
                     "beekeeper": session["user"],
                     "apiary": request.form.get("apiary"),
@@ -232,7 +237,7 @@ def manage_apiary(apiary_id):
             mongo.db.apiaries.update_one(
                 {"_id": ObjectId(apiary_id)},
                 {"$addToSet": {
-                    "update_history": 
+                    "update_history":
                         {"date": edit_date,
                             "action": "Content edited"}
                 }})
@@ -240,7 +245,8 @@ def manage_apiary(apiary_id):
         except Exception as e:
             flash("Error ocurred. Apiary not updated. Please try again")
             mongo.db.exceptionLog.insert_one(
-                {"datetime": datetime.datetime.now(), "action": "Update apiary", "exception": e})
+                {"datetime": datetime.datetime.now(),
+                 "action": "Update apiary", "exception": e})
 
     apiary = mongo.db.apiaries.find_one({"_id": ObjectId(apiary_id)})
     return render_template("manage_apiary.html", apiary=apiary)
@@ -294,7 +300,8 @@ def add_hive():
                 "queenColor": request.form.get("queenColor").lower(),
                 "description": request.form.get("hiveDescription"),
                 "date_added": today.strftime("%d %B %Y"),
-                "update_history": [{"date": today, "action": "New hive created"}]
+                "update_history": [{"date": today,
+                                    "action": "New hive created"}]
             }
             mongo.db.hives.insert_one(newHive)
             flash("Success. New hive added.")
@@ -330,7 +337,7 @@ def manage_hive(hive_id):
             mongo.db.hives.update_one(
                 {"_id": ObjectId(hive_id)},
                 {"$addToSet": {
-                    "update_history": 
+                    "update_history":
                         {"date": edit_date,
                             "action": "Content edited"}
                 }})
@@ -416,7 +423,8 @@ def hive_inspection(hive_id):
                 # Inspection notes
                 "inspectionNotes": request.form.get("inspectionNotes"),
                 "date_added": today.strftime("%Y-%m-%d"),
-                "update_history": [{"date": today, "action": "New inspection record created"}]
+                "update_history": [{"date": today,
+                                    "action": "New inspection record created"}]
             }
 
             mongo.db.hiveInspections.insert_one(newInspection)
@@ -438,14 +446,17 @@ def inspection_record(hive_id):
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     inspections = list(mongo.db.hiveInspections.find(
             {"hiveID": ObjectId(hive_id)}).sort("inspectionDate", 1))
-    return render_template("inspection_record.html", hive=hive, inspections=inspections)
+    return render_template("inspection_record.html",
+                           hive=hive, inspections=inspections)
 
 
 @app.route("/manage_inspection/<inspection_id>", methods=["GET", "POST"])
 def manage_inspection(inspection_id):
-    inspection = mongo.db.hiveInspections.find_one({"_id": ObjectId(inspection_id)})
+    inspection = mongo.db.hiveInspections.find_one(
+        {"_id": ObjectId(inspection_id)})
     hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})
-    return render_template("manage_inspection.html", inspection=inspection, hive=hive)
+    return render_template("manage_inspection.html",
+                           inspection=inspection, hive=hive)
 
 
 @app.route('/delete_inspection/<inspection_id>')
