@@ -93,7 +93,8 @@ p, form, button {
     font-family: PT Sans, sans-serif;
 }
 
-footer {
+footer,
+p.project-explanation {
     font-family: Karma, sans-serif;
 }
 
@@ -103,6 +104,36 @@ footer {
     margin-bottom: 20px;
 }
 
+.section-header {
+    margin-top: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+p.project-explanation {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.row .project-explanation {
+    margin-top: 30px;
+    margin-bottom: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.accordion {
+    --bs-accordion-active-background-color: var(--honey);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--honey);
+}
+
+.accordion-button.collapsed {
+    background-color: var(--pale);
+}
 
 /* ICON STYLES  --------------------------------------------- */
 
@@ -336,6 +367,11 @@ input, select, textarea {
         margin-top: 25px;
         min-height: 250px;
         max-height: 300px;
+    }
+    
+    .row .project-explanation {
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 
