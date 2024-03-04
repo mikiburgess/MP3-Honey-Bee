@@ -120,6 +120,8 @@ The specific needs of the primary target users of this site, amateur beekeepers 
     4. delete inspection record
     5. view all inspection records for each of my hives
   4. Have a registered account to secure access to my records
+    1. create account
+    2. sign in to account
 
 #### Outside Scope
 Some elements considered in the current design will not be implemented due to being outside the scope described above. These include general information pages about honey bees and the beekeeping. 
@@ -297,20 +299,42 @@ Site accessibility was considered throughout the design, development and testing
   <img src="docs/images/buzzy-bee.png" alt="Buzzing Bee, from Pixabay">
 </p>
 
+
 ## Site Functionality
+This section provides an overview of the application functionality. Further illustrations of application functionality can be found in the accompanying [TESTING](docs/TESTING.md) document.
+
+**User access** - [registration](docs/images/walkthrough/05-register-complete.png), [sign in](docs/images/walkthrough/07-signin.png) & [sign out](docs/images/walkthrough/01-home.png)
+
+**Apiary Management** - [adding](docs/images/walkthrough/10-apiary-newentry.png), [viewing](docs/images/walkthrough/13-apiary-view.png), [view all](docs/images/walkthrough/11-apiary-list.png), [editing](docs/images/walkthrough/14-apiary-update.png) & [deleting](docs/images/walkthrough/16-apiary-deletion.png)
+
+**Hive Management** - [adding](docs/images/walkthrough/20-hive-newhive.png), [viewing one](docs/images/walkthrough/22-hive-view.png), [view all](docs/images/walkthrough/21-hive-list.png), [editing](docs/images/walkthrough/23-hive-update.png) & [deleting](docs/images/walkthrough/26-hive-delete.png)
+
+**Hive Inspections** - [adding](docs/images/walkthrough/32-hive-inspectionformfilled.png), [viewing](docs/images/walkthrough/35-hive-inspection-record.png), [view all](docs/images/walkthrough/34-hive-inspectionlist.png), editing, deleting.
 
 
-**User access** - registration, sign in & sign out
+### Error Handling
+This application has been developed with the intention of it failing gracefully when unforeseen errors occur, and keeping the user informed at all times.
 
-**Apiary Management** - adding, viewing, editing & deleting
+**Failed Operations**
+Flash messages inform user when an error has occurred. 
 
-**Hive Management** - adding, viewing, editing & deleting
+<p align="center">
+  <img src="docs/images/flash-password-error.png" alt="Password error message">
+<br>
+<em>Figure: Example flash message - Password error</em>
+</p>
 
-**Hive Inspections** - adding, viewing, editing, deleting.
+**Application Exceptions**
+When runtime errors occur, such as page access error (e.g. 404), attempted unauthorised access, etc, the user is informed through the use of an error page. This will include the details of the error message, but the user doesn't need to act on these. Error messages are displayed just for information.
 
+<p align="center">
+  <img src="docs/images/walkthrough/53-error-page.png" alt="Error page">
+<br>
+<em>Figure: Example error page format - 404 error</em>
+</p>
 
-**Error handling**
-- Failed Operations - flash messages & error logging
+**Error logging** 
+When runtime errors occur, in addition to users being informed these errors are logged to the database: 
 
 ```
 flash("Error ocurred. New apiary not added. Please try again")
@@ -320,9 +344,17 @@ flash("Error ocurred. New apiary not added. Please try again")
                  "exception": e})
 ```
 
-- Application Exceptions: error page
-- Out of Scope Functionality - placeholder page
+<em>Figure: Example of logging code</em>
 
+
+**Out of Scope Functionality** 
+If the user ever stumbles upon a part of the site that has not yet been launched, or is currently unavailable for some reason, a placeholder page will be displayed.
+
+<p align="center">
+  <img src="docs/images/walkthrough/50-placeholder.png" alt="Placeholder page">
+<br>
+<em>Figure: Placeholder page</em>
+</p>
 
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
@@ -471,7 +503,6 @@ I would like to acknowledge the following people who helped me complete this mil
 - [Amy Richardson](https://code-institute-room.slack.com/team/U06CZC2JZTN) - our Code Institute cohort facilitator.
 - [Jubril Akolade](https://github.com/Jubrillionaire) - my Code Institute mentor.
 - The Code Institute Slack community, in particular my fellow students in the feb-2023-pla cohort. 
-- My volunteer human testing and feedback team of Dr N Caine, Mr M Burgess.
 
 
 <p align="center">
