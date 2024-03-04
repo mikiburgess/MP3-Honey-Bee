@@ -313,6 +313,98 @@ This section provides an overview of the application functionality. Further illu
 
 - **Additional Pages** - [home page](docs/images/walkthrough/01-home.png), [learn about bees](docs/images/walkthrough/51-learn-about-bees.png) & [about Honey Bee](docs/images/walkthrough/52-about-page.png)
 
+
+### Responsive Site
+Site styling is responsive across viewports. Two areas however are work noting: menu/navigation and site tables.
+
+#### Responsive Menu/Navigation Bar
+The top menu/navigation bar is responsive across users and device sizes.
+
+The four different types of users are: Unregistered site visitor, Beekeeper, Beekeeper with Admin role, and Admin only.
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-unregistered.png" alt="Unregistered user">
+<br>
+<em>Figure: Menu - Unregistered user</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-beekeeper-only.png" alt="Beekeeper">
+<br>
+<em>Figure: Menu - Beekeeper</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-admin-beekeeper.png" alt="Beekeeper and Administrator">
+<br>
+<em>Figure: Menu - Beekeeper and Administrator</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-admin-only.png" alt="Administrator">
+<br>
+<em>Figure: Menu - Administrator only</em>
+</p>
+
+The menu/navigation bar is also responsive according to screen size to facilitate easy use across devices, especially mobile devices (tablets and smartphones)
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-small-screen.png" alt="Collapsed menu on small screen">
+<br>
+<em>Figure: Collapsed menu on small screen</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-menu/menu-small-screen-expanded.png" alt="Expanded side menu on small screen">
+<br>
+<em>Figure: Expanded side menu on small screen</em>
+</p>
+
+#### Responsive Site Tables
+Data tables can be unwieldy and cluttered on smaller device screens. To keep the screen uncluttered and clear, and eliminate the need for side scrolling, site tables are responsive, showing/hiding columns according to the viewport.
+
+<p align="center">
+  <img src="docs/images/responsive-tables/hive-list-laptop.png" alt="Hive table on laptop">
+<br>
+<em>Figure: Hive Management Table - Laptop screen</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-tables/hive-details-mobile.png" alt="Hive table on mobile">
+<br>
+<em>Figure: Hive Management Table - Small screen (mobile)</em>
+</p>
+
+Across all viewports the full details can be viewed by clicking the 'more' button at the right end of every row.
+
+<p align="center">
+  <img src="docs/images/responsive-tables/hive-details-mobile.png" alt="Hive details on mobile">
+<br>
+<em>Figure: Individual hive detail screen on small/mobile device</em>
+</p>
+
+This responsive behaviour is continued across all tables. 
+For example, reviewing the hive inspection reports for The Bookshop Hive in The City Apiary (Beekeeper - AlanP) ...
+
+<p align="center">
+  <img src="docs/images/responsive-tables/inspections-small.png" alt="Inspection table on mobile">
+<br>
+<em>Figure: Hive inspection reports - small device (eg. smartphone)</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-tables/inspections-medium.png" alt="Inspection table on laptop">
+<br>
+<em>Figure: Hive inspection reports - medium device (eg. laptop)</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/responsive-tables/inspections-large.png" alt="Inspection table on desktop">
+<br>
+<em>Figure: Hive inspection reports - large device (eg. desktop)</em>
+</p>
+
+
 ### Error Handling
 This application has been developed with the intention of it failing gracefully when unforeseen errors occur, and keeping the user informed at all times.
 
@@ -452,22 +544,36 @@ Site currently relies on HTTP. Future development should include upgrading this 
 #### Color-Coding Flash Messages
 Currently flash messages are displayed green. In the next stage of development these would be altered according to the type of message being displayed, such as red for errors/warnings. Using familiar and intuitive colors wil improve the user experience.
 
+#### Data Model Relationships
+Apiary and hive records are currently liked to beekeepers using the username. Although this works well for a small application, this is not suitable for an application that, when launched, would be used by a number of people with a potentially large number of hives and apiaries. 
+Linking records on such fields is not good practice. This will therefore be revised to link records on ObjectIDs. As well as being more robust, this would also enable utilisation of more efficient data indexing.
 
 ### Future Features
 Aside from implementing the Future User Stories listed above, the site could be improved by undertaking some additional work on this current version. The initial improvements are listed in this section.
+
+#### Focus Hives View
+At present all hives are listed together per beekeeper. An important future feature is to add a filter whereby the beekeeper can view only those hives within a specified apiary. Being a relatively minor adaption, this would be one of the first improvements to be made to the Honey Bee web application.
+
+#### Text truncation
+Some areas of the site have the potential to become crowded by text. Description table columns in particular could potentially contain more text than fits comfortably on a small screen. In future text would be truncated according to standard breakpoints.
 
 #### Additional User Guidance
 Including popovers or tooltips would help users. In particular, including these on the hive inspection would be beneficial for new beekeepers who will have a lot to learn and handle out in the field. Providing guidance during inspections would support them in skill development and confidence growth.
 These popovers/tooltips would be an optional feature that could be turned off once no longer required.
 
-#### Text truncation
-Some areas of the site have the potential to become crowded by text. Description table columns in particular could potentially contain more text than fits comfortably on a small screen. In future text would be truncated according to standard breakpoints.
-
 #### Hive Report Management
 When a Hive is deleted, hive inspection reports are currently left unmodified in the database. This is to ensure all records are maintained for reference and auditing. In future versions of this site hives the hive owner will be able to maintain access to all previous records and choose to either export them or permanently delete them. The site administrator will also have access to be able to create digital backups or export to a hard copy.
 
 ### Hive and Apiary Record Deletion
-Currently, when deletion is selected the records are deleted from the database. In future there will be a two-stage delete where the records are flagged as historical. They can the be deleted at a later date once definitely no longer required (eg, when reporting period has passed, according to legal record keeping deadline, etc.)
+Currently, when deletion is selected the records are deleted from the database. In future the beekeepers will have more control over deletions.
+
+1. A two-stage delete where the records are flagged as historical. They can the be deleted at a later date once definitely no longer required (eg, when reporting period has passed, according to legal record keeping deadline, etc.)
+2. An immediate delete of the selected record, without deleting any others that link to it. For example, deleting an apiary but not deleting the hives.
+3. An immediate delete with propagating delete. For example, deleting an apiary AND deleting all hive and all records corresponding to those hives.
+
+### Fuller Edit History
+Whenever a record is edited in the initial version of this web application, a record is retained of the edit date-time stamp. This means there is a full record of dates and times each edit took place. A future expansion will include noting the details of the edit, such as which items were changed. This will result in a more comprehensive and auditable change history.
+
 
 <kbd>[Return to ToC](#Table-of-Contents)</kbd>
 
