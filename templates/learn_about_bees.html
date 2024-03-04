@@ -18,48 +18,130 @@
 {% endblock %}
 
 {% block content %}
-<section id="learn-container">
+<section id="placeholder-container">
     <!-- ** PLACEHOLDER NOTICE ** -->
-    <div class="">
-        <br>
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon">Sorry! We're not quite ready here yet</h2>
+        </div>
         <img class="rounded mx-auto d-block placeholder-img"
             src="{{ url_for('static', filename='img/beekeeper-scared.jpg') }}" alt="">
         <br>
     </div>
+    <!-- <div class="">
+        <br>
+        <img class="rounded mx-auto d-block placeholder-img"
+            src="{{ url_for('static', filename='img/beekeeper-scared.jpg') }}" alt="">
+        <br>
+    </div> -->
+</section>
 
+<section id="learn-container">
+    <div class="container">
+        <div class="sub-heading">
+            <h2 class="feature-icon">Starter Resources</h2>
+            <p class="lead">In the meantime, below are some resources you may find useful ...</p>
+        </div>
+    </div>
 
-    <div>
-        Official organisations (UK based)
-        <ul>
-            <li><a href="https://www.bbka.org.uk/" target="_blank">BBKA (British Beekeepers Association)</a></li>
-            <li><a href="https://www.nationalbeeunit.com/" target="_blank">APHA National Bee Unit - BeeBase</a></li>
-            <li><a href="https://bibba.com/" target="_blank">BIBBA (Bee Improvement and Bee Breeders Association)</a></li>
-            <li><a href="https://www.beeswales.co.uk/Useful-Links" target="_blank">National Beekeeping Centre Wales</a></li>
-            <li><a href="https://scottishbeekeepers.org.uk/" target="_blank">Scottish Beekeepers Association</a></li>
-        </ul>
-        Recommended information resources (just a selection)
-        <ul>
-            <li><a href="https://theapiarist.org/" target="_blank">The Apiarist</a></li>
-            <li><a href="https://www.beelistener.co.uk/" target="_blank">The Bee Listener</a> </li>
-            <li><a href="https://www.naturalbeekeepingtrust.org/" target="_blank">Natural Beekeeping Trust</a></li>
-            
-        </ul>
-        Selection of suppliers (many more exist!)
-        <ul>
-            <li><a href="https://gwenyngruffydd.co.uk/" target="_blank">Gwenyn Gruffydd</a></li>
-            <li><a href="https://www.blackmountainhoney.co.uk/" target="_blank">Black Mountain Honey</a></li>
-            <li><a href="https://beekeeping.co.uk/" target="_blank">National Beekeeping Supplies</a></li>
-            <li><a href="https://www.thorne.co.uk/" target="_blank">Thorne</a></li>
-            <li><a href="https://simonthebeekeeper.co.uk/" target="_blank">Simon the Beekeeper</a></li>
-        </ul>
-        Days out
-        <ul>
-            <li><a href="https://www.afonmel.com/" target="_blank">Afon Mel</a></li>
-            <li><a href="https://scoltonmanor.co.uk/explore-play-discover/beekeeping/" target="_blank">The Pembrokeshire Beekeeping Centre</a></li>
-            <li><a href="https://thebeecentre.org/" target="_blank">The Bee Centre</a></li>
-            <li><a href="https://www.secretgardenapiary.co.uk/" target="_blank">The Secret Garden Apiary</a></li>
-        </ul>
-        
+    <div class="container">
+        <!-- Accordion code adapted from https://getbootstrap.com/docs/5.3/components/accordion/ -->
+        <div class="accordion" id="resourcesAccordion">
+            <!-- Organisations  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Official organisations (UK based) &#128029
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="https://www.bbka.org.uk/" target="_blank">BBKA (British Beekeepers
+                                    Association)</a></li>
+                            <li><a href="https://www.nationalbeeunit.com/" target="_blank">APHA National Bee Unit -
+                                    BeeBase</a></li>
+                            <li><a href="https://bibba.com/" target="_blank">BIBBA (Bee Improvement and Bee Breeders
+                                    Association)</a>
+                            </li>
+                            <li><a href="https://www.beeswales.co.uk/Useful-Links" target="_blank">National Beekeeping
+                                    Centre Wales</a>
+                            </li>
+                            <li><a href="https://scottishbeekeepers.org.uk/" target="_blank">Scottish Beekeepers
+                                    Association</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Information resources -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Recommended information resources (just a selection) &#128029
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="https://theapiarist.org/" target="_blank">The Apiarist</a></li>
+                            <li><a href="https://www.beelistener.co.uk/" target="_blank">The Bee Listener</a> </li>
+                            <li><a href="https://www.naturalbeekeepingtrust.org/" target="_blank">Natural Beekeeping
+                                    Trust</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Suppliers -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Selection of suppliers (many more exist!) &#128029
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="https://gwenyngruffydd.co.uk/" target="_blank">Gwenyn Gruffydd</a></li>
+                            <li><a href="https://www.blackmountainhoney.co.uk/" target="_blank">Black Mountain Honey</a>
+                            </li>
+                            <li><a href="https://beekeeping.co.uk/" target="_blank">National Beekeeping Supplies</a>
+                            </li>
+                            <li><a href="https://www.thorne.co.uk/" target="_blank">Thorne</a></li>
+                            <li><a href="https://simonthebeekeeper.co.uk/" target="_blank">Simon the Beekeeper</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Activities/Days Out -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFour">
+                        Activities and Days Out &#128029
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><a href="https://www.afonmel.com/" target="_blank">Afon Mel</a></li>
+                            <li><a href="https://scoltonmanor.co.uk/explore-play-discover/beekeeping/"
+                                    target="_blank">The Pembrokeshire
+                                    Beekeeping Centre</a></li>
+                            <li><a href="https://thebeecentre.org/" target="_blank">The Bee Centre</a></li>
+                            <li><a href="https://www.secretgardenapiary.co.uk/" target="_blank">The Secret Garden
+                                    Apiary</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
