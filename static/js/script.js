@@ -60,12 +60,6 @@ function hiveReadOnly() {
 
 function hiveRemoveReadOnly() {
   toggleFormDisable(false);
-  // $("#apiary").attr("disabled", false);
-  // $("#colony").attr("disabled", false);
-  // $("#hiveType").attr("disabled", false);
-  // $("#bees").attr("disabled", false);
-  // $("#queenColor").attr("disabled", false);
-  // $("#hiveDescription").attr("disabled", false);
   $(".form-button").attr("hidden", false);
   $(".option-button").attr("hidden", true);
 }
@@ -75,6 +69,7 @@ function inspectionReadOnly() {
   $(".form-button").attr("hidden", true);
   $(".option-button").attr("hidden", false);
 }
+
 function inspectionRemoveReadOnly() {
   toggleFormDisable(false);
   $(".form-button").attr("hidden", false);
