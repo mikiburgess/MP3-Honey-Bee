@@ -38,6 +38,7 @@ mongo = PyMongo(app)
 # LOAD BEEKEEPER APIARIES UPON LOGIN/CHANGE
 def load_apiaries():
     if session["beekeeper"]:
+        ''' Set session variables for current user '''
         # Get list of apiary names from database and store in session variable
         session["apiaries"] = []
         apiaries = mongo.db.apiaries.find({"beekeeper": session['user']})
@@ -52,12 +53,13 @@ def load_apiaries():
 
 
 # ERROR HANDLER ENDPOINTS
-@app.errorhandler(400)
-@app.errorhandler(401)
-@app.errorhandler(404)
-@app.errorhandler(500)
-@app.errorhandler(502)
+@app.errorhandler(400)  # Bad Request
+@app.errorhandler(401)  # Unauthorized
+@app.errorhandler(404)  # Not Found
+@app.errorhandler(500)  # Internal Server Error
+@app.errorhandler(502)  # Bad Gateway
 def page_not_found(error):
+    ''' Handle HTTP status codes/errors most relevant to application '''
     return render_template('error.html', error=error)
 
 
@@ -65,28 +67,34 @@ def page_not_found(error):
 
 @app.route("/placeholder")
 def placeholder():
+    ''' Placeholder application endpoint to be used where 
+        functionality not yet developed 
+    '''
     return render_template("placeholder.html")
-    # return render_template("dnd.html")
 
 
 @app.route("/")
 @app.route("/home")
 def home():
+    ''' Display Web Application Home Page '''
     return render_template("home.html")
 
 
 @app.route("/learn_about_bees")
 def learn_about_bees():
+    ''' Display Learn About Bees Page '''
     return render_template("learn_about_bees.html")
 
 
 @app.route("/about")
 def about():
+    ''' Display About Honey Bee Page '''
     return render_template("about.html")
 
 
 @app.route("/signin", methods=["GET", "POST"])
 def signin():
+    ''' Sign in page for registered user '''
     if request.method == "POST":
         # check username exists in db
         existing_user = mongo.db.siteUsers.find_one(
@@ -118,6 +126,7 @@ def signin():
 
 @app.route("/signout")
 def signout():
+    ''' Sign out page for signed in user '''
     # remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
@@ -128,6 +137,7 @@ def signout():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    ''' Registration page for new site users '''
     register = {}
     if request.method == "POST":
         try:
@@ -178,6 +188,7 @@ def register():
 
 @app.route("/apiary_management")
 def apiary_management():
+    ''' View table of all apiaries for current beekeeper '''
     apiaries = list(mongo.db.apiaries.find(
             {"beekeeper": session["user"]}
         ).sort("colony", 1))
@@ -186,6 +197,7 @@ def apiary_management():
 
 @app.route("/add_apiary", methods=["GET", "POST"])
 def add_apiary():
+    ''' Add new apiary for current beekeeper '''
     if request.method == "POST":
         try:
             existing_apiary = mongo.db.apiaries.find_one(
@@ -221,6 +233,7 @@ def add_apiary():
 
 @app.route("/manage_apiary/<apiary_id>", methods=["GET", "POST"])
 def manage_apiary(apiary_id):
+    ''' View / edit selected apiary '''
     if request.method == "POST":
         try:
             edit_date = datetime.datetime.now()
@@ -254,6 +267,9 @@ def manage_apiary(apiary_id):
 
 @app.route('/delete_apiary/<apiary_id>')
 def delete_apiary(apiary_id):
+    ''' Delete selected apiary from database 
+        Current version - record immediately deleted from database.
+    '''
     try:
         mongo.db.apiaries.delete_one({"_id": ObjectId(apiary_id)})
         flash("Apiary Successfully Deleted")
@@ -360,7 +376,7 @@ def manage_hive(hive_id):
 
 @app.route('/delete_hive/<hive_id>')
 def delete_hive(hive_id):
-    ''' Delete record for specified  hive. 
+    ''' Delete record for specified hive.
         Current version - record immediately deleted from database.
     '''
     try:
@@ -542,7 +558,9 @@ def manage_inspection(inspection_id):
 
 @app.route('/delete_inspection/<inspection_id>')
 def delete_inspection(inspection_id):
-    ''' Delete specified hive inspection record '''
+    ''' Delete specified hive inspection record
+        Current version - inspection immediately deleted from database.
+    '''
     try:
         mongo.db.hiveInspections.delete_one({"_id": ObjectId(inspection_id)})
         flash("Inspection Successfully Deleted")
