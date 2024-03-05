@@ -377,7 +377,7 @@ def delete_hive(hive_id):
 
 @app.route('/hive_inspection/<hive_id>', methods=["GET", "POST"])
 def hive_inspection(hive_id):
-    ''' View / Create new inspection record for selected hive '''
+    ''' Create new inspection record for selected hive '''
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     # POST = New hive inspection entered
     if request.method == "POST":
@@ -415,10 +415,10 @@ def hive_inspection(hive_id):
                 "fondantAmount": request.form.get("fondantAmount"),
                 # Colony Health
                 "healthStatus": request.form.get("healthStatus"),
-                "healthCB": request.form.get("healthCB"),
-                "healthEFB": request.form.get("healthEFB"),
-                "healthAFB": request.form.get("healthAFB"),
-                "healthCBPV": request.form.get("healthCBPV"),
+                "healthCB": request.form.get("healthCB") == 'on',
+                "healthEFB": request.form.get("healthEFB") == 'on',
+                "healthAFB": request.form.get("healthAFB") == 'on',
+                "healthCBPV": request.form.get("healthCBPV") == 'on',
                 "varroaLevel": request.form.get("varroaLevel"),
                 "varroaPop": request.form.get("varroaPop"),
                 # Temper
@@ -492,10 +492,10 @@ def manage_inspection(inspection_id):
                     "fondantAmount": request.form.get("fondantAmount"),
                     # Colony Health
                     "healthStatus": request.form.get("healthStatus"),
-                    "healthCB": request.form.get("healthCB"),
-                    "healthEFB": request.form.get("healthEFB"),
-                    "healthAFB": request.form.get("healthAFB"),
-                    "healthCBPV": request.form.get("healthCBPV"),
+                    "healthCB": request.form.get("healthCB") == 'on',
+                    "healthEFB": request.form.get("healthEFB") == 'on',
+                    "healthAFB": request.form.get("healthAFB") == 'on',
+                    "healthCBPV": request.form.get("healthCBPV") == 'on',
                     "varroaLevel": request.form.get("varroaLevel"),
                     "varroaPop": request.form.get("varroaPop"),
                     # Temper

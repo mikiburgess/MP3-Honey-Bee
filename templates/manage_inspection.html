@@ -41,13 +41,23 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">QUEEN</label>
                     <div class="col-4 col-lg-3 form-check">
+                        {% if inspection.queenPresent %}
                         <input class="form-check-input" id="queenPresent" name="queenPresent" type="checkbox"
-                            role="checkbox" disabled checked="{{ inspection.queenPresent }}" />
+                            role="checkbox" disabled checked />
+                        {% else %}
+                            <input class="form-check-input" id="queenPresent" name="queenPresent" type="checkbox"
+                            role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="queenPresent">Present?</label>
                     </div>
                     <div class="col-4 col-lg-3 form-check">
+                        {% if inspection.queenClipped %}
                         <input class="form-check-input" id="queenClipped" name="queenClipped" type="checkbox"
-                            role="checkbox" disabled checked="{{ inspection.queenClipped }}" />
+                            role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="queenClipped" name="queenClipped" type="checkbox"
+                            role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="queenClipped">Clipped?</label>
                     </div>
                 </div>
@@ -75,13 +85,23 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label">BROOD</label>
                     <div class="col-4 col-lg-3 form-check">
+                        {% if inspection.eggsSeen %}
                         <input class="form-check-input" id="eggsSeen" name="eggsSeen"
-                            checked="{{ inspection.eggsSeen }}" type="checkbox" role="checkbox" disabled />
+                            type="checkbox" role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="eggsSeen" name="eggsSeen"
+                            type="checkbox" role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="eggsSeen">Eggs Seen?</label>
                     </div>
                     <div class="col-5 col-lg-4 form-check">
+                        {% if inspection.broodSeen %}
                         <input class="form-check-input" id="broodSeen" name="broodSeen"
-                            checked="{{ inspection.broodSeen }}" type="checkbox" role="checkbox" disabled />
+                            type="checkbox" role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="broodSeen" name="broodSeen"
+                            type="checkbox" role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="broodSeen">Capped Brood?</label>
                     </div>
                 </div>
@@ -89,13 +109,23 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="col-4 col-lg-3 form-check">
+                        {% if inspection.broodPattern %}
                         <input class="form-check-input" id="broodPattern" name="broodPattern"
-                            checked="{{ inspection.broodPattern }}" type="checkbox" role="checkbox" disabled />
+                            type="checkbox" role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="broodPattern" name="broodPattern"
+                            type="checkbox" role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="broodPattern">Brood Pattern OK?</label>
                     </div>
                     <div class="col-5 col-lg-4 form-check">
+                        {% if inspection.broodDrones %}
                         <input class="form-check-input" id="broodDrones" name="broodDrones"
-                            checked="{{ inspection.broodDrones }}" type="checkbox" role="checkbox" disabled />
+                            type="checkbox" role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="broodDrones" name="broodDrones"
+                            type="checkbox" role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="broodDrones">Drone Brood Present?</label>
                     </div>
                 </div>
@@ -103,15 +133,20 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="col-2 col-lg-1">
-                        <input class="form-control" id="broodFrames" name="broodFrames"
-                            value="{{ inspection.broodFrames }}" type="number" value="0" disabled />
+                        <input class="form-control" id="broodFrames" name="broodFrames" type="number" 
+                            value="{{ inspection.broodFrames }}" step="0.25" disabled />
                     </div>
                     <div class="col-4 col-lg-3">
                         <label class="form-label" for="broodFrames"># Frames of Brood</label>
                     </div>
                     <div class="col-3 form-check">
-                        <input class="form-check-input" id="noBrood" name="noBrood" checked="{{ inspection.noBrood }}"
+                        {% if inspection.noBrood %}
+                        <input class="form-check-input" id="noBrood" name="noBrood"
+                            type="checkbox" role="checkbox" disabled checked />
+                        {% else %}
+                        <input class="form-check-input" id="noBrood" name="noBrood"
                             type="checkbox" role="checkbox" disabled />
+                        {% endif %}
                         <label class="form-check-label" for="noBrood">No Brood?</label>
                     </div>
                 </div>
@@ -119,8 +154,8 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">ROOM</label>
                     <div class="col-1">
-                        <input class="form-control" id="eggRoom" name="eggRoom" value="{{ inspection.eggRoom }}"
-                            type="number" value="0" disabled />
+                        <input class="form-control" id="eggRoom" name="eggRoom" type="number" 
+                            value="{{ inspection.eggRoom }}" step="0.25" disabled />
                     </div>
                     <div class="col">
                         <label class="form-label" for="eggRoom">Available space for queen to lay eggs (# frames)</label>
@@ -132,8 +167,8 @@
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3">STORES</label>
                     <div class="col-1">
-                        <input class="form-control" id="storesAvailable" name="storesAvailable"
-                            value="{{ inspection.storesAvailable }}" type="number" value="0" disabled />
+                        <input class="form-control" id="storesAvailable" name="storesAvailable" 
+                            type="number" value="{{ inspection.storesAvailable }}" step="0.25" disabled />
                     </div>
                     <div class="col">
                         <label class="form-label" for="storesAvailable">Super stores available (# frames)</label>
@@ -146,25 +181,29 @@
                         <label class="col-4 col-md-3">Syrup</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="syrupAmount" name="syrupAmount"
-                            value="{{ inspection.syrupAmount }}" type="number" value="0" disabled />
+                        <input class="form-control" id="syrupAmount" name="syrupAmount" type="number" 
+                        value="{{ inspection.syrupAmount }}" step="0.25" disabled />
                     </div>
                     <div class="col-1 col-md-1">
                         <label class="form-label" for="syrupAmount">Ltr</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.syrupType == 'LS' %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" checked disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
+                            value="LS" checked disabled >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupLS" 
+                            value="LS" disabled >
                         {% endif %}
                         <label class="form-check-label" for="syrupLS">LS</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.syrupType == 'HS' %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" checked disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
+                            value="HS" checked disabled >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" disabled>
+                        <input class="form-check-input" type="radio" name="syrupType" id="syrupHS" 
+                            value="HS" disabled >
                         {% endif %}
                         <label class="form-check-label" for="syrupHS">HS</label>
                     </div>
@@ -176,8 +215,8 @@
                         <label class="col-4 col-md-3">Fondant</label>
                     </div>
                     <div class="col-2 col-md-1">
-                        <input class="form-control" id="fondantAmount" name="fondantAmount"
-                            value="{{ inspection.fondantAmount }}" type="number" value="0" disabled />
+                        <input class="form-control" id="fondantAmount" name="fondantAmount" type="number" 
+                        value="{{ inspection.fondantAmount }}" step="0.25" disabled />
                     </div>
                     <div class="col-1">
                         <label class="form-label" for="fondantAmount">Kg</label>
@@ -190,43 +229,68 @@
                     <label class="col-3 form-label">HIVE HEALTH</label>
                     <div class="form-check form-check-inline col-2">
                         {% if inspection.healthStatus == 'OK' %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" checked disabled>
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
+                            value="OK" disabled checked >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" disabled>
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthOK" 
+                            value="OK" disabled >
                         {% endif %}
                         <label class="form-check-label" for="healthOK">OK</label>
                     </div>
                     <div class="form-check form-check-inline col-3">
                         {% if inspection.healthStatus == 'Concerned' %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" checked
-                            disabled>
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
+                            value="Concerned" disabled checked >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern" disabled>
+                        <input class="form-check-input" type="radio" name="healthStatus" id="healthConcern"
+                            value="Concerned" disabled >
                         {% endif %}
                         <label class="form-check-label" for="healthConcern">Concerned</label>
                     </div>
                 </div>
 
+
+
                 <div class="row-12 align-items-center input-group">
                     <label class="col-3 form-label"></label>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthCB" id="healthCB" checked="{{ inspection.healthCB }}"
-                            type="checkbox" role="checkbox" disabled>
+                        {% if inspection.healthCB %}
+                        <input class="form-check-input" id="healthCB" name="healthCB" type="checkbox" 
+                            role="checkbox" disabled checked >
+                        {% else %}
+                        <input class="form-check-input" id="healthCB" name="healthCB" type="checkbox" 
+                            role="checkbox" disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthCB">CB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthEFB" id="healthEFB"
-                            checked="{{ inspection.healthEFB }}" type="checkbox" role="checkbox" disabled>
+                        {% if inspection.healthEFB %}
+                        <input class="form-check-input" id="healthEFB" name="healthEFB" type="checkbox" 
+                            role="checkbox" disabled checked >
+                        {% else %}
+                        <input class="form-check-input" id="healthEFB" name="healthEFB" type="checkbox" 
+                            role="checkbox" disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthEFB">EFB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthAFB" id="healthAFB"
-                            checked="{{ inspection.healthAFB }}" type="checkbox" role="checkbox" disabled>
+                        {% if inspection.healthAFB %}
+                        <input class="form-check-input" id="healthAFB" name="healthAFB" type="checkbox" 
+                            role="checkbox" disabled checked >
+                        {% else %}
+                        <input class="form-check-input" id="healthAFB" name="healthAFB" type="checkbox" 
+                            role="checkbox" disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthAFB">AFB</label>
                     </div>
                     <div class="form-check col-2 col-lg-1">
-                        <input class="form-check-input" id="healthCBPV" id="healthCBPV"
-                            checked="{{ inspection.healthCBPV }}" type="checkbox" role="checkbox" disabled>
+                        {% if inspection.healthCBPV %}
+                        <input class="form-check-input" id="healthCBPV" name="healthCBPV" type="checkbox"
+                            role="checkbox" disabled checked >
+                        {% else %}
+                        <input class="form-check-input" id="healthCBPV" name="healthCBPV" type="checkbox"
+                            role="checkbox" disabled >
+                        {% endif %}
                         <label class="form-check-label" for="healthCBPV">CBPV</label>
                     </div>
                 </div>
@@ -236,28 +300,31 @@
                     <div class="col-9 varroa-rating">
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'low' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" checked
-                                disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
+                            value="low" disabled checked >
                             {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaLow" 
+                            value="low" disabled >
                             {% endif %}
                             <label class="form-check-label" for="varroaLow">Low</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'medium' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" checked
-                                disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
+                                value="medium" disabled checked >
                             {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium" disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaMedium"
+                                value="medium" disabled>
                             {% endif %}
                             <label class="form-check-label" for="varroaMedium">Med.</label>
                         </div>
                         <div class="form-check form-check-inline">
                             {% if inspection.varroaLevel == 'high' %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" checked
-                                disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
+                                value="high" disabled checked>
                             {% else %}
-                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh" disabled>
+                            <input class="form-check-input" type="radio" name="varroaLevel" id="varroaHigh"
+                                value="high" disabled >
                             {% endif %}
                             <label class="form-check-label" for="varroaHigh">High</label>
                         </div>
@@ -266,8 +333,8 @@
                     <div class="row-12 align-items-center input-group">
                         <label class="col-3 form-label"></label>
                         <div class="col-2 col-lg-1">
-                            <input id="varroaPop" class="form-control" type="number" value="{{ inspection.varroaPop }}"
-                                disabled />
+                            <input id="varroaPop" name="varroaPop" class="form-control" type="number" 
+                                value="{{ inspection.varroaPop }}" step="1000" disabled />
                         </div>
                         <div class="col">
                             <label for="varroaPop" class="form-label"> Population estimate </label>
@@ -313,28 +380,27 @@
                     <label class="col-3 form-label">SUPERS</label>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.supers == 'added' %}
-                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added"
-                            checked disabled>
+                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" 
+                            value="added" disabled checked >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" value="added"
-                            disabled>
+                        <input class="form-check-input" type="radio" name="supers" id="supersAdded" 
+                            value="added" disabled >
                         {% endif %}
                         <label class="form-check-label" for="supersAdded">+</label>
                     </div>
                     <div class="form-check form-check-inline col-1">
                         {% if inspection.supers == 'removed' %}
-                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed"
-                            checked disabled>
+                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" 
+                            value="removed" disabled checked >
                         {% else %}
-                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" value="removed"
-                            disabled>
+                        <input class="form-check-input" type="radio" name="supers" id="supersRemoved" 
+                            value="removed" disabled >
                         {% endif %}
                         <label class="form-check-label" for="supersRemoved">-</label>
                     </div>
-
                     <div class="col-2 col-md-1">
-                        <input id="supersChange" class="form-control" type="number"
-                            value="{{ inspection.supersChange }}" disabled />
+                        <input id="supersChange" name="supersChange" class="form-control" type="number"
+                            step="0.25" value="{{ inspection.supersChange }}" disabled/>
                     </div>
                     <div class="col-2">
                         <label for="supersChange" class="form-label">quantity</label>
