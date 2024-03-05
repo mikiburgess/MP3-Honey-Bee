@@ -25,7 +25,7 @@
 
         <!-- ** INSPECTION FORM ** -->
         <div class="form-hive-inspection">
-            <form class="form-horizontal" method="POST" action="">
+            <form class="form-horizontal" method="POST" action="{{ url_for('manage_inspection', inspection_id=inspection._id) }}">
 
                 <!-- Date of inspection -->
                 <div class="row-10 align-items-center input-group">
@@ -359,7 +359,7 @@
                             onclick="inspectionRemoveReadOnly()" role="button">
                             <i class="material-icons">edit</i> Edit Inspection</a>
                         <a class="btn site-button-primary px-4 m-2 gap-3 option-button"
-                            href="{{ url_for('delete_inspection', inspection_id=inspection._id)}}" role="button"><i
+                            href="{{ url_for('delete_inspection', inspection_id=inspection._id, hive_id=inspection.hive_id)}}" role="button"><i
                                 class="material-icons">delete</i> Delete Inspection</a>
                     </div>
                 </div>

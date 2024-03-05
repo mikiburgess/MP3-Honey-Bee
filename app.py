@@ -268,6 +268,9 @@ def delete_apiary(apiary_id):
 
 @app.route("/hive_management/<apiary>")
 def hive_management(apiary):
+    ''' View table of all hives for current beekeeper in specified apiary.
+        Current version - always shows all hives, ordered by apiary name.
+    '''
     load_apiaries()
     # show record of hives for current beekeeper
     if apiary == "all":
@@ -285,6 +288,7 @@ def hive_management(apiary):
 
 @app.route("/add_hive", methods=["GET", "POST"])
 def add_hive():
+    ''' Add new hive for current beekeeper '''
     load_apiaries()
     # POST = New hive record entered
     if request.method == "POST":
@@ -318,6 +322,7 @@ def add_hive():
 
 @app.route("/manage_hive/<hive_id>", methods=["GET", "POST"])
 def manage_hive(hive_id):
+    ''' View or Update individual hive record. '''
     if request.method == "POST":
         try:
             edit_date = datetime.datetime.now()
@@ -355,6 +360,9 @@ def manage_hive(hive_id):
 
 @app.route('/delete_hive/<hive_id>')
 def delete_hive(hive_id):
+    ''' Delete record for specified  hive. 
+        Current version - record immediately deleted from database.
+    '''
     try:
         mongo.db.hives.delete_one({"_id": ObjectId(hive_id)})
         flash("Hive Successfully Deleted")
@@ -369,6 +377,7 @@ def delete_hive(hive_id):
 
 @app.route('/hive_inspection/<hive_id>', methods=["GET", "POST"])
 def hive_inspection(hive_id):
+    ''' View / Create new inspection record for selected hive '''
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     # POST = New hive inspection entered
     if request.method == "POST":
@@ -443,6 +452,7 @@ def hive_inspection(hive_id):
 
 @app.route("/inspection_record/<hive_id>")
 def inspection_record(hive_id):
+    ''' View table of inspections for specified hive '''
     hive = mongo.db.hives.find_one({"_id": ObjectId(hive_id)})
     inspections = list(mongo.db.hiveInspections.find(
             {"hiveID": ObjectId(hive_id)}).sort("inspectionDate", 1))
@@ -452,15 +462,87 @@ def inspection_record(hive_id):
 
 @app.route("/manage_inspection/<inspection_id>", methods=["GET", "POST"])
 def manage_inspection(inspection_id):
+    ''' View (GET) or edit (POST) single hive inspection record '''
+    if request.method == "POST":
+        # Update record according to form data
+        try:
+            edit_date = datetime.datetime.now()
+            # update database record
+            mongo.db.hiveInspections.update_one(
+                {"_id": ObjectId(inspection_id)},
+                {"$set": {
+                    "inspectionDate": request.form.get("inspectionDate"),
+                    # Queen
+                    "queenPresent": request.form.get("queenPresent") == 'on',
+                    "queenClipped": request.form.get("queenClipped") == 'on',
+                    "queenCellsSeen": request.form.get("queenCellsSeen"),
+                    "queenCellsRemoved": request.form.get("queenCellsRemoved"),
+                    # Brood
+                    "eggsSeen": request.form.get("eggsSeen") == 'on',
+                    "broodSeen": request.form.get("broodSeen") == 'on',
+                    "broodPattern": request.form.get("broodPattern") == 'on',
+                    "broodDrones": request.form.get("broodDrones") == 'on',
+                    "broodFrames": request.form.get("broodFrames"),
+                    "noBrood": request.form.get("noBrood") == 'on',
+                    "eggRoom": request.form.get("eggRoom"),
+                    # Stores and Feed
+                    "storesAvailable": request.form.get("storesAvailable"),
+                    "syrupAmount": request.form.get("syrupAmount"),
+                    "syrupType": request.form.get("syrupType"),
+                    "fondantAmount": request.form.get("fondantAmount"),
+                    # Colony Health
+                    "healthStatus": request.form.get("healthStatus"),
+                    "healthCB": request.form.get("healthCB"),
+                    "healthEFB": request.form.get("healthEFB"),
+                    "healthAFB": request.form.get("healthAFB"),
+                    "healthCBPV": request.form.get("healthCBPV"),
+                    "varroaLevel": request.form.get("varroaLevel"),
+                    "varroaPop": request.form.get("varroaPop"),
+                    # Temper
+                    "colonyTemper": request.form.get("colonyTemper"),
+                    # Weather
+                    "temperature": request.form.get("temperature"),
+                    "weather": request.form.get("weather"),
+                    # Supers
+                    "supers": request.form.get("supers"),
+                    "supersChange": request.form.get("supersChange"),
+                    # Inspection notes
+                    "inspectionNotes": request.form.get("inspectionNotes"),
+                    "last_updated": edit_date.strftime("%d %B %Y")
+                }})
+            # add current datetime to update history
+            mongo.db.hiveInspections.update_one(
+                {"_id": ObjectId(inspection_id)},
+                {"$addToSet": {
+                    "update_history":
+                        {"date": edit_date,
+                            "action": "Content edited"}
+                }})
+            flash("Inspection Record Successfully Updated")
+        except Exception as e:
+            flash("Error ocurred. Record not updated. Please try again")
+            mongo.db.exceptionLog.insert_one(
+                {"datetime": datetime.datetime.now(),
+                 "action": "Update Inspection Record",
+                 "exception": e})
+
+    # View inspection record for hive
     inspection = mongo.db.hiveInspections.find_one(
         {"_id": ObjectId(inspection_id)})
+    # get hive_id associated with this inspection
     hive = mongo.db.hives.find_one({"_id": ObjectId(inspection["hiveID"])})
-    return render_template("manage_inspection.html",
-                           inspection=inspection, hive=hive)
+    if request == "POST":
+        # review updated record
+        return redirect(url_for('inspection_record', hive_id=hive._id))
+    else:
+        # view inspection
+        return render_template("manage_inspection.html",
+                               inspection=inspection, hive=hive)
 
 
 @app.route('/delete_inspection/<inspection_id>')
 def delete_inspection(inspection_id):
+    ''' Delete specified hive inspection record '''
     try:
         mongo.db.hiveInspections.delete_one({"_id": ObjectId(inspection_id)})
         flash("Inspection Successfully Deleted")
@@ -470,6 +552,7 @@ def delete_inspection(inspection_id):
                 {"datetime": datetime.datetime.now(),
                  "action": "Delete inspection record",
                  "exception": e})
+    # return to list of hive inspections for current hive
     return redirect(url_for("hive_management", apiary='all'))
 
 
