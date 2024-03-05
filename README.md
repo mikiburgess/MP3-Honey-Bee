@@ -541,12 +541,16 @@ Manual testing was undertaken before project completion. However, this process c
 #### Site Security
 Site currently relies on HTTP. Future development should include upgrading this to HTTPS.
 
+#### Code Refactoring
+The code in `app.py` could be improved by making more use of functions to reduce code duplication.
+
 #### Color-Coding Flash Messages
 Currently flash messages are displayed green. In the next stage of development these would be altered according to the type of message being displayed, such as red for errors/warnings. Using familiar and intuitive colors wil improve the user experience.
 
 #### Data Model Relationships
 Apiary and hive records are currently liked to beekeepers using the username. Although this works well for a small application, this is not suitable for an application that, when launched, would be used by a number of people with a potentially large number of hives and apiaries. 
 Linking records on such fields is not good practice. This will therefore be revised to link records on ObjectIDs. As well as being more robust, this would also enable utilisation of more efficient data indexing.
+
 
 ### Future Features
 Aside from implementing the Future User Stories listed above, the site could be improved by undertaking some additional work on this current version. The initial improvements are listed in this section.
