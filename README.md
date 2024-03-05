@@ -542,7 +542,9 @@ Manual testing was undertaken before project completion. However, this process c
 Site currently relies on HTTP. Future development should include upgrading this to HTTPS.
 
 #### Code Refactoring
-The code in `app.py` could be improved by making more use of functions to reduce code duplication.
+The code in `app.py` could be improved by making more use of functions to reduce code duplication. 
+In addition, forms used for creating and editing data could have improved flexibility to be reused. Additional Jinja logic would be used in improving this. 
+The result of this refactoring would improve code readability and maintainability.
 
 #### Color-Coding Flash Messages
 Currently flash messages are displayed green. In the next stage of development these would be altered according to the type of message being displayed, such as red for errors/warnings. Using familiar and intuitive colors wil improve the user experience.
